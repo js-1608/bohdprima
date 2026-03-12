@@ -1,0 +1,132 @@
+import React from "react";
+
+const Contact = () => {
+    return (
+
+        <>
+
+            {/* Header */}
+            <div className="text-center mb-12 h-[400px] align-center justify-center bg-gradient-hero ">
+                <div className="flex flex-col items-center justify-center h-full">
+                    <h1 className="text-4xl font-bold text-white">Contact Us</h1>
+                    <p className="text-white mt-4 max-w-2xl mx-auto">
+                        We would love to hear from you. Whether you are looking to import,
+                        export, or collaborate with us, our team is ready to assist you.
+                    </p>
+                </div>
+            </div>
+            <section className="bg-gray-50 py-16 px-6 lg:px-20">
+                <div className="grid lg:grid-cols-2 gap-12">
+
+                    {/* Contact Information */}
+                    <div className="space-y-8">
+                        <div>
+                            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                                Get in Touch
+                            </h2>
+                            <p className="text-gray-600">
+                                Our export-import specialists are available to assist with product
+                                inquiries, logistics, pricing, and partnerships.
+                            </p>
+                        </div>
+
+                        <div className="space-y-6">
+
+                            <div>
+                                <h3 className="font-semibold text-gray-700">Office Address</h3>
+                                <p className="text-gray-600">
+                                    123 Trade Avenue
+                                    <br />
+                                    Dehradun, Uttarakhand, India
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 className="font-semibold text-gray-700">Phone</h3>
+                                <p className="text-gray-600">+91 98765 43210</p>
+                            </div>
+
+                            <div>
+                                <h3 className="font-semibold text-gray-700">Email</h3>
+                                <p className="text-gray-600">info@yourcompany.com</p>
+                            </div>
+
+                            <div>
+                                <h3 className="font-semibold text-gray-700">Business Hours</h3>
+                                <p className="text-gray-600">
+                                    Monday – Friday : 9:00 AM – 6:00 PM
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {/* Contact Form */}
+                    <div className="bg-white shadow-lg rounded-xl p-8">
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+                            Send Us a Message
+                        </h2>
+
+                        <form className="space-y-5">
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Full Name
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your name"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Email Address
+                                </label>
+                                <input
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Phone Number
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your phone number"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Message
+                                </label>
+                                <textarea
+                                    rows="4"
+                                    placeholder="Write your message"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                ></textarea>
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+                            >
+                                Send Message
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </>
+    );
+};
+
+export default Contact;

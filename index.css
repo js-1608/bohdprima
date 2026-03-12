@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-light: hsl(195 65% 40%);
+  --color-brand: hsl(195 70% 30%);
+  --color-brand-dark: hsl(175 60% 35%);
+  --color-brand-accent: #eab308;
+  --background-image-gradient-hero: linear-gradient(135deg, hsl(195 70% 30%) 0%, hsl(175 60% 35%) 50%, hsl(195 65% 40%) 100%);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-white text-slate-800;
+  }
+}
+
+@utility text-gradient {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--background-image-gradient-hero);
+}
+
+@utility font-serif-brand {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
