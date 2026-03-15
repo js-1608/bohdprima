@@ -76,7 +76,7 @@ const Contact = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter your name"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-brand-accent outline-none"
                                 />
                             </div>
 
@@ -115,7 +115,7 @@ const Contact = () => {
 
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+                                className="w-full hover:bg-brand-accent text-white py-3 rounded-lg font-medium bg-brand-dark transition"
                             >
                                 Send Message
                             </button>
