@@ -1,4 +1,9 @@
 import React from 'react';
+import img1 from "../assets/solution/export.png"
+import img2 from "../assets/solution/import.jpg"
+import img3 from "../assets/solution/logistics-and-transportatin.jpg"
+import img4 from "../assets/solution/supply-chain.png"
+
 
 const ServicesGrid = () => {
     // Array representing the alternating grid items
@@ -7,54 +12,54 @@ const ServicesGrid = () => {
         {
             id: 1,
             type: 'text',
-            title: "International\nfreight\nforwarding",
-            description: "Move goods worldwide with\nease and full real-time\ncontrol.",
-            linkText: "Learn More"
+            title: "Export Services",
+            description: "We help businesses ship products from their home country to international markets. Our export services include documentation support, customs clearance, freight coordination, and shipment tracking.",
+            linkText: "Connect Now"
         },
         {
             id: 2,
             type: 'image',
-            imageSrc: "https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            imageSrc: img1,
             alt: "Crane lifting shipping container"
         },
         {
             id: 3,
             type: 'text',
-            title: "Warehousing\nand logistics",
-            description: "Keep stock secure and\ntrack items with smart\nwarehouse tools.",
-            linkText: "Learn More"
+            title: "Import Services",
+            description: "Importing goods from other countries requires proper documentation, customs procedures, and logistics planning. Bodh Prima assists businesses in managing these processes efficiently.",
+            linkText: "Connect Now"
         },
         {
             id: 4,
             type: 'image',
-            imageSrc: "https://images.unsplash.com/photo-1562234502-3ff5442ce310?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            imageSrc: img2,
             alt: "Ship loading grain"
         },
         {
             id: 5,
             type: 'image',
-            imageSrc: "https://images.unsplash.com/photo-1582239460295-a2269c2ece12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            imageSrc: img3,
             alt: "Flatbed truck carrying wind turbine part"
         },
         {
             id: 6,
             type: 'text',
-            title: "Last-mile\ndelivery\nsolutions",
-            description: "Get parcels to clients fast\nwith live route and ETA\nupdates.",
-            linkText: "Learn More" // Hidden in UI but added for completeness or if hovering
+            title: "Logistics and Transportation",
+            description: "We provide end-to-end logistics services that include transportation planning, route optimization, and shipment coordination.",
+            linkText: "Connect Now"
         },
         {
             id: 7,
             type: 'image',
-            imageSrc: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            imageSrc: img4,
             alt: "Hazardous materials barrels"
         },
         {
             id: 8,
             type: 'text',
-            title: "Custom logistics\nsolutions",
-            description: "Tailor services for unique\ncargo needs or special\nprojects.",
-            linkText: "Learn More" // Hidden in UI but added for completeness or if hovering
+            title: "Supply Chain Management",
+            description: "Our supply chain solutions integrate transportation, warehousing, and inventory management into a seamless system that improves efficiency and reduces operational risks.",
+            linkText: "Connect Now"
         }
     ];
 
@@ -70,7 +75,7 @@ const ServicesGrid = () => {
                     {solutions.map((item) => {
                         if (item.type === 'text') {
                             return (
-                                <div key={item.id} className="bg-gradient-hero text-white p-10 lg:p-6 flex flex-col justify-between h-[320px] lg:h-[350px] w-full">
+                                <div key={item.id} className="bg-gradient-hero text-white p-4 lg:p-6 flex flex-col justify-between h-[320px] lg:h-[350px] w-full">
                                     <h3 className="text-[16px] lg:text-[24px] font-medium text-white leading-[1.15] whitespace-pre-line tracking-tight mb-8">
                                         {item.title}
                                     </h3>

@@ -64,77 +64,100 @@
 
 // export default Hero;
 
+import { ArrowRight } from "lucide-react";
+import React from "react";
+import WaterWave from "react-water-wave";
 
-import { ArrowRight, MoveDown } from 'lucide-react';
-import React from 'react';
-import WaterWave from 'react-water-wave';
-import heroImage from '../assets/hero.jpg';
+import waterImage from "../assets/water.jpg";
+import shipImage from "../assets/ship2.png";
+
 const Hero = () => {
-    return (
-        <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+  return (
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
 
-            {/* Interactive Water Ripple Background Image with subtle overlay */}
-            <div className="absolute inset-0 z-0">
-                <WaterWave
-                    imageUrl={heroImage}
-                    dropRadius={25}
-                    perturbance={0.03}
-                    resolution={512}
-                    style={{ width: '100%', height: '100%', backgroundSize: 'cover', backgroundPosition: 'center' }}
-                >
-                    {() => (
-                        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80 z-10 pointer-events-none"></div>
-                    )}
-                </WaterWave>
-            </div>
+      {/* WATER RIPPLE BACKGROUND */}
+      <div className="absolute inset-0 z-0">
+        <WaterWave
+          imageUrl={waterImage}
+          dropRadius={20}
+          perturbance={0.04}
+          resolution={512}
+          style={{
+            width: "100%",
+            height: "100%",
+            backgroundSize: "cover",
+            backgroundPosition: "bottom",
+          }}
+        >
+          {() => (
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/80"></div>
+          )}
+        </WaterWave>
+      </div>
 
-            {/* Centered Content */}
-            <div className="relative z-20 flex flex-col items-center text-center px-4 w-full mt-10 lg:mt-0 pointer-events-none">
+      {/* SHIP IMAGE (NO RIPPLE) */}
+      <img
+        src={shipImage}
+        alt="ship"
+        className="absolute bottom-1/4 lg:bottom-0 left-1/2 -translate-x-1/2 z-10 
+        w-full md:w-[55%] lg:w-[70%] object-contain pointer-events-none"
+      />
 
-                <span className="text-white text-lg md:text-xl font-medium mb-3 tracking-wide">
-                    Welcome to
-                </span>
+      {/* CONTENT */}
+      <div className="relative z-20 flex flex-col items-center text-center px-6">
 
-                <h1 className="text-7xl md:text-8xl lg:text-[130px] font-serif-brand font-bold text-brand-accent mb-6 leading-none tracking-tight flex items-start">
-                    Bodh prima
-                    <span className="text-white text-2xl lg:text-4xl ml-2 font-normal mt-2 lg:mt-6">&reg;</span>
-                </h1>
+        <span className="text-white text-sm md:text-lg mb-2 tracking-widest">
+          Welcome to
+        </span>
 
-                <p className="text-white text-lg md:text-2xl font-light mb-12 tracking-wide">
-                    Your Global Excellence
-                </p>
+        <h1 className="text-5xl md:text-7xl lg:text-[110px] font-serif font-bold text-yellow-400 leading-none mb-1">
+          Bodh Prima
+          <span className="text-white text-sm md:text-2xl ml-2 align-top">
+            ®
+          </span>
+        </h1>
 
-                <button className="px-8 py-3 bg-brand-accent hover:bg-yellow-400 text-slate-900 rounded-[20px] font-bold text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2 pointer-events-auto">
-                    Start Your Journey
-                    <ArrowRight size={18} className="mt-0.5" />
-                </button>
+        <p className="text-white text-base md:text-xl mt-4 mb-2 font-light">
+          Your Global Excellence
+        </p>
 
-                {/* Statistics Container (Moved below button) */}
-                <div className="flex items-center gap-12 md:gap-20 mt-16 pt-8 border-t border-white/20">
-                    <div className="flex flex-col items-center text-center">
-                        <span className="text-brand-accent text-3xl md:text-5xl font-serif-brand font-bold mb-1 block">2024</span>
-                        <span className="text-white text-xs md:text-sm tracking-wide font-light">Established</span>
-                    </div>
+        <button className="px-7 py-3 bg-yellow-400 hover:bg-yellow-300 text-black rounded-xl font-semibold flex items-center gap-2 transition">
+          Start Your Journey
+          <ArrowRight size={18} />
+        </button>
 
-                    <div className="flex flex-col items-center text-center">
-                        <span className="text-brand-accent text-3xl md:text-5xl font-serif-brand font-bold mb-1 block">7+</span>
-                        <span className="text-white text-xs md:text-sm tracking-wide font-light">Years of Experience</span>
-                    </div>
-                </div>
-            </div>
+        {/* STATS */}
+        <div className="flex gap-10 md:gap-20 mt-12 border-t border-white/20 pt-8">
 
+          <div>
+            <p className="text-yellow-400 text-2xl md:text-4xl font-bold">
+              2024
+            </p>
+            <p className="text-white text-xs md:text-sm">
+              Established
+            </p>
+          </div>
 
+          <div>
+            <p className="text-yellow-400 text-2xl md:text-4xl font-bold">
+              7+
+            </p>
+            <p className="text-white text-xs md:text-sm">
+              Years Experience
+            </p>
+          </div>
 
-            {/* Scroll Indicator (Centered Bottom) */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex justify-center">
-                <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-white/70 rounded-full animate-bounce"></div>
-                </div>
-            </div>
+        </div>
+      </div>
 
-        </section>
-    );
+      {/* SCROLL INDICATOR */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
+          <div className="w-1 h-2 bg-white rounded-full animate-bounce"></div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;
-

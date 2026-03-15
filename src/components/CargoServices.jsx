@@ -4,18 +4,23 @@ const CargoServices = () => {
     const services = [
         {
             id: '01',
-            title: 'Freight services',
-            desc: 'At Bodh prima, we deliver trusted cargo services that help your business reach new markets. Our solutions ensure safe, quick, and cost-effective delivery every time.'
+            title: 'Reliable Global Network',
+            desc: 'We work with trusted logistics partners and carriers to ensure smooth transportation across multiple countries and regions.'
         },
         {
             id: '02',
-            title: 'Storage solutions',
-            desc: 'Bodh prima offers flexible storage and inventory services that keep your goods safe and always accessible. Our team uses smart tools to manage your stock with accuracy and speed.'
+            title: 'Technology Driven Operations',
+            desc: 'Our modern tracking and inventory systems provide real-time updates, helping clients monitor their goods throughout the supply chain.'
         },
         {
             id: '03',
-            title: 'Last-mile care',
-            desc: 'Bodh prima excels at fast, green last-mile delivery so your cargo arrives on time, every time. We make sure your goods reach their final stop safe and hassle-free.'
+            title: 'Customer Focused Approach',
+            desc: 'Every business is different. We provide customized logistics and export-import solutions tailored to the specific needs of our clients.'
+        },
+        {
+            id: '04',
+            title: 'Secure Handling',
+            desc: 'From storage to transportation, every step of the process follows strict safety and quality standards to protect your goods.'
         }
     ];
 
@@ -29,7 +34,7 @@ const CargoServices = () => {
                         Logistics Vision
                     </span>
                     <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                        We transform cargo services
+                        Why Choose Bodh Prima
                     </h2>
                 </div>
 
@@ -64,7 +69,7 @@ const CargoServices = () => {
                                 </div>
 
                                 {/* Arrow Button */}
-                                <div className="md:col-span-1 lg:col-span-1 flex justify-start md:justify-end mt-4 md:mt-0">
+                                <div className="hidden md:col-span-1 lg:col-span-1 md:flex justify-start md:justify-end mt-4 md:mt-0">
                                     <div className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent group-hover:text-slate-900 transition-all duration-300">
                                         <ArrowRight size={24} className="text-slate-400 group-hover:text-slate-900 transition-colors" />
                                     </div>

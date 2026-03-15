@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 
 const CTASection = () => {
     return (
-        <section className="py-20 lg:py-24 relative overflow-hidden bg-slate-950">
+        <section className="py-20 lg:py-24 relative overflow-hidden bg-brand-light">
             {/* Immersive background overlay */}
             <div className="absolute inset-0 bg-gradient-hero mix-blend-multiply opacity-50 z-0"></div>
             

@@ -4,7 +4,8 @@ import ServicesGrid from "../components/ServicesGrid";
 import About from "../components/About";
 import WhyUs from "../components/WhyUs";
 import CargoServices from "../components/CargoServices";
-
+import WhatWeDo from "../components/WhatWeDo";
+import CTASection from "../components/CTASection";
 const Home = () => {
     return (
         <main>
