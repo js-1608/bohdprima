@@ -9,11 +9,13 @@ import CTASection from "../components/CTASection";
 import GlobalReach from "../components/GlobalReach";
 import FAQ from '../components/FAQ';
 import FreightSection from "../components/Services";
+import HeroMobile from "../components/HeroMobile";
 
 const Home = () => {
     return (
         <main className="overflow-hidden">
             <Hero />
+            <HeroMobile />
             <About />
             <ServicesGrid />
             <WhyUs />

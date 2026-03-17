@@ -40,7 +40,7 @@ const TradeSection = ({
           {/* TEXT */}
           <div className={`${imageLeft ? "" : "md:order-1"}`}>
 
-            <h3 className="text-3xl font-bold mb-4 color-brand-heading">
+            <h3 className="text-3xl font-bold mb-4 text-gray-600">
               Key Trade Statistics
             </h3>
 

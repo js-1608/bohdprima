@@ -1,82 +1,84 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+
+import Uae from "../assets/ports/uae.png";
+import Singapore from "../assets/ports/singpore.png";
+import Rotterdam from "../assets/ports/Netherlands.png";
+import Shanghai from "../assets/ports/China.png";
+import Mumbai from "../assets/ports/Mumbai.png";
+import Houston from "../assets/ports/Hoston.png";
+import Santos from "../assets/ports/Brazil.png";
+import Durban from "../assets/ports/Africa.png";
 
 const ports = [
-  {
-    name: "Jebel Ali",
-    country: "UAE",
-    image: "https://images.unsplash.com/photo-1581093588401-12c0d5e9c4b1"
-  },
-  {
-    name: "Singapore",
-    country: "Singapore",
-    image: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13"
-  },
-  {
-    name: "Rotterdam",
-    country: "Netherlands",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e"
-  },
-  {
-    name: "Shanghai",
-    country: "China",
-    image: "https://images.unsplash.com/photo-1530518119128-ca0bd1a06482"
-  },
-  {
-    name: "Mumbai",
-    country: "India",
-    image: "https://images.unsplash.com/photo-1526481280691-7d0bfa9c5cfa"
-  },
-  {
-    name: "Houston",
-    country: "USA",
-    image: "https://images.unsplash.com/photo-1578574577315-3fbeb0cecdc2"
-  },
-  {
-    name: "Santos",
-    country: "Brazil",
-    image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59"
-  },
-  {
-    name: "Durban",
-    country: "South Africa",
-    image: "https://images.unsplash.com/photo-1542317854-3b9b37f7c2a4"
-  }
+  { name: "Jebel Ali", country: "UAE", image: Uae },
+  { name: "Singapore", country: "Singapore", image: Singapore },
+  { name: "Rotterdam", country: "Netherlands", image: Rotterdam },
+  { name: "Shanghai", country: "China", image: Shanghai },
+  { name: "Mumbai", country: "India", image: Mumbai },
+  { name: "Houston", country: "USA", image: Houston },
+  { name: "Santos", country: "Brazil", image: Santos },
+  { name: "Durban", country: "South Africa", image: Durban },
 ];
 
 const PortsSection = () => {
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+    <section className="py-12  overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6">
 
-        <h2 className="text-4xl font-bold text-center mb-14">
+        <h2 className="text-4xl font-bold text-center mb-14 color-brand-heading">
           Major Global Trade Ports
         </h2>
 
-        <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-8">
-
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={30}
+          loop={true}
+          speed={3000} // smooth continuous motion
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1.2 },
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
+        >
           {ports.map((port, index) => (
-            <div
-              key={index}
-              className="group rounded-xl overflow-hidden bg-gradient-hero  transition duration-300 shadow-lg hover:shadow-2xl"
-            >
+            <SwiperSlide key={index}>
               
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={port.image}
-                  alt={port.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                />
+              <div className="group relative rounded-lg overflow-hidden bg-gradient-hero p-5 shadow-lg hover:shadow-[0_0_30px_rgba(0,200,255,0.2)] transition">
+
+                {/* Image */}
+                <div className=" flex items-center justify-center overflow-hidden">
+                  <img
+                    src={port.image}
+                    alt={port.name}
+                    className="h-full object-contain transition duration-500 group-hover:scale-110 group-hover:rotate-1"
+                  />
+                </div>
+
+                {/* Overlay Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-t from-blue-500/10 to-transparent"></div>
+
+                {/* Text */}
+                <div className="mt-4 text-center relative z-10">
+                  <h3 className="text-lg font-semibold text-white">{port.name}</h3>
+                  <p className="text-sm text-white">{port.country}</p>
+                </div>
+
               </div>
 
-              <div className="p-4 text-center text-white">
-                <h3 className="text-xl font-semibold">{port.name}</h3>
-                <p className="text-sm text-white">{port.country}</p>
-              </div>
-
-            </div>
+            </SwiperSlide>
           ))}
+        </Swiper>
 
-        </div>
       </div>
     </section>
   );

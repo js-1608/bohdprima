@@ -50,7 +50,7 @@ const ContactForm = () => {
 
             <button
                 type="submit"
-                className="py-2 px-4 lg:px-7 lg:py-3 text-sm bg-linear-to-r from-[#0f6b80] to-[#918d3e] hover:to-[#0f6b80] hover:from-[#918d3e] text-white rounded-full font-semibold flex items-center gap-2 transition cursor-pointer shadow-lg  ">
+                className="py-3 px-6 lg:px-7 lg:py-3 text-sm bg-linear-to-r from-[#0f6b80] to-[#918d3e] hover:to-[#0f6b80] hover:from-[#918d3e] text-white rounded-full font-semibold flex items-center gap-2 transition cursor-pointer shadow-lg  ">
                 Send Message
             </button>
 

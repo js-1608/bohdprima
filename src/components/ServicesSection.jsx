@@ -36,15 +36,13 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 bg-linear-to-b from-[#ffffff] to-[#d1d5db]">
+    <section className="pb-12 bg-linear-to-b from-[#ffffff] to-[#d1d5db]">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
-        <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold text-gray-800">
+        <div className="text-center mb-14 color-brand-heading">
+          <h2 className="text-4xl font-semibold ">
             We move goods with
-          </h2>
-          <h2 className="text-4xl font-semibold text-gray-600">
             speed and care
           </h2>
         </div>

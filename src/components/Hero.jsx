@@ -73,10 +73,11 @@ import WaterWave from "react-water-wave";
 
 import waterImage from "../assets/water.jpg";
 import shipImage from "../assets/ship-Photoroom.png";
+import { Link } from "react-router";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-[600px] lg:h-screen  flex items-center justify-center overflow-hidden">
+    <section className="hidden lg:flex relative w-full h-[600px] lg:h-screen   items-center justify-center overflow-hidden">
 
       {/* WATER RIPPLE BACKGROUND */}
       <div className="absolute inset-0 z-0">
@@ -130,10 +131,10 @@ const Hero = () => {
           Your Global Excellence
         </p>
 
-        <button className="py-3 px-8 lg:px-7 lg:py-3 text-sm bg-linear-to-r from-[#0f6b80] to-[#918d3e] hover:to-[#0f6b80] hover:from-[#918d3e] text-white rounded-full font-semibold flex items-center gap-2 transition cursor-pointer shadow-lg  ">
-          Start Your Journey
-          <ArrowRight size={18} />
-        </button>
+        <Link to="/contact" className="px-8 py-3 bg-brand-accent hover:bg-yellow-400 text-slate-900 rounded-[20px] font-bold text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
+            Start Your Journey
+            <ArrowRight size={18} className="mt-0.5" />
+        </Link>
 
         {/* STATS */}
         {/* <div className="flex gap-10 md:gap-20 mt-12 border-t border-white/20 pt-8">
