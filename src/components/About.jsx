@@ -43,7 +43,7 @@ const About = () => {
                     {/* Content Section */}
                     <div className="w-full lg:w-1/2 lg:mt-0">
                         <span className="text-brand font-bold tracking-widest uppercase text-sm mb-4 block">Who We Are</span>
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                        <h2 className="color-brand-heading text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                             Empowering global trade since 2024.
                         </h2>
                         <p className="lg:text-left text-justify text-lg text-slate-600 mb-6 leading-relaxed">
@@ -51,14 +51,14 @@ const About = () => {
                         </p>
 
                         {/* Brand Meaning Blocks */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 text-center sm:text-left">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 mb-8 text-center sm:text-left">
                             <div className="bg-slate-50 border border-slate-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow group">
                                 <h3 className="text-2xl font-extrabold text-transparent text-gradient mb-2 group-hover:scale-105 transition-transform origin-left">Bodh</h3>
-                                <p className="text-slate-700 font-medium">Awakening & Insight</p>
+                                <p className="text-slate-700 text-sm font-medium">Awakening & Insight</p>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow group">
                                 <h3 className="text-2xl font-extrabold text-transparent text-gradient mb-2 group-hover:scale-105 transition-transform origin-left">Prima</h3>
-                                <p className="text-slate-700 font-medium">First & Best</p>
+                                <p className="text-slate-700 text-sm font-medium">First & Best</p>
                             </div>
                         </div>
 

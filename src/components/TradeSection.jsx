@@ -8,7 +8,7 @@ const TradeSection = ({
   imageLeft = true,
 }) => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 bg-white">
       <div className="max-w-[1200px] mx-auto px-6">
 
         {/* HEADING */}

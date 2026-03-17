@@ -7,15 +7,15 @@ const CTASection = () => {
         <section className="pb-20 overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6">
 
-                <div className="relative bg-[#f3f5f7] backdrop-blur-sm rounded-[30px] shadow-lg px-10 py-16 md:px-16 grid md:grid-cols-2 items-center gap-10">
+                <div className="relative bg-[#f3f5f7] backdrop-blur-sm rounded-[30px] shadow-lg px-4 lg:px-10 py-16 md:px-16 grid md:grid-cols-2 items-center gap-10">
 
                     {/* LEFT CONTENT */}
                     <div>
-                        <p className="text-sm tracking-widest text-blue-700 font-semibold uppercase mb-4">
+                        <p className="text-sm tracking-widest text-brand font-semibold uppercase mb-4">
                             Your Success, Our Commitment
                         </p>
 
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#1a2b3c] leading-tight mb-6">
+                        <h2 className="text-4xl md:text-5xl font-bold color-brand-heading leading-tight mb-6">
                             Ready to Transform Your Trade?
                         </h2>
 

@@ -76,7 +76,7 @@ const ServicesGrid = () => {
                         if (item.type === 'text') {
                             return (
                                 <div key={item.id} className="bg-gradient-hero text-white p-4 lg:p-6 flex flex-col justify-between h-[320px] lg:h-[350px] w-full">
-                                    <h3 className="text-[16px] lg:text-[24px] font-medium text-white leading-[1.15] whitespace-pre-line tracking-tight mb-8">
+                                    <h3 className="text-2xl lg:text-3xl font-medium text-white leading-[1.15] whitespace-pre-line tracking-tight mb-8">
                                         {item.title}
                                     </h3>
 

@@ -1,4 +1,5 @@
 import { Ship, Container, PackageSearch, Truck, Globe, MapPin } from "lucide-react";
+import { Link } from "react-router";
 
 const services = [
   {
@@ -74,9 +75,12 @@ export default function ServicesSection() {
                 </div>
 
                 <div className="border-t px-8 py-4">
-                  <button className="text-sm text-gray-700 hover:text-black font-medium">
-                    Learn More
-                  </button>
+                  <Link to="/contact" className="text-sm text-brand-dark hover:text-yellow-800 font-medium">
+                    Contact Us
+                  </Link>
+                  {/* <Link to="/contact" className="text-sm text-brand-dark hover:text-yellow-800 font-medium">
+                    Know More
+                  </Link> */}
                 </div>
               </div>
             );
