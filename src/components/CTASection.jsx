@@ -4,10 +4,10 @@ import Container from "../assets/container-image.png";
 import react from "react";
 const CTASection = () => {
     return (
-        <section className=" py-20 bg-[#f3f5f7]  overflow-hidden">
+        <section className="pb-20 overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6">
 
-                <div className="relative bg-white/70 backdrop-blur-sm rounded-[30px] shadow-lg px-10 py-16 md:px-16 grid md:grid-cols-2 items-center gap-10">
+                <div className="relative bg-[#f3f5f7] backdrop-blur-sm rounded-[30px] shadow-lg px-10 py-16 md:px-16 grid md:grid-cols-2 items-center gap-10">
 
                     {/* LEFT CONTENT */}
                     <div>

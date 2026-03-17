@@ -27,8 +27,8 @@ const CargoServices = () => {
     ];
 
     return (
-        <section id="cargo-services" className="relative py-5 lg:pt-16 bg-white">
-            <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+        <section id="cargo-services" className="relative lg:pt-16 bg-white">
+            <div className=" container mx-auto px-6 lg:px-8 max-w-[1400px]">
 
                 {/* Header Section */}
                 <div className="mb-8 md:mb-12">
@@ -41,7 +41,7 @@ const CargoServices = () => {
                 </div>
 
                 {/* Services List */}
-                <div className="flex flex-col">
+                <div className="flex flex-col relative z-10 bg-white">
                     {/* Top border for the first item container */}
                     <div className="border-t border-slate-200 w-full"></div>
 
@@ -86,7 +86,7 @@ const CargoServices = () => {
              <img
                 src={Container}
                 alt="Cargo Container"
-                className="absolute right-[-120px] top-[0px] w-[800px] containerSwing z-0 opacity-20 pointer-events-none"
+                className="absolute right-[-120px] top-[0px] w-[800px] z-20 containerSwing z-0 opacity-20 pointer-events-none"
                 />
              <img
                 src={Container2}
