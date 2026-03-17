@@ -1,4 +1,5 @@
 import React from "react";
+import ContactForm from "../components/ContactForm";
 
 const Contact = () => {
     return (
@@ -67,60 +68,7 @@ const Contact = () => {
                             Send Us a Message
                         </h2>
 
-                        <form className="space-y-5">
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your name"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-brand-accent outline-none"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Email Address
-                                </label>
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Phone Number
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your phone number"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Message
-                                </label>
-                                <textarea
-                                    rows="4"
-                                    placeholder="Write your message"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                                ></textarea>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full hover:bg-brand-accent text-white py-3 rounded-lg font-medium bg-brand-dark transition"
-                            >
-                                Send Message
-                            </button>
-
-                        </form>
+                       <ContactForm />
                     </div>
 
                 </div>

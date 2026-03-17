@@ -75,24 +75,25 @@ const WhyUs = () => {
             <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
 
                 {/* Header */}
-                <div className="text-center mb-16 md:mb-24 relative z-20">
+                <div className="text-center mb-4 md:mb-2 relative z-20">
                     <span className="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">Why Choose Us</span>
                     <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif-brand font-bold text-white mb-6">
                         Why Us
                     </h2>
+                    <p className="text-sm text-justify lg:text-center lg:text-lg text-white mb-6 lg:leading-relaxed">Bodh prima specializes in managing a diverse range of shipments with precision and expertise. We understand the unique needs of manufacturers, wholesalers, small traders and retailers. We offer end-to-end export services—from procurement and packaging to documentation and delivery—ensuring every shipment is handled with precision and care</p>
                 </div>
 
                 {/* Mobile Layout (Carousel) */}
                 <div className="md:hidden flex flex-col items-center py-10 relative z-20">
-                    
+
                     {/* Rotating Circle (Clickable) */}
-                    <div 
+                    <div
                         className="mb-10 relative flex-shrink-0 cursor-pointer touch-manipulation tap-highlight-transparent"
                         onClick={() => setActiveIndex((prev) => (prev + 1) % features.length)}
                     >
                         {/* Target each segment's angle (360/5 = 72 deg). We rotate backwards so it looks like it's spinning to the next one. */}
                         <RotateCircle rotation={-activeIndex * 72} />
-                        
+
                         {/* Interactive hint */}
                         <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-[10px] uppercase tracking-widest font-bold animate-pulse whitespace-nowrap">
                             Tap to Revolve
@@ -104,8 +105,8 @@ const WhyUs = () => {
                         {features.map((feature, idx) => {
                             const isActive = activeIndex === idx;
                             return (
-                                <div 
-                                    key={idx} 
+                                <div
+                                    key={idx}
                                     className={`absolute top-0 left-0 right-0 flex flex-col items-center text-center transition-all duration-500 transform ${isActive ? 'opacity-100 translate-x-0 scale-100 pointer-events-auto' : 'opacity-0 translate-x-12 scale-95 pointer-events-none'}`}
                                 >
                                     <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-5 border border-white/20 shadow-lg backdrop-blur-sm">
@@ -182,8 +183,8 @@ const WhyUs = () => {
                 </div>
 
                 {/* Footer Paragraph */}
-                <div className="text-center md:mt-24 max-w-3xl mx-auto z-20 relative px-4 pb-10 md:pb-0">
-                    <p className="text-white/80 text-lg leading-relaxed font-medium">
+                <div className="text-center md:mt-24 max-w-3xl mx-auto z-20 relative px-4 pb-2 md:pb-0">
+                    <p className="text-sm text-justify lg:text-center lg:text-lg text-white lg:leading-relaxed">
                         We offer end-to-end export services—from procurement and packaging to documentation and delivery—ensuring every shipment is handled with precision and care.
                     </p>
                 </div>

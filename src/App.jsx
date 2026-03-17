@@ -1,11 +1,12 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
-import FAQ from './components/FAQ';
 import ScrollToTop from './components/ScrollToTop';
 import './index.css';
+import './app.css';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { routes } from "./components/Route";
+import Whatsapp from './components/Whatsapp';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         ))}
       </Routes>
 
-      <FAQ />
+      <Whatsapp/>
       <Footer />
     </Router>
   );

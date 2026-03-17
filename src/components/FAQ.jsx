@@ -34,7 +34,7 @@ const FAQ = () => {
                         <span className="text-slate-600 font-bold tracking-widest uppercase text-xs mb-4 block">
                             NEED HELP WITH YOUR SHIPMENT?
                         </span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif-brand font-bold text-slate-900 mb-6 leading-tight">
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif-brand font-bold text-slate-900 mb-6 leading-tight">
                             Common questions about Bodh prima
                         </h2>
                         <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-md">

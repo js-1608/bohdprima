@@ -1,4 +1,6 @@
 import { ArrowRight } from 'lucide-react';
+import Container from "../assets/container-image.png";
+import Container2 from "../assets/container-image.webp";
 
 const CargoServices = () => {
     const services = [
@@ -25,7 +27,7 @@ const CargoServices = () => {
     ];
 
     return (
-        <section id="cargo-services" className="py-5 lg:py-16 bg-white">
+        <section id="cargo-services" className="relative py-5 lg:pt-16 bg-white">
             <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
 
                 {/* Header Section */}
@@ -81,6 +83,16 @@ const CargoServices = () => {
                 </div>
 
             </div>
+             <img
+                src={Container}
+                alt="Cargo Container"
+                className="absolute right-[-120px] top-[0px] w-[800px] containerSwing z-0 opacity-20 pointer-events-none"
+                />
+             <img
+                src={Container2}
+                alt="Cargo Container"
+                className="w-full containerFloatSlow z-0 pointer-events-none"
+                />
         </section>
     );
 };

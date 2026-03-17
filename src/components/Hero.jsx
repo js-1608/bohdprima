@@ -64,16 +64,19 @@
 
 // export default Hero;
 
+
+
+
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import WaterWave from "react-water-wave";
 
 import waterImage from "../assets/water.jpg";
-import shipImage from "../assets/ship2.png";
+import shipImage from "../assets/ship-Photoroom.png";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-screen  flex items-center justify-center overflow-hidden">
 
       {/* WATER RIPPLE BACKGROUND */}
       <div className="absolute inset-0 z-0">
@@ -90,44 +93,50 @@ const Hero = () => {
           }}
         >
           {() => (
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/80"></div>
+            <div className="absolute inset-0 bg-slate-900/60"></div>
           )}
         </WaterWave>
       </div>
 
       {/* SHIP IMAGE (NO RIPPLE) */}
-      <img
+      {/* <img
         src={shipImage}
         alt="ship"
-        className="absolute bottom-1/4 lg:bottom-0 left-1/2 -translate-x-1/2 z-10 
-        w-full md:w-[55%] lg:w-[70%] object-contain pointer-events-none"
-      />
+        className="absolute bottom-1/4 left-1/2 -translate-x-1/2 z-1 
+        w-full md:w-[55%] lg:w-[90%] object-contain pointer-events-none"
+      /> */}
 
       {/* CONTENT */}
-      <div className="relative z-20 flex flex-col items-center text-center px-6">
+      <div className="relative z-20 flex flex-col items-center text-center px-6 ">
 
-        <span className="text-white text-sm md:text-lg mb-2 tracking-widest">
+        <span className="text-white text-sm md:text-lg  tracking-widest">
           Welcome to
         </span>
 
-        <h1 className="text-5xl md:text-7xl lg:text-[110px] font-serif font-bold text-yellow-400 leading-none mb-1">
-          Bodh Prima
-          <span className="text-white text-sm md:text-2xl ml-2 align-top">
+        <h1 className="text-5xl md:text-7xl lg:text-7xl font-serif font-bold text-yellow-400 leading-none mb-4">
+          Bodh prima
+          <span className="text-white text-sm md:text-lg ml-2 align-top">
             ®
           </span>
         </h1>
-
+        <img
+          src={shipImage}
+          alt="ship"
+          className="
+        w-full md:w-[55%] lg:w-[90%] object-contain opacity-80 pointer-events-none"
+          draggable={false}
+        />
         <p className="text-white text-base md:text-xl mt-4 mb-2 font-light">
           Your Global Excellence
         </p>
 
-        <button className="px-7 py-3 bg-yellow-400 hover:bg-yellow-300 text-black rounded-xl font-semibold flex items-center gap-2 transition">
+        <button className="py-2 px-4 lg:px-7 lg:py-3 text-sm bg-linear-to-r from-[#0f6b80] to-[#918d3e] hover:to-[#0f6b80] hover:from-[#918d3e] text-white rounded-full font-semibold flex items-center gap-2 transition cursor-pointer shadow-lg  ">
           Start Your Journey
           <ArrowRight size={18} />
         </button>
 
         {/* STATS */}
-        <div className="flex gap-10 md:gap-20 mt-12 border-t border-white/20 pt-8">
+        {/* <div className="flex gap-10 md:gap-20 mt-12 border-t border-white/20 pt-8">
 
           <div>
             <p className="text-yellow-400 text-2xl md:text-4xl font-bold">
@@ -147,7 +156,7 @@ const Hero = () => {
             </p>
           </div>
 
-        </div>
+        </div> */}
       </div>
 
       {/* SCROLL INDICATOR */}

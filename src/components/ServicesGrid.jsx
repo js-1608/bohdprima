@@ -12,63 +12,63 @@ const ServicesGrid = () => {
         {
             id: 1,
             type: 'text',
-            title: "Export Services",
-            description: "We help businesses ship products from their home country to international markets. Our export services include documentation support, customs clearance, freight coordination, and shipment tracking.",
+            title: "Rail Freight",
+            description: "Efficient and cost-effective transport for large volumes across vast distances. Our rail freight service ensures timely delivery with a focus on reliability and sustainability.",
             linkText: "Connect Now"
         },
         {
             id: 2,
             type: 'image',
-            imageSrc: img1,
+            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img10-home2-424x239.webp",
             alt: "Crane lifting shipping container"
         },
         {
             id: 3,
             type: 'text',
-            title: "Import Services",
-            description: "Importing goods from other countries requires proper documentation, customs procedures, and logistics planning. Bodh Prima assists businesses in managing these processes efficiently.",
+            title: "Ocean Freight",
+            description: "Ideal for global trade and bulk shipments. Bogix provides secure and scalable ocean freight solutions, supported by a trusted international shipping network.",
             linkText: "Connect Now"
         },
         {
             id: 4,
             type: 'image',
-            imageSrc: img2,
+            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img9-home2-424x239.webp",
             alt: "Ship loading grain"
         },
         {
             id: 5,
             type: 'image',
-            imageSrc: img3,
+            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img8-home2-424x239.webp",
             alt: "Flatbed truck carrying wind turbine part"
         },
         {
             id: 6,
             type: 'text',
-            title: "Logistics and Transportation",
-            description: "We provide end-to-end logistics services that include transportation planning, route optimization, and shipment coordination.",
+            title: "Air Freight",
+            description: "When time matters, our air freight service delivers speed and precision. We connect your business to major global hubs with fast, safe, and trackable air transport.",
             linkText: "Connect Now"
         },
         {
             id: 7,
             type: 'image',
-            imageSrc: img4,
+            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img7-home2-424x239.webp",
             alt: "Hazardous materials barrels"
         },
         {
             id: 8,
             type: 'text',
-            title: "Supply Chain Management",
-            description: "Our supply chain solutions integrate transportation, warehousing, and inventory management into a seamless system that improves efficiency and reduces operational risks.",
+            title: "Road Freight",
+            description: "Flexible ground transportation for domestic and cross-border logistics. Our road freight service offers full-truckload and less-than-truckload options to meet your delivery needs.",
             linkText: "Connect Now"
         }
     ];
 
     return (
-        <section id="services" className="py-10 lg:py-24 bg-white">
+        <section className="py-5 lg:py-16 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
 
                 <h2 className="text-5xl md:text-8xl lg:text-[140px] font-bold text-slate-200/50 mb-12 tracking-tighter uppercase leading-none">
-                    Solutions
+                    What We Do
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

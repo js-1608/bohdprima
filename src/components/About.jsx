@@ -1,8 +1,8 @@
 import { TrendingUp, ArrowRight } from 'lucide-react';
-
+import BohdPrima from '../assets/BohdPrima.avif'
 const About = () => {
     return (
-        <section id="about" className="py-5 lg:py-16 bg-white relative overflow-hidden">
+        <section className="py-5 lg:pt-20 pb-4 bg-white relative overflow-hidden">
             {/* Soft decorative background shapes */}
             <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-brand-light/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-1/4 h-[400px] bg-brand-accent/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
@@ -14,7 +14,7 @@ const About = () => {
                     <div className="w-full lg:w-1/2 relative">
                         <div className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 group">
                             <img
-                                src="https://images.unsplash.com/photo-1559825481-12a05cc00344?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                src={BohdPrima}
                                 alt="Global Trade Team"
                                 className="w-full h-[500px] object-cover transform 
                                 group-hover:scale-105 transition-transform duration-700"

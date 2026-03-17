@@ -6,16 +6,23 @@ import WhyUs from "../components/WhyUs";
 import CargoServices from "../components/CargoServices";
 import WhatWeDo from "../components/WhatWeDo";
 import CTASection from "../components/CTASection";
+import GlobalReach from "../components/GlobalReach";
+import FAQ from '../components/FAQ';
+import FreightSection from "../components/Services";
+
 const Home = () => {
     return (
-        <main>
+        <main className="overflow-hidden">
             <Hero />
-            <ServicesGrid />
             <About />
+            <ServicesGrid />
             <WhyUs />
             <CargoServices />
             {/* <WhatWeDo /> */}
-            {/* <CTASection /> */}
+            {/* <GlobalReach /> */}
+            {/* <FAQ /> */}
+            {/* <FreightSection/> */}
+            <CTASection />
         </main>
     );
 };

@@ -14,7 +14,7 @@ const Footer = () => {
 
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-2 lg:col-span-1">
-                        <div className="flex items-center gap-2 mb-6 bg-white p-2 rounded-lg">
+                        <div className="flex items-center gap-2 mb-6 bg-white p-2 rounded-lg w-max">
                            <Link
                                 to="/"
                                 className={`text-2xl font-bold tracking-tight text-white flex items-center gap-2`}>
@@ -22,7 +22,7 @@ const Footer = () => {
                                 <img src="https://bodhprima.vercel.app/assets/bodh-prima-logo-C9xp6Q-h.png" alt="Logo" className="w-auto h-16" />
                             </Link>  
                             <span className="text-4xl font-bold tracking-tight text-[#00535A]">
-                                Bodh <span className="text-[#E4AF47]">Prima </span>
+                                Bodh <span className="text-brand-accent">prima </span>
                             </span>
                         </div>
                         <p className="text-white/80 leading-relaxed mb-6">

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-light: hsl(195 65% 40%);
+  --color-brand-light:hsl(42 85% 55%);
   --color-brand: hsl(195 70% 30%);
   --color-brand-dark: hsl(175 60% 35%);
   --color-brand-accent: #eab308;

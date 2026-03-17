@@ -47,6 +47,8 @@ const Header = () => {
 
         {/* CTA Banner & Mobile Toggle */}
         <div className="flex items-center gap-4">
+                         
+
           <Link to="/contact" className="hidden md:flex items-center gap-2 bg-brand-accent text-slate-900 px-6 py-2.5 rounded-full font-semibold hover:bg-yellow-400 transition-colors shadow-sm">
             <Phone size={18} />
             <span>Contact Us</span>
