@@ -65,13 +65,13 @@ const Header = () => {
         <ul className="flex flex-col py-4 px-6 gap-4">
           {['Home', 'About Us', 'Services', 'Global', 'Blog'].map((item) => (
             <li key={item}>
-              <a
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+              <Link 
+                to={`/${item.toLowerCase().replace(' ', '-')}`}
                 onClick={toggleMobileMenu}
                 className="block text-slate-800 font-medium hover:text-brand"
               >
                 {item}
-              </a>
+              </Link>
             </li>
           ))}
           <li className="pt-4 border-t border-slate-100">
