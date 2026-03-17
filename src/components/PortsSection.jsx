@@ -7,7 +7,7 @@ import "swiper/css";
 import Uae from "../assets/ports/uae.png";
 import Singapore from "../assets/ports/singpore.png";
 import Rotterdam from "../assets/ports/Netherlands.png";
-import Shanghai from "../assets/ports/China.png";
+import Shanghai from "../assets/ports/china.png";
 import Mumbai from "../assets/ports/Mumbai.png";
 import Houston from "../assets/ports/Hoston.png";
 import Santos from "../assets/ports/Brazil.png";
