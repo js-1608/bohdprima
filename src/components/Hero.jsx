@@ -76,7 +76,7 @@ import shipImage from "../assets/ship-Photoroom.png";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen  flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[600px] lg:h-screen  flex items-center justify-center overflow-hidden">
 
       {/* WATER RIPPLE BACKGROUND */}
       <div className="absolute inset-0 z-0">
@@ -113,7 +113,7 @@ const Hero = () => {
           Welcome to
         </span>
 
-        <h1 className="text-5xl md:text-7xl lg:text-7xl font-serif font-bold text-yellow-400 leading-none mb-4">
+        <h1 className="text-6xl md:text-7xl lg:text-7xl font-serif font-bold text-yellow-400 leading-none mb-4">
           Bodh prima
           <span className="text-white text-sm md:text-lg ml-2 align-top">
             ®
@@ -123,14 +123,14 @@ const Hero = () => {
           src={shipImage}
           alt="ship"
           className="
-        w-full md:w-[55%] lg:w-[90%] object-contain opacity-80 pointer-events-none"
+           w-full md:w-[55%] lg:w-[90%] object-contain opacity-80 pointer-events-none"
           draggable={false}
         />
         <p className="text-white text-base md:text-xl mt-4 mb-2 font-light">
           Your Global Excellence
         </p>
 
-        <button className="py-2 px-4 lg:px-7 lg:py-3 text-sm bg-linear-to-r from-[#0f6b80] to-[#918d3e] hover:to-[#0f6b80] hover:from-[#918d3e] text-white rounded-full font-semibold flex items-center gap-2 transition cursor-pointer shadow-lg  ">
+        <button className="py-3 px-8 lg:px-7 lg:py-3 text-sm bg-linear-to-r from-[#0f6b80] to-[#918d3e] hover:to-[#0f6b80] hover:from-[#918d3e] text-white rounded-full font-semibold flex items-center gap-2 transition cursor-pointer shadow-lg  ">
           Start Your Journey
           <ArrowRight size={18} />
         </button>
