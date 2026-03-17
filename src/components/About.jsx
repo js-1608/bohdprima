@@ -1,5 +1,5 @@
 import { TrendingUp, ArrowRight } from 'lucide-react';
-import BohdPrima from '../assets/BohdPrima.avif'
+import BohdPrima from '../assets/bohdprima.avif'
 const About = () => {
     return (
         <section className="py-5 lg:pt-20 pb-4 bg-white relative overflow-hidden">
