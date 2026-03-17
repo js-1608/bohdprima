@@ -69,3 +69,12 @@ h1,h2,h3,h4,h5,h6 {
   transition: all 0.8s ease;
   transform: scale(1.05);
 }
+
+
+.color-brand-heading {
+    margin-top: 20px;
+    background: linear-gradient(180deg, #00535a 25%, #e4af47 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
