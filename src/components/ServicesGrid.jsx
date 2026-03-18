@@ -67,7 +67,7 @@ const ServicesGrid = () => {
         <section className="py-5 lg:py-16 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
 
-                <h2 className="text-5xl md:text-8xl lg:text-[140px] font-bold text-slate-200/50 mb-12 tracking-tighter uppercase leading-none">
+                <h2 className="text-5xl md:text-8xl lg:text-[100px] font-bold color-brand-heading mb-12 tracking-tighter uppercase leading-none">
                     What We Do
                 </h2>
 

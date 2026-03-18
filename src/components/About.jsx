@@ -8,7 +8,7 @@ const About = () => {
             <div className="absolute bottom-0 left-0 w-1/4 h-[400px] bg-brand-accent/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
 
             <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
 
                     {/* Visual Section */}
                     <div className="w-full lg:w-1/2 relative">
@@ -42,7 +42,7 @@ const About = () => {
 
                     {/* Content Section */}
                     <div className="w-full lg:w-1/2 lg:mt-0">
-                        <span className="text-brand font-bold tracking-widest uppercase text-sm mb-4 block">Who We Are</span>
+                        <span className="text-brand font-bold tracking-widest uppercase text-xl mb-4 block mt-0">Who We Are</span>
                         <h2 className="color-brand-heading text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                             Empowering global trade since 2024.
                         </h2>

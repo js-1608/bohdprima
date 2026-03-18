@@ -14,12 +14,12 @@ import HeroMobile from "../components/HeroMobile";
 const Home = () => {
     return (
         <main className="overflow-hidden">
-            <Hero />
+            {/* <Hero /> */}
             <HeroMobile />
             <About />
             <ServicesGrid />
             <WhyUs />
-            <CargoServices />
+            {/* <CargoServices /> */}
             {/* <WhatWeDo /> */}
             {/* <GlobalReach /> */}
             {/* <FAQ /> */}

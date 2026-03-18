@@ -3,14 +3,14 @@ import { Link } from 'react-router';
 
 const Footer = () => {
     return (
-        <footer className="bg-linear-to-t from-[#f5b544] to-[#125c54] pt-20 pb-10 border-t border-white/20">
+        <footer className="bg-linear-to-t from-[#f5b544] to-[#125c54] pt-10 pb-10 border-t border-white/20">
 
             {/* Newsletter Block */}
 
 
             {/* Main Footer Content */}
             <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-2">
 
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-2 lg:col-span-1">

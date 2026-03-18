@@ -4,14 +4,14 @@ import Container from "../assets/container-image.png";
 import react from "react";
 const CTASection = () => {
     return (
-        <section className="pb-20 overflow-hidden">
+        <section className="py-20 overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6">
 
                 <div className="relative bg-[#f3f5f7] backdrop-blur-sm rounded-[30px] shadow-lg px-4 lg:px-10 py-16 md:px-16 grid md:grid-cols-2 items-center gap-10">
 
                     {/* LEFT CONTENT */}
                     <div>
-                        <p className="text-sm tracking-widest text-brand font-semibold uppercase mb-4">
+                        <p className="text-xl tracking-widest text-brand font-semibold uppercase mb-4">
                             Your Success, Our Commitment
                         </p>
 
