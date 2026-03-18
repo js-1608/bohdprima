@@ -37,7 +37,7 @@ const services = [
 export default function ServicesSection() {
   return (
     <section className="pb-12 bg-linear-to-b from-[#ffffff] to-[#d1d5db]">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-14 color-brand-heading">

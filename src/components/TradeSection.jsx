@@ -9,7 +9,7 @@ const TradeSection = ({
 }) => {
   return (
     <section className="py-8 bg-white">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
 
         {/* HEADING */}
         <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-6 color-brand-heading">
