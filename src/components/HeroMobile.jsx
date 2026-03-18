@@ -31,7 +31,7 @@ const HeroMobile = () => {
                     Your Global Excellence
                 </p>
 
-                <Link to="/contact" className="px-8 py-3 bg-gradient-to-r from-[#f5b544] to-[#125c54] text-white rounded-[20px] font-medium text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
+                <Link to="/contact" className="px-8 py-3 bg-gradient-to-r from-[#f5b544] to-[#125c54] hover:to-[#f5b544] hover:from-[#125c54] text-white rounded-[20px] font-medium text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
                     Start Your Journey
                     <ArrowRight size={18} className="mt-0.5" />
                 </Link>

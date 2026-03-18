@@ -72,14 +72,12 @@ export default function ServicesSection() {
 
                 </div>
 
-                <div className="border-t px-8 py-4">
+                {/* <div className="border-t px-8 py-4">
                   <Link to="/contact" className="text-sm text-brand-dark hover:text-yellow-800 font-medium">
                     Contact Us
-                  </Link>
-                  {/* <Link to="/contact" className="text-sm text-brand-dark hover:text-yellow-800 font-medium">
-                    Know More
                   </Link> */}
-                </div>
+                 
+                {/* </div> */}
               </div>
             );
           })}
