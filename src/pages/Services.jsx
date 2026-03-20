@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import heroImg from "../assets/hero.jpg";
 import craneImg from "../assets/ship.jpg";
 import containerPortImg from "../assets/ship2.png";
+import madeinindia from "../assets/madeinindia.png";
 
 const Services = () => {
 	const expertiseItems = [
@@ -154,13 +155,27 @@ const Services = () => {
 						{expertiseItems.map(({ icon: Icon, title, description }, index) => (
 							<article
 								key={index}
-								className="bg-white border border-slate-100 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+								className="group h-[280px] [perspective:1200px]"
 							>
-								<div className="w-14 h-14 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-6">
-									<Icon size={26} className="text-brand" />
+								<div className="relative h-full w-full rounded-2xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+									<div className="absolute inset-0 bg-white border border-slate-100 rounded-2xl p-8 shadow-sm hover:shadow-xl [backface-visibility:hidden] flex flex-col justify-center">
+										<div className="w-14 h-14 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-6">
+											<Icon size={26} className="text-brand" />
+										</div>
+										<h3 className="text-2xl font-bold text-slate-900 mb-3">{title}</h3>
+										<p className="text-xs uppercase tracking-[0.2em] text-slate-400 font-semibold">
+											Hover to flip
+										</p>
+									</div>
+
+									<div className="absolute inset-0 rounded-2xl p-8 bg-gradient-to-br from-[hsl(195_70%_28%)] to-[hsl(175_60%_33%)] shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center border border-white/10">
+										<p className="text-brand-accent text-xs uppercase tracking-[0.2em] font-bold mb-4">
+											Details
+										</p>
+										<h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
+										<p className="text-white/85 leading-relaxed">{description}</p>
+									</div>
 								</div>
-								<h3 className="text-2xl font-bold text-slate-900 mb-3">{title}</h3>
-								<p className="text-slate-500 leading-relaxed">{description}</p>
 							</article>
 						))}
 					</div>
@@ -243,7 +258,7 @@ const Services = () => {
 
 						<div className="relative">
 							<img
-								src={craneImg}
+								src="https://bodh-prima.pages.dev/images/b721e71e2a503205e92c9e936b45d4662a26b6d1.avif"
 								alt="Port crane loading container"
 								className="w-full h-[500px] object-cover rounded-3xl shadow-xl"
 							/>
@@ -327,14 +342,10 @@ const Services = () => {
 
 						<div className="relative">
 							<img
-								src={containerPortImg}
+								src={madeinindia}
 								alt="Container ship at port"
-								className="w-full h-[460px] object-cover rounded-3xl shadow-2xl border border-white/10"
+								className="w-auto h-[460px] object-contain"
 							/>
-							<div className="absolute -bottom-5 -left-5 bg-white rounded-2xl px-6 py-4 shadow-lg border border-slate-100">
-								<p className="text-brand font-bold text-sm uppercase tracking-wide">Get Started Today</p>
-								<p className="text-slate-800 font-semibold">Ready to Expand Your Global Reach?</p>
-							</div>
 						</div>
 					</div>
 				</div>

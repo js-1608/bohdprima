@@ -1,4 +1,5 @@
 import { TrendingUp, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import BohdPrima from '../assets/bohdprima.avif'
 const About = () => {
     return (
@@ -62,10 +63,10 @@ const About = () => {
                             </div>
                         </div>
 
-                        <a href="#about-us" className="inline-flex m-auto items-center justify-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/20 group">
+                        <Link to="/about-us" className="inline-flex m-auto items-center justify-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/20 group">
                             <span className='font-semibold'>Learn More About Us</span>
                             <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

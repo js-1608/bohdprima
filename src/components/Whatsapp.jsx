@@ -2,7 +2,7 @@ import React from "react";
 import { BsWhatsapp } from "react-icons/bs";
 const Whatsapp = () => {
 
-  const phoneNumber = "919999999999"; // Replace with your WhatsApp number
+  const phoneNumber = "919718667757";
   const message = "Hello, I am looking for Import & Export services.";
   
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

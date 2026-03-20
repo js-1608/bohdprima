@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import bohdPrima from "../assets/bohdprima.avif";
 import heroImg from "../assets/hero.jpg";
 import shipImage from "../assets/ship-Photoroom.png";
+import shipThree from "../assets/ship3.png";
+import containerImage from "../assets/container-image.webp";
 
 const About = () => {
     const coreValues = [
@@ -84,8 +86,7 @@ const About = () => {
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed mb-12">
-                        Bridging continents, empowering trade, and building lasting business
-                        relationships across the globe since 2024.
+                        Bodh prima believes in building trust and lasting business relationships worldwide. We create a positive impact on our clients and customers all around the globe.
                     </p>
 
                     {/* Key figures */}
@@ -143,7 +144,7 @@ const About = () => {
                             </div>
 
                             {/* Decorative accent line */}
-                            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-brand-accent/30 rounded-2xl pointer-events-none"></div>
+                            {/* <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-brand-accent/30 rounded-2xl pointer-events-none"></div> */}
                         </div>
 
                         {/* Text column */}
@@ -163,6 +164,92 @@ const About = () => {
                                 Bodh prima symbolizes a fresh awakening in thought, innovation, and global trade, elevating local potential to achieve global standards in pursuit of Your Excellence in Global Enlightenment.                            </p>
 
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* =========================================================
+                NAME MEANING
+            ========================================================= */}
+            <section className="py-24 bg-[#f3f5f7] relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-80 h-80 bg-brand-accent/10 rounded-full blur-[110px] -translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
+                <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-brand/10 rounded-full blur-[120px] translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+                    <div className="text-center mb-16">
+                        <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">Brand Meaning</span>
+                        <h2 className="color-brand-heading text-4xl md:text-5xl font-bold leading-tight">
+                            The Meaning of Bodh Prima
+                        </h2>
+                        <p className="text-slate-500 max-w-3xl mx-auto mt-4 leading-relaxed">
+                            Our name carries a purpose: insight to guide every move, and excellence to deliver lasting results.
+                        </p>
+                    </div>
+
+                    <div className="grid lg:grid-cols-2 gap-8">
+                        <article className="group h-[430px] [perspective:1200px]">
+                            <div className="relative h-full w-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                                <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-xl border border-slate-100 [backface-visibility:hidden]">
+                                    <img
+                                        src="https://bodh-prima.pages.dev/images/4d31d8abc123f2696f3fa1c587653fa7f6b8720d.avif"
+                                        alt="Cargo operations representing Bodh"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/35 to-transparent"></div>
+                                    <div className="absolute top-6 left-6 w-12 h-12 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center">
+                                        <TrendingUp size={24} className="text-brand-accent" />
+                                    </div>
+                                    <div className="absolute bottom-8 left-8 right-8 text-white">
+                                        {/* <span className="inline-block text-brand-accent uppercase text-xs font-bold tracking-[0.2em] mb-3">
+                                            "Bodh"
+                                        </span> */}
+                                        <h3 className="text-3xl font-bold mb-2">Awakening With Insight</h3>
+                                        <p className="text-white/80 text-sm uppercase tracking-widest">Hover to flip</p>
+                                    </div>
+                                </div>
+
+                                <div className="absolute inset-0 rounded-3xl p-9 bg-white border border-slate-100 shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center">
+                                    <span className="text-brand font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
+                                    <h3 className="text-3xl font-bold text-slate-900 mb-5">"Bodh"</h3>
+                                    <p className="text-slate-600 leading-relaxed text-lg">
+                                        Symbolizes awakening, enlightenment, and deep insight - our commitment to continuous learning,
+                                        innovation, and guiding you through global markets with clarity and foresight.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article className="group h-[430px] [perspective:1200px]">
+                            <div className="relative h-full w-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                                <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-xl border border-white/10 [backface-visibility:hidden]">
+                                    <img
+                                        src="https://bodh-prima.pages.dev/images/a6da7076c8328a6d129c36646e705dcb2afebc22.avif"
+                                        alt="Container operations representing Prima"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-[hsl(195_70%_25%/0.45)] to-transparent"></div>
+                                    <div className="absolute top-6 left-6 w-12 h-12 rounded-xl bg-brand-accent/20 backdrop-blur-sm border border-brand-accent/35 flex items-center justify-center">
+                                        <Award size={24} className="text-brand-accent" />
+                                    </div>
+                                    <div className="absolute bottom-8 left-8 right-8 text-white">
+                                        {/* <span className="inline-block text-brand-accent uppercase text-xs font-bold tracking-[0.2em] mb-3">
+                                            "prima"
+                                        </span> */}
+                                        <h3 className="text-3xl font-bold mb-2">First. Best. Trusted.</h3>
+                                        <p className="text-white/80 text-sm uppercase tracking-widest">Hover to flip</p>
+                                    </div>
+                                </div>
+
+                                <div className="absolute inset-0 rounded-3xl p-9 bg-gradient-to-br from-[hsl(195_70%_28%)] to-[hsl(175_60%_33%)] border border-white/10 shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center">
+                                    <span className="text-brand-accent font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
+                                    <h3 className="text-3xl font-bold text-white mb-5">"prima"</h3>
+                                    <p className="text-white/85 leading-relaxed text-lg">
+                                        Means first and best - reflecting our drive for excellence, leadership, and delivering top-tier
+                                        services to all our valued partners and clients.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -189,7 +276,10 @@ const About = () => {
                             </div>
                             <h3 className="text-3xl font-bold text-white mb-5">Our Mission</h3>
                             <p className="text-white/80 leading-relaxed text-lg">
-                                To connect businesses worldwide by delivering reliable, innovative logistics and trade solutions that simplify international commerce and drive sustainable growth for every partner we serve.
+                                Empowering global trade by supporting local businesses, one step at a time.
+                            </p>
+                            <p className="text-white/80 leading-relaxed text-lg">
+                                At Bodh prima, we connect products, shopkeepers, and markets to global trade. We empower small businesses, local manufacturers, and MSMEs with streamlined solutions to break free from traditional boundaries and compete on an international level.
                             </p>
                         </div>
 
@@ -201,8 +291,11 @@ const About = () => {
                             </div>
                             <h3 className="text-3xl font-bold color-brand-heading mb-5">Our Vision</h3>
                             <p className="text-slate-600 leading-relaxed text-lg">
-                                To become a globally recognized leader in trade and logistics, known for our integrity, innovation, and unwavering commitment to our clients' success in the ever-evolving world of international commerce.
+                                Your Excellence in Global Enlightenment.
                             </p>
+                            <p className="text-slate-600 leading-relaxed text-lg">
+
+                                We envision a world where every business, regardless of size, has access to the tools and expertise needed to succeed globally. Transforming challenges into opportunities and potential into achievement—that is the Bodh prima promise.                            </p>
                         </div>
                     </div>
                 </div>

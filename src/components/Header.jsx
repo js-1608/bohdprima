@@ -75,9 +75,9 @@ const Header = () => {
             </li>
           ))}
           <li className="pt-4 border-t border-slate-100">
-            <a href="#contact" className="flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-md font-semibold text-center w-full">
+            <Link to="/contact" onClick={toggleMobileMenu} className="flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-md font-semibold text-center w-full">
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

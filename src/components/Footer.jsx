@@ -1,7 +1,22 @@
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { Link } from 'react-router';
 
 const Footer = () => {
+    const serviceLinks = [
+        { label: 'Export Services', to: '/services' },
+        { label: 'Import Services', to: '/services' },
+        { label: 'Freight Solutions', to: '/services' },
+    ];
+
+    const companyLinks = [
+        { label: 'About Us', to: '/about-us' },
+        { label: 'Our Services', to: '/services' },
+        { label: 'Blog', to: '/blog' },
+        { label: 'Trade Guide', to: '/global' },
+        // { label: 'FAQs', to: '/contact' },
+        { label: 'Support', to: '/contact' },
+    ];
+
     return (
         <footer className="bg-linear-to-t from-[#f5b544] to-[#125c54] pt-10 pb-10 border-t border-white/20">
 
@@ -28,22 +43,22 @@ const Footer = () => {
                         <p className="text-white/80 leading-relaxed mb-6">
                             Your Excellence in Global Enlightenment. We believe in building trust and lasting business relationships worldwide, empowering businesses to succeed globally.
                         </p>
-                        <div className="flex items-center gap-4">
+                        {/* <div className="flex items-center gap-4">
                             {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-brand-accent hover:text-slate-900 transition-colors">
+                                <Link key={i} to="/contact" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-brand-accent hover:text-slate-900 transition-colors">
                                     <Icon size={18} />
-                                </a>
+                                </Link>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Links Column 1 */}
                     <div>
                         <h4 className="text-white font-bold text-lg mb-6">Services</h4>
                         <ul className="space-y-4">
-                            {['Export Services', 'Import Services', 'Freight Solutions'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-white/80 hover:text-brand-accent transition-colors">{item}</a>
+                            {serviceLinks.map((item) => (
+                                <li key={item.label}>
+                                    <Link to={item.to} className="text-white/80 hover:text-brand-accent transition-colors">{item.label}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -53,9 +68,9 @@ const Footer = () => {
                     <div>
                         <h4 className="text-white font-bold text-lg mb-6">Company</h4>
                         <ul className="space-y-4">
-                            {['About Us', 'Our Services', 'Blog', 'Trade Guide', 'FAQs', 'Support'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-white/80 hover:text-brand-accent transition-colors">{item}</a>
+                            {companyLinks.map((item) => (
+                                <li key={item.label}>
+                                    <Link to={item.to} className="text-white/80 hover:text-brand-accent transition-colors">{item.label}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -66,16 +81,16 @@ const Footer = () => {
                         <h4 className="text-white font-bold text-lg mb-6">Headquarters</h4>
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-white/80 group">
-                                <MapPin size={20} className="text-brand-accent mt-1 flex-shrink-0" />
+                                <MapPin size={20} className="text-brand-accent mt-1 shrink-0" />
                                 <span className="group-hover:text-white transition-colors">100 Global Commerce Blvd<br />Trade District, NY 10001</span>
                             </li>
                             <li className="flex items-center gap-3 text-white/80 group">
-                                <Phone size={20} className="text-brand-accent flex-shrink-0" />
-                                <span className="group-hover:text-white transition-colors">+1 (800) 555-TRADE</span>
+                                <Phone size={20} className="text-brand-accent shrink-0" />
+                                <a href="tel:+919718667757" className="group-hover:text-white transition-colors">97186 67757</a>
                             </li>
                             <li className="flex items-center gap-3 text-white/80 group">
-                                <Mail size={20} className="text-brand-accent flex-shrink-0" />
-                                <span className="group-hover:text-white transition-colors">contact@globaltrade.example.com</span>
+                                <Mail size={20} className="text-brand-accent shrink-0" />
+                                <a href="mailto:hello@bodhprima.com" className="group-hover:text-white transition-colors">hello@bodhprima.com</a>
                             </li>
                         </ul>
                     </div>
@@ -88,8 +103,8 @@ const Footer = () => {
                         &copy; 2024 Bodh prima. All Rights Reserved.
                     </p>
                     <div className="flex items-center gap-6 text-sm">
-                        <a href="#" className="text-white/60 hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="text-white/60 hover:text-white transition-colors">Terms of Service</a>
+                        <Link to="/privacy-policy" className="text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link to="/terms-of-service" className="text-white/60 hover:text-white transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>

@@ -44,12 +44,12 @@ const Contact = () => {
 
                             <div>
                                 <h3 className="font-semibold text-gray-700">Phone</h3>
-                                <p className="text-gray-600">+91 98765 43210</p>
+                                <a href="tel:+919718667757" className="text-gray-600 hover:text-brand transition-colors">97186 67757</a>
                             </div>
 
                             <div>
                                 <h3 className="font-semibold text-gray-700">Email</h3>
-                                <p className="text-gray-600">info@yourcompany.com</p>
+                                <a href="mailto:hello@bodhprima.com" className="text-gray-600 hover:text-brand transition-colors">hello@bodhprima.com</a>
                             </div>
 
                             <div>
