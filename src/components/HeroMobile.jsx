@@ -3,7 +3,7 @@ import heroImage from '../assets/hero.jpg'
 import { Link } from 'react-router';
 const HeroMobile = () => {
     return (
-        <section id="home" className="relative h-screen w-full flex  flex-col items-center justify-center overflow-hidden">
+        <section id="home" className="relative h-screen w-full flex  flex-col items-center justify-center overflow-hidden bg-white">
 
             {/* Full-screen Background Image with subtle overlay */}
             <div className="absolute inset-0 z-0">
@@ -18,7 +18,7 @@ const HeroMobile = () => {
             {/* Centered Content */}
             <div className="relative z-20 flex flex-col items-center text-center px-4 w-full mt-10 lg:mt-0">
 
-                <span className="text-white text-lg md:text-xl font-medium tracking-wide">
+                <span className="text-white text-lg md:text-xl font-medium tracking-wide pt-4">
                     Welcome to
                 </span>
 
@@ -27,7 +27,7 @@ const HeroMobile = () => {
                     <span className="text-white text-2xl lg:text-4xl ml-2 font-normal mt-2 lg:mt-6">&reg;</span>
                 </h1>
 
-                <p className="text-white text-lg md:text-2xl font-light mb-12 tracking-wide">
+                <p className="text-white text-lg md:text-2xl font-light mb-4 tracking-wide">
                     Your Global Excellence
                 </p>
 

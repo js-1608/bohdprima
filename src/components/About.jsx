@@ -2,7 +2,7 @@ import { TrendingUp, ArrowRight } from 'lucide-react';
 import BohdPrima from '../assets/bohdprima.avif'
 const About = () => {
     return (
-        <section className="py-5 lg:pt-20 pb-4 bg-white relative overflow-hidden">
+        <section className="py-5 lg:pt-20 pb-4 bg-[#fcfcfc] relative overflow-hidden">
             {/* Soft decorative background shapes */}
             <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-brand-light/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-1/4 h-[400px] bg-brand-accent/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
