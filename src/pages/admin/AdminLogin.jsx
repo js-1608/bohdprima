@@ -88,14 +88,14 @@ function AdminLogin() {
         </section>
 
         <section className="rounded-[36px] bg-white p-8 text-slate-900 shadow-[0_32px_120px_rgba(0,0,0,0.22)] md:p-10">
-          {/* <div className="flex rounded-full bg-slate-100 p-1 text-sm font-semibold">
+          <div className="flex rounded-full bg-slate-100 p-1 text-sm font-semibold">
             <button type="button" onClick={() => setMode('login')} className={`flex-1 rounded-full px-4 py-3 transition ${mode === 'login' ? 'bg-[#0d5e65] text-white shadow-sm' : 'text-slate-500'}`}>
               Login
             </button>
             <button type="button" onClick={() => setMode('register')} className={`flex-1 rounded-full px-4 py-3 transition ${mode === 'register' ? 'bg-[#0d5e65] text-white shadow-sm' : 'text-slate-500'}`}>
               Create Admin
             </button>
-          </div> */}
+          </div>
 
           <div className="mt-8">
             <h2 className="text-3xl font-semibold">{mode === 'login' ? 'Admin sign in' : 'Bootstrap first admin'}</h2>

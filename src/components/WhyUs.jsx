@@ -76,7 +76,7 @@ const WhyUs = () => {
 
                 {/* Header */}
                 <div className="text-center mb-4 md:mb-2 relative z-20">
-                    <span className="text-brand-accent font-bold tracking-widest uppercase text-xl mb-4 block">Why Choose Us</span>
+                    {/* <span className="text-brand-accent font-bold tracking-widest uppercase text-xl mb-4 block">Why Choose Us</span> */}
                     <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif-brand font-bold text-white mb-6">
                         Why Us
                     </h2>

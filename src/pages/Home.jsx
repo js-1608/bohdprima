@@ -29,7 +29,7 @@ const Home = () => {
           {/* Cards */}
           <div className="grid md:grid-cols-3 gap-6">
             {/* Card 1 */}
-            <div className="rounded-2xl p-8 text-white bg-gradient-to-br from-teal-600 to-brand-accent shadow-md">
+            <div className="rounded-2xl p-8 text-white  bg-gradient-to-br from-brand via-[#2a8e9e] to-brand-accent shadow-md">
               <Globe className="mx-auto mb-4" size={40} />
               <h3 className="font-semibold text-lg tracking-wide mb-3">
                 FACILITATE GROWTH
@@ -40,7 +40,7 @@ const Home = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="rounded-2xl p-8 text-white bg-gradient-to-br from-teal-600 to-brand-accent shadow-md">
+            <div className="rounded-2xl p-8 text-white  bg-gradient-to-br from-brand via-[#2a8e9e] to-brand-accent shadow-md">
               <BadgeCheck className="mx-auto mb-4" size={40} />
               <h3 className="font-semibold text-lg tracking-wide mb-3">
                 ENHANCE EFFICIENCY
@@ -52,7 +52,7 @@ const Home = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="rounded-2xl p-8 text-white bg-gradient-to-br from-teal-600 to-brand-accent shadow-md">
+            <div className="rounded-2xl p-8 text-white  bg-gradient-to-br from-brand via-[#2a8e9e] to-brand-accent shadow-md">
               <Trophy className="mx-auto mb-4" size={40} />
               <h3 className="font-semibold text-lg tracking-wide mb-3">
                 ACHIEVE LASTING SUCCESS
