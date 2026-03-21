@@ -36,9 +36,8 @@ const Contact = () => {
                             <div>
                                 <h3 className="font-semibold text-gray-700">Office Address</h3>
                                 <p className="text-gray-600">
-                                    123 Trade Avenue
-                                    <br />
-                                    Dehradun, Uttarakhand, India
+                                    
+                                   New Delhi , India
                                 </p>
                             </div>
 

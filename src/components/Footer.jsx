@@ -82,7 +82,7 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-white/80 group">
                                 <MapPin size={20} className="text-brand-accent mt-1 shrink-0" />
-                                <span className="group-hover:text-white transition-colors">100 Global Commerce Blvd<br />Trade District, NY 10001</span>
+                                <span className="group-hover:text-white transition-colors">New Delhi, India</span>
                             </li>
                             <li className="flex items-center gap-3 text-white/80 group">
                                 <Phone size={20} className="text-brand-accent shrink-0" />
