@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight, Globe, Shield, Zap, Users, Heart, Target, Award, TrendingUp } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import bohdPrima from "../assets/bohdprima.avif";
 import heroImg from "../assets/hero.jpg";
 import shipImage from "../assets/ship-Photoroom.png";
@@ -65,12 +65,12 @@ const About = () => {
                 <div className="absolute bottom-1/4 right-[10%] w-96 h-96 bg-brand/20 rounded-full blur-[120px] pointer-events-none"></div>
 
                 {/* Floating ship silhouette */}
-                <img
+                {/* <img
                     src={shipImage}
                     alt=""
                     aria-hidden="true"
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[680px] opacity-10 pointer-events-none select-none"
-                />
+                /> */}
 
                 {/* Content */}
                 <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-20">
@@ -81,7 +81,7 @@ const About = () => {
                     <h1 className="text-6xl md:text-7xl lg:text-[90px] font-serif font-bold text-white leading-none mb-6">
                         About{" "}
                         <span className="text-brand-accent">
-                            Bodh Prima
+                            Bodh prima
                         </span>
                     </h1>
 
@@ -127,7 +127,7 @@ const About = () => {
                             <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
                                 <img
                                     src={bohdPrima}
-                                    alt="Bodh Prima team at work"
+                                    alt="Bodh prima team at work"
                                     className="w-full h-[520px] object-cover group-hover:scale-105 transition-transform duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
@@ -179,7 +179,7 @@ const About = () => {
                     <div className="text-center mb-16">
                         <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">Brand Meaning</span>
                         <h2 className="color-brand-heading text-4xl md:text-5xl font-bold leading-tight">
-                            The Meaning of Bodh Prima
+                            The Meaning of Bodh prima
                         </h2>
                         <p className="text-slate-500 max-w-3xl mx-auto mt-4 leading-relaxed">
                             Our name carries a purpose: insight to guide every move, and excellence to deliver lasting results.
@@ -224,7 +224,7 @@ const About = () => {
                                 <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-xl border border-white/10 [backface-visibility:hidden]">
                                     <img
                                         src="https://bodh-prima.pages.dev/images/a6da7076c8328a6d129c36646e705dcb2afebc22.avif"
-                                        alt="Container operations representing Prima"
+                                        alt="Container operations representing prima"
                                         className="w-full h-full object-cover"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-[hsl(195_70%_25%/0.45)] to-transparent"></div>
@@ -381,7 +381,7 @@ const About = () => {
                                     Let's Build Something Great Together
                                 </h2>
                                 <p className="text-slate-500 leading-relaxed">
-                                    Partner with Bodh Prima and experience seamless global trade. Our team is ready to support your business at every step of the journey.
+                                    Partner with Bodh prima and experience seamless global trade. Our team is ready to support your business at every step of the journey.
                                 </p>
                             </div>
 

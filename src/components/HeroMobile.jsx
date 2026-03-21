@@ -1,6 +1,6 @@
 import { ArrowRight, MoveDown } from 'lucide-react';
 import heroImage from '../assets/hero.jpg'
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 const HeroMobile = () => {
     return (
         <section id="home" className="relative h-screen w-full flex  flex-col items-center justify-center overflow-hidden bg-white">

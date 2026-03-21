@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const serviceLinks = [
@@ -33,7 +33,7 @@ const Footer = () => {
                            <Link
                                 to="/"
                                 className={`text-2xl font-bold tracking-tight text-white flex items-center gap-2`}>
-                                {/* Bodh <span className="text-brand-accent">Prima &reg;</span> */}
+                                {/* Bodh <span className="text-brand-accent">prima &reg;</span> */}
                                 <img src="https://bodhprima.vercel.app/assets/bodh-prima-logo-C9xp6Q-h.png" alt="Logo" className="w-auto h-16" />
                             </Link>  
                             <span className="text-4xl font-bold tracking-tight text-[#00535A]">
@@ -78,7 +78,7 @@ const Footer = () => {
 
                     {/* Contact Column */}
                     <div id="contact">
-                        <h4 className="text-white font-bold text-lg mb-6">Headquarters</h4>
+                        <h4 className="text-white font-bold text-lg mb-6">Let's  Connect</h4>
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-white/80 group">
                                 <MapPin size={20} className="text-brand-accent mt-1 shrink-0" />
@@ -100,7 +100,7 @@ const Footer = () => {
                 {/* Copyright Bar */}
                 <div className="pt-8 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-white/60 text-sm">
-                        &copy; 2024 Bodh prima. All Rights Reserved.
+                        &copy; 2026 Bodh prima. All Rights Reserved.
                     </p>
                     <div className="flex items-center gap-6 text-sm">
                         <Link to="/privacy-policy" className="text-white/60 hover:text-white transition-colors">Privacy Policy</Link>

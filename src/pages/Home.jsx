@@ -11,7 +11,7 @@ import FAQ from "../components/FAQ";
 import FreightSection from "../components/Services";
 import HeroMobile from "../components/HeroMobile";
 import { Globe, BadgeCheck, Trophy } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <main className="overflow-hidden">

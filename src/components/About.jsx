@@ -58,7 +58,7 @@ const About = () => {
                                 <p className="text-slate-700 text-sm font-medium">Awakening & Insight</p>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow group">
-                                <h3 className="text-2xl font-extrabold text-transparent text-gradient mb-2 group-hover:scale-105 transition-transform origin-left">Prima</h3>
+                                <h3 className="text-2xl font-extrabold text-transparent text-gradient mb-2 group-hover:scale-105 transition-transform origin-left">prima</h3>
                                 <p className="text-slate-700 text-sm font-medium">First & Best</p>
                             </div>
                         </div>

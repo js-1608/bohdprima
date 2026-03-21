@@ -73,7 +73,7 @@ import WaterWave from "react-water-wave";
 
 import waterImage from "../assets/water.jpg";
 import shipImage from "../assets/ship-Photoroom.png";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (

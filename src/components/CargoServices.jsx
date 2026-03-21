@@ -36,7 +36,7 @@ const CargoServices = () => {
                         Logistics Vision
                     </span>
                     <h2 className="text-3xl md:text-5xl font-bold color-brand-heading mb-6 leading-tight">
-                        Why Choose Bodh Prima
+                        Why Choose Bodh prima
                     </h2>
                 </div>
 

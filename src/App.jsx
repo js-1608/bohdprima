@@ -1,29 +1,41 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
 import './index.css';
 import './App.css';
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import AppShell from './components/AppShell';
+import ProtectedRoute from './components/ProtectedRoute';
 import { routes } from "./components/Route";
-import Whatsapp from './components/Whatsapp';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminLogin from './pages/admin/AdminLogin';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
   return (
-    <Router>
-
-      <ScrollToTop />
-
-      <Header />
-
+    <AppShell showPublicChrome={!isAdminRoute}>
       <Routes>
         {routes.map((route, index) => (
           <Route key={index} path={route.path} element={route.element} />
         ))}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/dashboard"
+          element={(
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          )}
+        />
       </Routes>
+    </AppShell>
+  );
+}
 
-      <Whatsapp/>
-      <Footer />
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

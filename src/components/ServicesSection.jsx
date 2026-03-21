@@ -1,5 +1,5 @@
 import { Ship, Container, PackageSearch, Truck, Globe, MapPin } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const services = [
   {
