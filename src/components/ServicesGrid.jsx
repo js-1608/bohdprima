@@ -19,7 +19,7 @@ const ServicesGrid = () => {
         {
             id: 2,
             type: 'image',
-            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img10-home2-424x239.webp",
+            imageSrc: "https://www.suntekaxpress.in/assets/images/owntrml1.jpeg",
             alt: "Crane lifting shipping container"
         },
         {
@@ -32,13 +32,13 @@ const ServicesGrid = () => {
         {
             id: 4,
             type: 'image',
-            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img9-home2-424x239.webp",
+            imageSrc: "https://www.hegelmann.com/wp-content/themes/yootheme/cache/25/aerial-view-container-cargo-ship-sea3-25aba362.webp",
             alt: "Ship loading grain"
         },
         {
             id: 5,
             type: 'image',
-            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img8-home2-424x239.webp",
+            imageSrc: "https://www.itln.in/h-upload/2025/03/24/80233-image01.webp",
             alt: "Flatbed truck carrying wind turbine part"
         },
         {
@@ -51,7 +51,7 @@ const ServicesGrid = () => {
         {
             id: 7,
             type: 'image',
-            imageSrc: "https://demo.7iquid.com/apexus/wp-content/uploads/2025/11/img7-home2-424x239.webp",
+            imageSrc: "https://www.ioscm.com/wp-content/uploads/2022/06/AdobeStock_65931251.jpeg",
             alt: "Hazardous materials barrels"
         },
         {
