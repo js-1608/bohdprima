@@ -1,4 +1,4 @@
-import { ArrowLeft, CalendarDays } from 'lucide-react';
+import { ArrowLeft, CalendarDays, UserRound } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getBlogBySlug, resolveMediaUrl } from '../lib/api';
@@ -99,6 +99,12 @@ function BlogDetail() {
                 <CalendarDays size={16} />
                 {formatDate(blog.createdAt)}
               </div>
+              {blog.authorName ? (
+                <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/80 backdrop-blur-sm">
+                  <UserRound size={16} />
+                  By {blog.authorName}
+                </div>
+              ) : null}
               <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-white md:text-5xl">{blog.title}</h1>
             </div>
           </div>

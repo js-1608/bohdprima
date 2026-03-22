@@ -46,10 +46,11 @@ export function getHealthStatus() {
   return apiRequest('/health');
 }
 
-export function registerAdmin(credentials) {
+export function createAdminUser(credentials, token) {
   return apiRequest('/auth/register', {
     method: 'POST',
     body: credentials,
+    token,
   });
 }
 
@@ -135,4 +136,12 @@ export function createLead(payload) {
 
 export function getLeads(token) {
   return apiRequest('/leads', { token });
+}
+
+export function updateLeadStatus(id, payload, token) {
+  return apiRequest(`/leads/${id}/status`, {
+    method: 'PATCH',
+    body: payload,
+    token,
+  });
 }

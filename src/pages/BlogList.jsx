@@ -1,4 +1,4 @@
-import { CalendarDays, ChevronRight, Newspaper } from 'lucide-react';
+import { CalendarDays, ChevronRight, Newspaper, UserRound } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPublishedBlogs, resolveMediaUrl } from '../lib/api';
@@ -119,6 +119,12 @@ function BlogList() {
                   <CalendarDays size={16} />
                   <span>{formatDate(blog.createdAt)}</span>
                 </div>
+                {blog.authorName ? (
+                  <div className="flex items-center gap-2 text-sm text-slate-500">
+                    <UserRound size={16} />
+                    <span>By {blog.authorName}</span>
+                  </div>
+                ) : null}
                 <h2 className="text-2xl font-semibold leading-snug text-slate-900">{blog.title}</h2>
                 <p className="text-sm leading-7 text-slate-600">{createExcerpt(blog.content)}</p>
                 <Link to={`/blog/${blog.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[#0d5e65] transition-colors hover:text-[#e4af47]">
