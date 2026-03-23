@@ -1,4 +1,4 @@
-import { ArrowRight, MoveDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import heroImage from '../assets/hero.jpg'
 import { Link } from 'react-router-dom';
 const HeroMobile = () => {
@@ -7,10 +7,14 @@ const HeroMobile = () => {
 
             {/* Full-screen Background Image with subtle overlay */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/10 to-slate-900/60 z-10"></div>
+                <div className="absolute inset-0 bg-linear-to-b from-slate-900/80 via-slate-900/10 to-slate-900/60 z-10"></div>
                 <img
                     src={heroImage}
                     alt="Cargo ship at sea"
+                    fetchPriority="high"
+                    loading="eager"
+                    decoding="async"
+                    sizes="100vw"
                     className="w-full h-full object-cover"
                 />
             </div>
@@ -31,7 +35,7 @@ const HeroMobile = () => {
                     Your Global Excellence
                 </p>
 
-                <Link to="/contact" className="px-8 py-3 bg-gradient-to-r from-[#f5b544] to-[#125c54] hover:to-[#f5b544] hover:from-[#125c54] text-white rounded-[20px] font-medium text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
+                <Link to="/contact" className="px-8 py-3 bg-linear-to-r from-[#f5b544] to-[#125c54] hover:to-[#f5b544] hover:from-[#125c54] text-white rounded-[20px] font-medium text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
                     Start Your Journey
                     <ArrowRight size={18} className="mt-0.5" />
                 </Link>
