@@ -145,3 +145,22 @@ export function updateLeadStatus(id, payload, token) {
     token,
   });
 }
+
+export function getAllUsers(token) {
+  return apiRequest('/auth/users', { token });
+}
+
+export function resetUserPassword(id, newPassword, token) {
+  return apiRequest(`/auth/users/${id}/reset-password`, {
+    method: 'PATCH',
+    body: { password: newPassword },
+    token,
+  });
+}
+
+export function deleteUser(id, token) {
+  return apiRequest(`/auth/users/${id}`, {
+    method: 'DELETE',
+    token,
+  });
+}

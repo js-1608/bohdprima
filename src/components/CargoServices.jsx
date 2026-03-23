@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import Container from "../assets/container-image.png";
-import Container2 from "../assets/container-image.webp";
+import Container2 from "../assets/container-image2.png";
 
 const CargoServices = () => {
     const services = [
@@ -31,7 +31,7 @@ const CargoServices = () => {
             <div className=" container mx-auto px-6 lg:px-8 max-w-[1400px]">
 
                 {/* Header Section */}
-                <div className="mb-8 md:mb-12">
+                <div className="">
                     <span className="text-slate-500 font-bold tracking-widest uppercase text-xl mb-6 block">
                         Logistics Vision
                     </span>

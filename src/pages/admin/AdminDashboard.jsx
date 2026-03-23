@@ -53,6 +53,9 @@ import {
   updateBlog,
   updateLeadStatus,
   uploadBlogImage,
+  getAllUsers,
+  resetUserPassword,
+  deleteUser,
 } from "../../lib/api";
 
 // ─── Block helpers ────────────────────────────────────────────────────────────
@@ -871,18 +874,41 @@ function LeadsPage({ leads, setLeads, isLoading, token }) {
 
 // ─── Users Page ───────────────────────────────────────────────────────────────
 function UsersPage({ token }) {
-  const [form,     setForm]     = useState({ name: "", email: "", password: "", role: "collaborator" });
-  const [isSaving, setIsSaving] = useState(false);
-  const [toast,    setToast]    = useState({ type: "", text: "" });
+  const [form,                setForm]                = useState({ name: "", email: "", password: "", role: "collaborator" });
+  const [users,               setUsers]               = useState([]);
+  const [isSaving,            setIsSaving]            = useState(false);
+  const [isLoadingUsers,      setIsLoadingUsers]      = useState(true);
+  const [toast,               setToast]               = useState({ type: "", text: "" });
+  const [resetPasswordModal,  setResetPasswordModal]  = useState({ open: false, userId: null, userName: "" });
+  const [resetPasswordForm,   setResetPasswordForm]   = useState({ password: "" });
+  const [isResetting,         setIsResetting]         = useState(false);
+  const [actionInProgress,    setActionInProgress]    = useState("");
 
   const showToast = (type, text) => { setToast({ type, text }); setTimeout(() => setToast({ type: "", text: "" }), 4000); };
 
-  const handleSubmit = async (e) => {
+  // Load all users
+  useEffect(() => {
+    const loadUsers = async () => {
+      try {
+        setIsLoadingUsers(true);
+        const res = await getAllUsers(token);
+        setUsers(res.users || []);
+      } catch (err) {
+        showToast("error", err.message);
+      } finally {
+        setIsLoadingUsers(false);
+      }
+    };
+    loadUsers();
+  }, [token]);
+
+  const handleCreateUser = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.password) return showToast("error", "Please fill in all fields.");
     setIsSaving(true);
     try {
-      await createAdminUser(form, token);
+      const newUser = await createAdminUser(form, token);
+      setUsers((prev) => [...prev, newUser.admin]);
       setForm({ name: "", email: "", password: "", role: "collaborator" });
       showToast("success", `User "${form.name}" created successfully.`);
     } catch (err) {
@@ -892,9 +918,80 @@ function UsersPage({ token }) {
     }
   };
 
+  const handleResetPasswordClick = (userId, userName) => {
+    setResetPasswordModal({ open: true, userId, userName });
+    setResetPasswordForm({ password: "" });
+  };
+
+  const handleResetPassword = async () => {
+    if (!resetPasswordForm.password) {
+      return showToast("error", "Please enter a new password.");
+    }
+    setIsResetting(true);
+    try {
+      setActionInProgress(`reset:${resetPasswordModal.userId}`);
+      await resetUserPassword(resetPasswordModal.userId, resetPasswordForm.password, token);
+      setUsers((prev) => prev.map((u) => (u.id === resetPasswordModal.userId ? { ...u } : u)));
+      setResetPasswordModal({ open: false, userId: null, userName: "" });
+      showToast("success", `Password reset for ${resetPasswordModal.userName}.`);
+    } catch (err) {
+      showToast("error", err.message);
+    } finally {
+      setIsResetting(false);
+      setActionInProgress("");
+    }
+  };
+
+  const handleDeleteUser = async (userId, userName) => {
+    if (!window.confirm(`Are you sure you want to delete ${userName}? This cannot be undone.`)) {
+      return;
+    }
+    try {
+      setActionInProgress(`delete:${userId}`);
+      await deleteUser(userId, token);
+      setUsers((prev) => prev.filter((u) => u.id !== userId));
+      showToast("success", `User "${userName}" deleted successfully.`);
+    } catch (err) {
+      showToast("error", err.message);
+    } finally {
+      setActionInProgress("");
+    }
+  };
+
   return (
     <div className="space-y-6">
       <Toast message={toast.text} type={toast.type} onClose={() => setToast({ type: "", text: "" })} />
+
+      {/* Reset Password Modal */}
+      {resetPasswordModal.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md rounded-3xl border border-slate-100 bg-white shadow-2xl">
+            <div className="border-b border-slate-100 px-6 py-5">
+              <h3 className="text-lg font-bold text-slate-900">Reset Password</h3>
+              <p className="mt-1 text-sm text-slate-500">Set a new password for {resetPasswordModal.userName}</p>
+            </div>
+            <div className="p-6">
+              <div>
+                <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">New Password</label>
+                <input type="password" value={resetPasswordForm.password} 
+                  onChange={(e) => setResetPasswordForm({ password: e.target.value })}
+                  placeholder="Enter new password"
+                  className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10" />
+              </div>
+            </div>
+            <div className="flex gap-3 border-t border-slate-100 px-6 py-4">
+              <button onClick={() => setResetPasswordModal({ open: false, userId: null, userName: "" })}
+                className="flex-1 rounded-2xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50">
+                Cancel
+              </button>
+              <button onClick={handleResetPassword} disabled={isResetting}
+                className="flex-1 rounded-2xl bg-[#0d5e65] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d5e65]/90 disabled:opacity-60">
+                {isResetting ? "Resetting…" : "Reset Password"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Role reference */}
       <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
@@ -914,6 +1011,47 @@ function UsersPage({ token }) {
         </div>
       </div>
 
+      {/* Users List */}
+      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
+        <SectionHeader title="Team Members" subtitle="Manage your team and their access levels" badge={`${users.length} users`} />
+        <div className="mt-5 space-y-2">
+          {isLoadingUsers && [1,2,3].map((i) => (
+            <div key={i} className="h-16 animate-pulse rounded-2xl bg-slate-100" />
+          ))}
+          {!isLoadingUsers && users.length === 0 && (
+            <p className="py-6 text-center text-sm text-slate-400">No users yet.</p>
+          )}
+          {!isLoadingUsers && users.map((user) => (
+            <div key={user.id} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition hover:bg-slate-100">
+              <div className="flex flex-1 items-center gap-3 min-w-0">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0d5e65]/10 text-sm font-bold text-[#0d5e65]">
+                  {(user.name || "U").charAt(0)}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-semibold text-slate-900">{user.name}</p>
+                  <p className="truncate text-xs text-slate-500">{user.email}</p>
+                </div>
+                <StatusBadge status={user.role} />
+              </div>
+              <div className="flex shrink-0 gap-2">
+                <button onClick={() => handleResetPasswordClick(user.id, user.name)}
+                  disabled={actionInProgress === `reset:${user.id}`}
+                  className="flex items-center gap-1.5 rounded-xl border border-amber-200 px-3 py-2 text-xs font-semibold text-amber-600 hover:bg-amber-50 disabled:opacity-50">
+                  <RefreshCcw size={12} className={actionInProgress === `reset:${user.id}` ? "animate-spin" : ""} />
+                  Reset
+                </button>
+                <button onClick={() => handleDeleteUser(user.id, user.name)}
+                  disabled={actionInProgress === `delete:${user.id}`}
+                  className="flex items-center gap-1.5 rounded-xl border border-rose-200 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 disabled:opacity-50">
+                  <Trash2 size={12} />
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Create form */}
       <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
         <div className="flex items-center gap-3 mb-6">
@@ -926,7 +1064,7 @@ function UsersPage({ token }) {
           </div>
         </div>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form className="space-y-4" onSubmit={handleCreateUser}>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Full Name</label>
