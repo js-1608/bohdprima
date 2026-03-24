@@ -90,7 +90,7 @@ const About = () => {
                     </p>
 
                     {/* Key figures */}
-                    <div className="flex items-center justify-center gap-10 md:gap-20 pt-8 border-t border-white/10">
+                    <div className="flex items-center justify-center gap-4 md:gap-20 pt-8 border-t border-white/10">
                         <div className="text-center">
                             <span className="block text-4xl md:text-5xl font-bold font-serif text-brand-accent">50+</span>
                             <span className="text-white/60 text-xs uppercase tracking-widest mt-1 block">Countries</span>
