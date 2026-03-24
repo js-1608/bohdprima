@@ -34,7 +34,7 @@ const Footer = () => {
                                 to="/"
                                 className={`text-2xl font-bold tracking-tight text-white flex items-center gap-2`}>
                                 {/* Bodh <span className="text-brand-accent">prima &reg;</span> */}
-                                <img src="https://bodhprima.vercel.app/assets/bodh-prima-logo-C9xp6Q-h.png" alt="Logo" className="w-auto h-16" />
+                                <img src="logo-bp.png" alt="Logo" className="w-auto h-16" />
                             </Link>  
                             <span className="text-4xl font-bold tracking-tight text-[#00535A]">
                                 Bodh <span className="text-brand-accent">prima </span>

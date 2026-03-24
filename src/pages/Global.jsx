@@ -1,7 +1,7 @@
 import React from "react";
 import PortsSection from "../components/PortsSection";
 import HeroSection from "../components/HeroSection";
-import global_bg from "../assets/global_bg.png";
+import global_bg from "../assets/global_b.jpeg";
 import ServicesSection from "../components/ServicesSection";
 import { Ship, Truck, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import TradeSection from "../components/TradeSection";

@@ -1,8 +1,9 @@
 import React from 'react';
-import img1 from "../assets/solution/export.png"
-import img2 from "../assets/solution/import.jpg"
-import img3 from "../assets/solution/logistics-and-transportatin.jpg"
-import img4 from "../assets/solution/supply-chain.png"
+import img1 from "../assets/service/plane.webp"
+import img2 from "../assets/service/railway.jpeg"
+import img3 from "../assets/service/shipfreight.webp"
+import img4 from "../assets/service/truck.jpeg"
+
 
 
 const ServicesGrid = () => {
@@ -19,7 +20,7 @@ const ServicesGrid = () => {
         {
             id: 2,
             type: 'image',
-            imageSrc: "https://www.suntekaxpress.in/assets/images/owntrml1.jpeg",
+            imageSrc: img2,
             alt: "Crane lifting shipping container"
         },
         {
@@ -32,13 +33,13 @@ const ServicesGrid = () => {
         {
             id: 4,
             type: 'image',
-            imageSrc: "https://www.hegelmann.com/wp-content/themes/yootheme/cache/25/aerial-view-container-cargo-ship-sea3-25aba362.webp",
+            imageSrc: img3,
             alt: "Ship loading grain"
         },
         {
             id: 5,
             type: 'image',
-            imageSrc: "https://www.itln.in/h-upload/2025/03/24/80233-image01.webp",
+            imageSrc: img1,
             alt: "Flatbed truck carrying wind turbine part"
         },
         {
@@ -51,7 +52,7 @@ const ServicesGrid = () => {
         {
             id: 7,
             type: 'image',
-            imageSrc: "https://www.ioscm.com/wp-content/uploads/2022/06/AdobeStock_65931251.jpeg",
+            imageSrc: img2,
             alt: "Hazardous materials barrels"
         },
         {

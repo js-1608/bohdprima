@@ -1,12 +1,19 @@
+import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import heroImage from '../assets/hero.jpg'
 import { Link } from 'react-router-dom';
 const HeroMobile = () => {
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
+
     return (
-        <section id="home" className="relative h-screen w-full flex  flex-col items-center justify-center overflow-hidden bg-white">
+        <section id="home" className="relative h-screen w-full flex  flex-col items-center justify-center overflow-hidden bg-brand">
 
             {/* Full-screen Background Image with subtle overlay */}
             <div className="absolute inset-0 z-0">
+                <div
+                    aria-hidden="true"
+                    className={`absolute inset-0 bg-brand transition-opacity duration-300 ${isImageLoaded ? 'opacity-0' : 'opacity-100'}`}
+                ></div>
                 <div className="absolute inset-0 bg-linear-to-b from-slate-900/80 via-slate-900/10 to-slate-900/60 z-10"></div>
                 <img
                     src={heroImage}
@@ -15,7 +22,9 @@ const HeroMobile = () => {
                     loading="eager"
                     decoding="async"
                     sizes="100vw"
-                    className="w-full h-full object-cover"
+                    onLoad={() => setIsImageLoaded(true)}
+                    onError={() => setIsImageLoaded(false)}
+                    className={`w-full h-full object-cover transition-opacity duration-500 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                 />
             </div>
 
@@ -60,7 +69,7 @@ const HeroMobile = () => {
             {/* Scroll Indicator (Centered Bottom) */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex justify-center">
                 <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-white/70 rounded-full animate-bounce"></div>
+                    <div className="w-1 h-2 bg-white rounded-full animate-bounce"></div>
                 </div>
             </div>
 

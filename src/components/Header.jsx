@@ -32,7 +32,7 @@ const Header = () => {
           <Link
             to="/"
             className={`text-2xl font-bold tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
-            <img src="https://bodhprima.vercel.app/assets/bodh-prima-logo-C9xp6Q-h.png" alt="Logo" className="w-auto h-16" />
+            <img src="logo-bp.png" alt="Logo" className="w-auto h-16" />
           </Link>
         </div>
 
