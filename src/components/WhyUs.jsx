@@ -72,7 +72,7 @@ const WhyUs = () => {
 
     return (
         <section id="why-us" className="bg-gradient-hero py-20 lg:py-24 relative overflow-hidden">
-            <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+            <div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
 
                 {/* Header */}
                 <div className="text-center mb-4 md:mb-2 relative z-20">

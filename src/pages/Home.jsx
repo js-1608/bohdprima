@@ -61,7 +61,7 @@ const Home = () => {
       </DeferredSection>
 
       <section className="bg-gray-100 py-16">
-        <div className="max-w-[1400px] mx-auto text-center px-6">
+        <div className="max-w-[2400px] mx-auto text-center px-6">
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-12">
             When you choose us, you choose to step into a world where you can:

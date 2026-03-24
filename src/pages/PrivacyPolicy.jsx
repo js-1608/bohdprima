@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
             <section className="py-24 bg-[#fcfcfc] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/3 h-[420px] bg-brand-accent/5 rounded-full blur-[110px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                     <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start mb-14">
                         <div>
                             <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">Overview</span>
@@ -100,7 +100,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="py-20 bg-[#f3f5f7]">
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
                     <div className="bg-white border border-slate-100 rounded-3xl shadow-lg p-10 md:p-12">
                         <h2 className="color-brand-heading text-3xl md:text-4xl font-bold mb-6">Retention, Rights, and Contact</h2>
                         <div className="space-y-5 text-slate-600 leading-relaxed">

@@ -39,7 +39,7 @@ const About = () => {
         { num: "50+", label: "Countries Reached" },
         { num: "500+", label: "Shipments Handled" },
         { num: "100%", label: "Client Satisfaction" },
-        { num: "2024", label: "Year Founded" },
+        { num: "2021", label: "Year Founded" },
     ];
 
     return (
@@ -102,7 +102,7 @@ const About = () => {
                         </div>
                         <div className="w-px h-12 bg-white/20"></div>
                         <div className="text-center">
-                            <span className="block text-4xl md:text-5xl font-bold font-serif text-brand-accent">2024</span>
+                            <span className="block text-4xl md:text-5xl font-bold font-serif text-brand-accent">2021</span>
                             <span className="text-white/60 text-xs uppercase tracking-widest mt-1 block">Established</span>
                         </div>
                     </div>
@@ -119,7 +119,7 @@ const About = () => {
                 <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-brand-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-1/4 h-[400px] bg-brand/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
 
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
 
                         {/* Image column */}
@@ -132,7 +132,7 @@ const About = () => {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
                                 <div className="absolute bottom-8 left-8">
-                                    <p className="text-brand-accent font-bold text-sm uppercase tracking-widest mb-1">Est. 2024</p>
+                                    <p className="text-brand-accent font-bold text-sm uppercase tracking-widest mb-1">Est. 2021</p>
                                     <h4 className="text-2xl font-bold text-white">Bodh<span className="text-brand-accent">prima</span></h4>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ const About = () => {
                         <div>
                             <span className="text-brand font-bold tracking-widest uppercase text-sm mb-4 block">Who We Are</span>
                             <h2 className="color-brand-heading text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                                Empowering Global Trade Since 2024
+                                Empowering Global Trade Since 2021
                             </h2>
 
                             <p className="text-slate-600 leading-relaxed mb-8">
@@ -175,7 +175,7 @@ const About = () => {
                 <div className="absolute top-0 left-0 w-80 h-80 bg-brand-accent/10 rounded-full blur-[110px] -translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
                 <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-brand/10 rounded-full blur-[120px] translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                     <div className="text-center mb-16">
                         <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">Brand Meaning</span>
                         <h2 className="color-brand-heading text-4xl md:text-5xl font-bold leading-tight">
@@ -258,7 +258,7 @@ const About = () => {
                 MISSION & VISION
             ========================================================= */}
             <section className="py-24 bg-[#f3f5f7] relative overflow-hidden">
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
                     <div className="text-center mb-16">
                         <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">Our Purpose</span>
                         <h2 className="color-brand-heading text-4xl md:text-5xl font-bold leading-tight">
@@ -308,7 +308,7 @@ const About = () => {
                 <div className="absolute bottom-0 left-0 w-1/3 h-[400px] bg-brand/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
                 <div className="absolute top-0 right-0 w-1/4 h-[350px] bg-brand-accent/5 rounded-full blur-[80px] -translate-y-1/3 translate-x-1/3 pointer-events-none"></div>
 
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                     <div className="text-center mb-16">
                         <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">What Drives Us</span>
                         <h2 className="color-brand-heading text-4xl md:text-5xl font-bold leading-tight">
@@ -346,7 +346,7 @@ const About = () => {
                 {/* Decorative stripes */}
                 <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_2px,transparent_2px,transparent_80px)] pointer-events-none"></div>
 
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
                         {stats.map(({ num, label }, i) => (
                             <div key={i} className="text-center group">
@@ -367,7 +367,7 @@ const About = () => {
                 CTA BANNER
             ========================================================= */}
             <section className="py-24 bg-[#f3f5f7]">
-                <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+                <div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
                     <div className="relative bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
                         {/* Decorative side accent */}
                         <div className="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b from-brand to-brand-accent"></div>

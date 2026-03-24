@@ -14,7 +14,7 @@ const GlobalReach = () => {
     <section className="relative py-12 overflow-hidden">
       
 
-      <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
 
         {/* Heading */}
         <div className="text-center mb-16">

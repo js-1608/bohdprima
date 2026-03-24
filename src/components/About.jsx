@@ -8,7 +8,7 @@ const About = () => {
             <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-brand-light/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-1/4 h-[400px] bg-brand-accent/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
 
-            <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+            <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                 <div className="flex flex-col-reverse  lg:flex-row items-start gap-16 lg:gap-24">
 
                     {/* Visual Section */}
@@ -25,7 +25,7 @@ const About = () => {
 
                             <div className="absolute bottom-8 left-8 text-white">
                                 <h4 className="text-2xl font-bold mb-1 tracking-tight">Bodh<span className="text-brand-accent">prima</span></h4>
-                                <p className="text-white/80 font-medium">Established 2024</p>
+                                <p className="text-white/80 font-medium">Established 2021</p>
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@ const About = () => {
                     <div className="w-full lg:w-1/2 lg:mt-0">
                         <span className="text-brand font-bold tracking-widest uppercase text-xl mb-4 block mt-0">Who We Are</span>
                         <h2 className="color-brand-heading text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                            Empowering global trade since 2024.
+                            Empowering global trade since 2021.
                         </h2>
                         <p className="lg:text-left text-justify text-lg text-slate-600 mb-6 leading-relaxed">
                             At <strong className="text-slate-900">Bodh prima</strong>, we believe in building trust and lasting business relationships worldwide. Our journey is focused on empowering businesses to succeed in the international market.

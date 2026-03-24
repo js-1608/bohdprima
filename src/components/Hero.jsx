@@ -38,7 +38,7 @@
 //                 {/* Statistics Container (Moved below button) */}
 //                 <div className="flex items-center gap-12 md:gap-20 mt-16 pt-8 border-t border-white/20">
 //                     <div className="flex flex-col items-center text-center">
-//                         <span className="text-brand-accent text-3xl md:text-5xl font-serif-brand font-bold mb-1 block">2024</span>
+//                         <span className="text-brand-accent text-3xl md:text-5xl font-serif-brand font-bold mb-1 block">2021</span>
 //                         <span className="text-white text-xs md:text-sm tracking-wide font-light">Established</span>
 //                     </div>
 
@@ -141,7 +141,7 @@ const Hero = () => {
 
           <div>
             <p className="text-yellow-400 text-2xl md:text-4xl font-bold">
-              2024
+              2021
             </p>
             <p className="text-white text-xs md:text-sm">
               Established

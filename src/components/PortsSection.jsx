@@ -27,7 +27,7 @@ const ports = [
 const PortsSection = () => {
   return (
     <section className="py-12  overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[2400px] mx-auto px-6">
 
         <h2 className="text-4xl font-bold text-center mb-14 color-brand-heading">
           Major Global Trade Ports

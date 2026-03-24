@@ -5,7 +5,7 @@ import react from "react";
 const CTASection = () => {
     return (
         <section className="py-20 overflow-hidden">
-            <div className="max-w-[1400px] mx-auto px-6">
+            <div className="max-w-[2400px] mx-auto px-6">
 
                 <div className="relative bg-[#f3f5f7] backdrop-blur-sm rounded-[30px] shadow-lg px-4 lg:px-10 py-16 md:px-16 grid md:grid-cols-2 items-center gap-10">
 
@@ -70,7 +70,7 @@ export default CTASection;
 //       {/* vertical stripes background */}
 //       <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_2px,transparent_2px,transparent_40px)]"></div>
 
-//       <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
+//       <div className="relative z-10 max-w-[2400px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
 
 //         {/* LEFT SIDE */}
 //         <div>

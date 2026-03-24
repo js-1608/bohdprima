@@ -53,7 +53,7 @@ export default function FreightSection() {
       </WaterWave>
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 h-full grid lg:grid-cols-2 items-center">
+      <div className="relative z-10 max-w-[2400px] mx-auto px-6 h-full grid lg:grid-cols-2 items-center">
 
         {/* LEFT TEXT */}
         <div className="transition-all duration-700">

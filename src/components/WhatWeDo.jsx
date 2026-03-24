@@ -27,7 +27,7 @@ const WhatWeDo = () => {
 
     return (
         <section id="what-we-do" className="py-20 lg:py-24 bg-slate-50 relative">
-            <div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+            <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                 <div className="text-left lg:text-center mb-16 max-w-3xl mx-auto">
                     <span className="text-brand font-bold tracking-widest uppercase text-sm mb-4 block">What We Do</span>
                     <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">

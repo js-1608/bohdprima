@@ -185,7 +185,7 @@ const Services = () => {
 			<section className="py-24 bg-[#fcfcfc] relative overflow-hidden">
 				<div className="absolute top-0 right-0 w-1/3 h-[450px] bg-brand-accent/5 rounded-full blur-[110px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-				<div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+				<div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
 					<div className="text-center mb-14">
 						<span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">
 							Our Expert Services
@@ -230,7 +230,7 @@ const Services = () => {
 			</section>
 
 			<section className="py-24 bg-[#f3f5f7]">
-				<div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+				<div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
 					<div className="text-center mb-14">
 						<span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">
 							Freight Solutions
@@ -276,7 +276,7 @@ const Services = () => {
 				<div className="absolute -top-24 -left-20 w-72 h-72 rounded-full bg-brand/15 blur-[90px] pointer-events-none" />
 				<div className="absolute -bottom-20 -right-10 w-72 h-72 rounded-full bg-brand-accent/20 blur-[100px] pointer-events-none" />
 
-				<div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+				<div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
 					<div className="text-center mb-12">
 						<span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">
 							Service Focus
@@ -365,7 +365,7 @@ const Services = () => {
 			</section>
 
 			<section className="py-24 bg-[#fcfcfc]">
-				<div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+				<div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
 					<div className="grid lg:grid-cols-2 gap-12 items-center">
 						<div>
 							<span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">
@@ -416,7 +416,7 @@ const Services = () => {
 			</section>
 
 			<section className="py-20 bg-[#f3f5f7]">
-				<div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+				<div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
 					<div className="text-center mb-12">
 						<span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">
 							Why Us?
@@ -450,7 +450,7 @@ const Services = () => {
 			<section className="py-24 bg-gradient-to-r from-[hsl(195_70%_28%)] via-[hsl(185_65%_30%)] to-[hsl(175_60%_33%)] relative overflow-hidden">
 				<div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.035)_0px,rgba(255,255,255,0.035)_2px,transparent_2px,transparent_78px)] pointer-events-none" />
 
-				<div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+				<div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
 					<div className="grid lg:grid-cols-2 gap-12 items-center">
 						<div className="text-white">
 							<span className="text-brand-accent font-bold tracking-widest uppercase text-sm mb-3 block">

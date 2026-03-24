@@ -28,7 +28,7 @@ const CargoServices = () => {
 
     return (
         <section id="cargo-services" className="relative pt-16 lg:pt-16 bg-white">
-            <div className=" container mx-auto px-6 lg:px-8 max-w-[1400px]">
+            <div className=" container mx-auto px-6 lg:px-8 max-w-[2400px]">
 
                 {/* Header Section */}
                 <div className="">

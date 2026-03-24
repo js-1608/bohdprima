@@ -27,7 +27,7 @@ const ServicesGrid = () => {
             id: 3,
             type: 'text',
             title: "Ocean Freight",
-            description: "Ideal for global trade and bulk shipments. Bogix provides secure and scalable ocean freight solutions, supported by a trusted international shipping network.",
+            description: "Ideal for global trade and bulk shipments. Bodh provides secure and scalable ocean freight solutions, supported by a trusted international shipping network.",
             linkText: "Connect Now"
         },
         {
@@ -78,7 +78,7 @@ const ServicesGrid = () => {
 
     return (
         <section className="py-5 lg:py-16 bg-[#f8f8f8] relative overflow-hidden">
-            <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+            <div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
 
                 <h2 className="text-5xl md:text-8xl lg:text-[100px] font-bold color-brand-heading mb-12 tracking-tighter uppercase leading-none">
                     What We Do

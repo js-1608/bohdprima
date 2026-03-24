@@ -24,7 +24,7 @@ const Footer = () => {
 
 
             {/* Main Footer Content */}
-            <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
+            <div className="container mx-auto px-6 lg:px-8 max-w-[2400px]">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-2">
 
                     {/* Brand Column */}
@@ -41,7 +41,7 @@ const Footer = () => {
                             </span>
                         </div>
                         <p className="text-white/80 leading-relaxed mb-6">
-                            Your Excellence in Global Enlightenment. We believe in building trust and lasting business relationships worldwide, empowering businesses to succeed globally.
+                            Your Global Excellence in Global Enlightenment. We believe in building trust and lasting business relationships worldwide, empowering businesses to succeed globally.
                         </p>
                         {/* <div className="flex items-center gap-4">
                             {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
