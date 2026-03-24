@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	ArrowRight,
 	Plane,
 	Ship,
 	Truck,
+	ChevronLeft,
+	ChevronRight,
 	ShieldCheck,
 	PackageCheck,
 	FileCheck,
@@ -19,6 +21,8 @@ import containerPortImg from "../assets/ship2.png";
 import madeinindia from "../assets/madeinindia.png";
 
 const Services = () => {
+	const [activeTradeTab, setActiveTradeTab] = useState(0);
+
 	const expertiseItems = [
 		{
 			icon: PackageCheck,
@@ -93,6 +97,49 @@ const Services = () => {
 			description: "We are dedicated to connecting you with the world.",
 		},
 	];
+
+	const tradeServiceTabs = [
+		{
+			label: "Export Services",
+			tag: "From India to the World",
+			title: "Export Services",
+			description:
+				"Scale your exports with an execution-first team that handles every step from booking to border compliance.",
+			items: [
+				"Comprehensive logistics solutions",
+				"Customs clearance services",
+				"Freight forwarding",
+				"Export documentation",
+			],
+			metric: "98%",
+			metricLabel: "On-time shipment planning",
+		},
+		{
+			label: "Import Services",
+			tag: "Global Markets to India",
+			title: "Import Services",
+			description:
+				"Import confidently with transparent coordination, better timelines, and complete support from port to warehouse.",
+			items: [
+				"End-to-end import solutions",
+				"Import customs processing",
+				"Freight Management",
+				"Import documentation",
+			],
+			metric: "24/7",
+			metricLabel: "Shipment visibility and updates",
+		},
+	];
+
+	const currentTradeService = tradeServiceTabs[activeTradeTab];
+
+	const goToPreviousTradeTab = () => {
+		setActiveTradeTab((prev) => (prev === 0 ? tradeServiceTabs.length - 1 : prev - 1));
+	};
+
+	const goToNextTradeTab = () => {
+		setActiveTradeTab((prev) => (prev === tradeServiceTabs.length - 1 ? 0 : prev + 1));
+	};
 
 	return (
 		<>
@@ -221,6 +268,98 @@ const Services = () => {
 								</div>
 							</article>
 						))}
+					</div>
+				</div>
+			</section>
+
+			<section className="py-24 bg-[linear-gradient(160deg,#e9f7fc_0%,#f8fbfd_40%,#eef8f6_100%)] relative overflow-hidden">
+				<div className="absolute -top-24 -left-20 w-72 h-72 rounded-full bg-brand/15 blur-[90px] pointer-events-none" />
+				<div className="absolute -bottom-20 -right-10 w-72 h-72 rounded-full bg-brand-accent/20 blur-[100px] pointer-events-none" />
+
+				<div className="container mx-auto px-6 lg:px-8 max-w-[1400px] relative z-10">
+					<div className="text-center mb-12">
+						<span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">
+							Service Focus
+						</span>
+						<h2 className="color-brand-heading text-4xl md:text-5xl font-bold mb-4">
+							Export and Import Command Center
+						</h2>
+						<p className="text-slate-600 max-w-3xl mx-auto">
+							Choose your trade lane to explore the exact operational support we provide.
+						</p>
+					</div>
+
+					<div className="rounded-3xl border border-slate-200/70 bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 shadow-[0_20px_70px_-30px_rgba(15,23,42,0.35)]">
+						<div className="grid grid-cols-2 gap-3 mb-6 sm:mb-8">
+							{tradeServiceTabs.map((tab, index) => (
+								<button
+									key={tab.label}
+									type="button"
+									onClick={() => setActiveTradeTab(index)}
+									className={`rounded-xl px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-lg font-semibold transition-all duration-300 border ${
+										activeTradeTab === index
+											? "bg-slate-950 text-white border-slate-950 shadow-lg"
+											: "bg-white text-slate-700 border-slate-200 hover:border-brand/40 hover:text-brand"
+									}`}
+								>
+									{tab.label}
+								</button>
+							))}
+						</div>
+
+						<div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 lg:gap-8 items-stretch">
+							<div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+								<p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-brand font-bold mb-4">
+									{currentTradeService.tag}
+								</p>
+								<h3 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+									{currentTradeService.title}
+								</h3>
+								<p className="text-slate-600 leading-relaxed mb-6">
+									{currentTradeService.description}
+								</p>
+
+								<ul className="space-y-3">
+									{currentTradeService.items.map((item) => (
+										<li key={item} className="flex items-start gap-3 text-slate-800">
+											<span className="mt-1.5 w-2.5 h-2.5 rounded-full bg-brand-accent flex-shrink-0" />
+											<span className="leading-relaxed">{item}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+
+							<div className="rounded-2xl bg-gradient-to-br from-slate-900 via-[hsl(195_70%_24%)] to-[hsl(175_60%_31%)] p-6 sm:p-8 text-white flex flex-col justify-between min-h-[250px]">
+								<div>
+									<p className="text-brand-accent uppercase tracking-[0.2em] text-xs font-bold mb-4">
+										Performance Snapshot
+									</p>
+									<p className="text-5xl sm:text-6xl font-bold leading-none mb-2">
+										{currentTradeService.metric}
+									</p>
+									<p className="text-white/80">{currentTradeService.metricLabel}</p>
+								</div>
+
+								<div className="mt-8 flex items-center gap-3">
+									<button
+										type="button"
+										onClick={goToPreviousTradeTab}
+										aria-label="Previous service"
+										className="w-11 h-11 rounded-full border border-white/35 hover:bg-white/10 transition-colors flex items-center justify-center"
+									>
+										<ChevronLeft size={20} />
+									</button>
+									<button
+										type="button"
+										onClick={goToNextTradeTab}
+										aria-label="Next service"
+										className="w-11 h-11 rounded-full border border-white/35 hover:bg-white/10 transition-colors flex items-center justify-center"
+									>
+										<ChevronRight size={20} />
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
