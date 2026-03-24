@@ -64,6 +64,18 @@ const ServicesGrid = () => {
         }
     ];
 
+    // On mobile, enforce image -> text flow for each service pair.
+    const orderClasses = {
+        1: 'order-2 sm:order-1',
+        2: 'order-1 sm:order-2',
+        3: 'order-4 sm:order-3',
+        4: 'order-3 sm:order-4',
+        5: 'order-5 sm:order-5',
+        6: 'order-6 sm:order-6',
+        7: 'order-7 sm:order-7',
+        8: 'order-8 sm:order-8',
+    };
+
     return (
         <section className="py-5 lg:py-16 bg-[#f8f8f8] relative overflow-hidden">
             <div className="container mx-auto px-6 lg:px-8 max-w-[1400px]">
@@ -76,7 +88,7 @@ const ServicesGrid = () => {
                     {solutions.map((item) => {
                         if (item.type === 'text') {
                             return (
-                                <div key={item.id} className="bg-gradient-hero text-white p-4 lg:p-6 flex flex-col justify-between h-[320px] lg:h-[350px] w-full">
+                                <div key={item.id} className={`bg-gradient-hero text-white p-4 lg:p-6 flex flex-col justify-between h-[320px] lg:h-[350px] w-full ${orderClasses[item.id]}`}>
                                     <h3 className="text-2xl lg:text-3xl font-medium text-white leading-[1.15] whitespace-pre-line tracking-tight mb-8">
                                         {item.title}
                                     </h3>
@@ -95,7 +107,7 @@ const ServicesGrid = () => {
                             );
                         } else {
                             return (
-                                <div key={item.id} className="h-[320px] lg:h-[350px] w-full relative overflow-hidden group">
+                                <div key={item.id} className={`h-[320px] lg:h-[350px] w-full relative overflow-hidden group ${orderClasses[item.id]}`}>
                                     {/* Using a subtle dark overlay if needed, otherwise just the image */}
                                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                                     <img
