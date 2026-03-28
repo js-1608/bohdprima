@@ -11,26 +11,26 @@ const About = () => {
     const coreValues = [
         {
             icon: Shield,
-            title: "Integrity",
+            title: "Trust & Integrity ",
             desc: "We conduct every transaction with full transparency, honesty, and accountability — building trust that lasts for decades.",
             accent: "brand",
         },
         {
             icon: Zap,
             title: "Innovation",
-            desc: "We embrace technology and creative thinking to offer smarter, faster, and more efficient global trade solutions.",
+            desc: "Continuously evolving our solutions to meet the changing demands. Offer smarter, faster and more efficient global trade solutions.",
             accent: "brand-accent",
         },
         {
             icon: Users,
-            title: "Client Focus",
-            desc: "Your success is our mission. We tailor every service to meet the unique goals and requirements of each partner.",
+            title: "Client Reliability ",
+            desc: "Delivering consistent, dependable service that our partners can count on.",
             accent: "brand",
         },
         {
             icon: Heart,
-            title: "Commitment",
-            desc: "We go beyond delivering shipments — we build relationships and stand by our clients at every stage of their journey.",
+            title: "Growth & Commitment ",
+            desc: "We go beyond delivering shipments — we build relationships by treating every client as a valued partner in our shared journey to success.",
             accent: "brand-accent",
         },
     ];
@@ -151,17 +151,22 @@ const About = () => {
                         <div>
                             <span className="text-brand font-bold tracking-widest uppercase text-sm mb-4 block">Who We Are</span>
                             <h2 className="color-brand-heading text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                                Empowering Global Trade Since 2021
+                                A Rising Force in Global Trade
                             </h2>
 
                             <p className="text-slate-600 leading-relaxed mb-8">
-                                Bodh prima is a rising export house which believes in building trust and lasting business relationships worldwide. Our approach integrates a dedicated team that enables us to seamlessly cater to the requirements of our international clientele.
+                                Empowering Global Trade Since 2021 , Bodh prima is built on over 5 years of experience in the Export & Import industry.
                             </p>
                             <p className="text-slate-600 leading-relaxed mb-8">
-                                At Bodh prima, our name reflects a blend of timeless wisdom and modern excellence. It drives our mission to deliver innovative solutions that help businesses succeed globally and stay ahead in a changing market.</p>
+                                Bodh prima is a rising export house which believes in building trust and lasting business relationships worldwide. </p>
+
+                            {/* At Bodh prima, our name reflects a blend of timeless wisdom and modern excellence. It drives our mission to deliver innovative solutions that help businesses succeed globally and stay ahead in a changing market.</p> */}
 
                             <p className="text-slate-600 leading-relaxed mb-8">
-                                Bodh prima symbolizes a fresh awakening in thought, innovation, and global trade, elevating local potential to achieve global standards in pursuit of Your Excellence in Global Enlightenment.                            </p>
+                                Bodh prima believes in building trust and lasting business relationships worldwide. As a rising trade house, we are navigating challenges and perfecting client-focused approaches. In today’s competitive landscape, we understand that success is not about shortcuts —it’s about strategic foresight and continuous growth.
+
+                                {/* Bodh prima symbolizes a fresh awakening in thought, innovation, and global trade, elevating local potential to achieve global standards in pursuit of Your Excellence in Global Enlightenment.            */}
+                            </p>
 
                         </div>
                     </div>
@@ -177,12 +182,12 @@ const About = () => {
 
                 <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                     <div className="text-center mb-16">
-                        <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">Brand Meaning</span>
+                        <span className="text-brand font-bold tracking-widest uppercase text-sm mb-3 block">Our Name, Our Promise</span>
                         <h2 className="color-brand-heading text-4xl md:text-5xl font-bold leading-tight">
                             The Meaning of Bodh prima
                         </h2>
                         <p className="text-slate-500 max-w-3xl mx-auto mt-4 leading-relaxed">
-                            Our name carries a purpose: insight to guide every move, and excellence to deliver lasting results.
+                            Our name carries a purpose: A commitment that drives every solution we offer. We combine industry expertise with innovative solutions to help your business succeed globally and stay ahead in a changing market.
                         </p>
                     </div>
 
@@ -212,8 +217,7 @@ const About = () => {
                                     <span className="text-brand font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
                                     <h3 className="text-3xl font-bold text-slate-900 mb-5">"Bodh"</h3>
                                     <p className="text-slate-600 leading-relaxed text-lg">
-                                        Symbolizes awakening, enlightenment, and deep insight - our commitment to continuous learning,
-                                        innovation, and guiding you through global markets with clarity and foresight.
+                                        Symbolizes awakening, enlightenment, and deep insight - our commitment to continuous learning and innovation. Foundation of how we help you navigate complex global markets with clarity and strategic foresight.
                                     </p>
                                 </div>
                             </div>
@@ -244,13 +248,14 @@ const About = () => {
                                     <span className="text-brand-accent font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
                                     <h3 className="text-3xl font-bold text-white mb-5">"prima"</h3>
                                     <p className="text-white/85 leading-relaxed text-lg">
-                                        Means first and best - reflecting our drive for excellence, leadership, and delivering top-tier
-                                        services to all our valued partners and clients.
+                                        Means first and best - reflecting our focus on excellence and leadership. A promise to set industry benchmarks and delivering top-tier services to all our valued clients.
                                     </p>
                                 </div>
                             </div>
                         </article>
                     </div>
+                    <p className="text-slate-500 max-w-3xl mx-auto mt-4 leading-relaxed text-center">
+                        Together, our name is a journey of growth—it’s a promise to guide businesses and individuals toward insightful leadership and outstanding success on the international stage.</p>
                 </div>
             </section>
 
@@ -275,11 +280,11 @@ const About = () => {
                                 <Target size={28} className="text-brand-accent" />
                             </div>
                             <h3 className="text-3xl font-bold text-white mb-5">Our Mission</h3>
-                            <p className="text-white/80 leading-relaxed text-lg">
-                                Empowering global trade by supporting local businesses, one step at a time.
+                            <p className="text-white leading-relaxed font-semibold text-lg mb-1">
+                                Empowering Every Global Trade, One Local Business at a Time
                             </p>
                             <p className="text-white/80 leading-relaxed text-lg">
-                                At Bodh prima, we connect products, shopkeepers, and markets to global trade. We empower small businesses, local manufacturers, and MSMEs with streamlined solutions to break free from traditional boundaries and compete on an international level.
+                                To empower small businesses, local manufacturers, and MSMEs with streamlined, dependable solutions to break free from traditional boundaries and compete on an international level.
                             </p>
                         </div>
 
@@ -290,14 +295,23 @@ const About = () => {
                                 <Globe size={28} className="text-brand" />
                             </div>
                             <h3 className="text-3xl font-bold color-brand-heading mb-5">Our Vision</h3>
-                            <p className="text-slate-600 leading-relaxed text-lg">
-                                Your Excellence in Global Enlightenment.
+                            <p className="leading-relaxed font-semibold text-lg mb-1">
+                                Transforming challenges into opportunities
                             </p>
                             <p className="text-slate-600 leading-relaxed text-lg">
 
-                                We envision a world where every business, regardless of size, has access to the tools and expertise needed to succeed globally. Transforming challenges into opportunities and potential into achievement—that is the Bodh prima promise.                            </p>
+                                We envision a world where every business, regardless of size, has access to the tools and expertise needed to succeed globally. Transforming challenges into opportunities and potential into achievement—that is the Bodh prima promise.
+                            </p>
                         </div>
                     </div>
+
+                    <p className="leading-relaxed text-lg text-justify lg:text-center mt-12 text-slate-600">
+                        In today’s interconnected world, we understand that small businesses, local manufacturers, and MSMEs need robust, streamlined solutions to break free from traditional boundaries and compete on an international level—making global trade accessible to all.
+                        </p>
+                    <p className="leading-relaxed text-lg text-justify lg:text-center mt-2 text-slate-600">
+    
+                        Supported by a dedicated team of professionals, we connect seamlessly with our international partners to understand and address unique business needs—ensuring every partnership is a foundation for mutual growth and long-term success.
+                    </p>
                 </div>
             </section>
 
@@ -315,7 +329,7 @@ const About = () => {
                             Our Core Values
                         </h2>
                         <p className="text-slate-500 max-w-xl mx-auto mt-4 leading-relaxed">
-                            Every decision we make is guided by a set of principles that define who we are and how we serve our global partners.
+                            These core values shape every decision we make and every relationship we build
                         </p>
                     </div>
 
