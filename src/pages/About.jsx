@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { ArrowRight, Globe, Shield, Zap, Users, Heart, Target, Award, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import bohdPrima from "../assets/bohdprima.avif";
@@ -6,6 +6,50 @@ import heroImg from "../assets/hero.jpg";
 import shipImage from "../assets/ship-Photoroom.png";
 import shipThree from "../assets/ship3.png";
 import containerImage from "../assets/container-image.webp";
+
+// ─── FlipCard component: hover on desktop, tap on mobile ─────────────────────
+function FlipCard({ children, className = "" }) {
+    const [flipped, setFlipped] = useState(false);
+    const lockRef = useRef(false);
+    const isTouch = useRef(false);
+
+    const handleClick = useCallback(() => {
+        // On touch/mobile devices, toggle on tap
+        if (lockRef.current) return;
+        isTouch.current = true;
+        lockRef.current = true;
+        setFlipped((f) => !f);
+        setTimeout(() => { lockRef.current = false; }, 700);
+    }, []);
+
+    const handleMouseEnter = useCallback(() => {
+        // On desktop (hover devices), flip on hover — skip if touch was used
+        if (isTouch.current) return;
+        if (lockRef.current) return;
+        setFlipped(true);
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
+        if (isTouch.current) return;
+        setFlipped(false);
+    }, []);
+
+    return (
+        <article
+            className={`h-[430px]  cursor-pointer ${className}`}
+            onClick={handleClick}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            <div
+                className="relative h-full w-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d]"
+                style={{ transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
+            >
+                {children}
+            </div>
+        </article>
+    );
+}
 
 const About = () => {
     const coreValues = [
@@ -122,8 +166,31 @@ const About = () => {
                 <div className="container mx-auto px-6 lg:px-8 max-w-[2400px] relative z-10">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-                        {/* Image column */}
-                        <div className="relative">
+                        {/* Text column — shows first on mobile */}
+                        <div className="order-1 lg:order-2">
+                            <span className="text-brand font-bold tracking-widest uppercase text-sm mb-4 block">Who We Are</span>
+                            <h2 className="color-brand-heading text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                                A Rising Force in Global Trade
+                            </h2>
+
+                            <p className="text-slate-600 leading-relaxed mb-8">
+                                Empowering Global Trade Since 2021 , Bodh prima is built on over 5 years of experience in the Export & Import industry.
+                            </p>
+                            <p className="text-slate-600 leading-relaxed mb-8">
+                                Bodh prima is a rising export house which believes in building trust and lasting business relationships worldwide. </p>
+
+                            {/* At Bodh prima, our name reflects a blend of timeless wisdom and modern excellence. It drives our mission to deliver innovative solutions that help businesses succeed globally and stay ahead in a changing market.</p> */}
+
+                            <p className="text-slate-600 leading-relaxed mb-8">
+                                Bodh prima believes in building trust and lasting business relationships worldwide. As a rising trade house, we are navigating challenges and perfecting client-focused approaches. In today's competitive landscape, we understand that success is not about shortcuts —it's about strategic foresight and continuous growth.
+
+                                {/* Bodh prima symbolizes a fresh awakening in thought, innovation, and global trade, elevating local potential to achieve global standards in pursuit of Your Excellence in Global Enlightenment.            */}
+                            </p>
+
+                        </div>
+
+                        {/* Image column — shows second on mobile */}
+                        <div className="relative order-2 lg:order-1">
                             <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
                                 <img
                                     src={bohdPrima}
@@ -145,29 +212,6 @@ const About = () => {
 
                             {/* Decorative accent line */}
                             {/* <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-brand-accent/30 rounded-2xl pointer-events-none"></div> */}
-                        </div>
-
-                        {/* Text column */}
-                        <div>
-                            <span className="text-brand font-bold tracking-widest uppercase text-sm mb-4 block">Who We Are</span>
-                            <h2 className="color-brand-heading text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                                A Rising Force in Global Trade
-                            </h2>
-
-                            <p className="text-slate-600 leading-relaxed mb-8">
-                                Empowering Global Trade Since 2021 , Bodh prima is built on over 5 years of experience in the Export & Import industry.
-                            </p>
-                            <p className="text-slate-600 leading-relaxed mb-8">
-                                Bodh prima is a rising export house which believes in building trust and lasting business relationships worldwide. </p>
-
-                            {/* At Bodh prima, our name reflects a blend of timeless wisdom and modern excellence. It drives our mission to deliver innovative solutions that help businesses succeed globally and stay ahead in a changing market.</p> */}
-
-                            <p className="text-slate-600 leading-relaxed mb-8">
-                                Bodh prima believes in building trust and lasting business relationships worldwide. As a rising trade house, we are navigating challenges and perfecting client-focused approaches. In today’s competitive landscape, we understand that success is not about shortcuts —it’s about strategic foresight and continuous growth.
-
-                                {/* Bodh prima symbolizes a fresh awakening in thought, innovation, and global trade, elevating local potential to achieve global standards in pursuit of Your Excellence in Global Enlightenment.            */}
-                            </p>
-
                         </div>
                     </div>
                 </div>
@@ -192,67 +236,57 @@ const About = () => {
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-8">
-                        <article className="group h-[430px] [perspective:1200px]">
-                            <div className="relative h-full w-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                                <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-xl border border-slate-100 [backface-visibility:hidden]">
-                                    <img
-                                        src="https://bodh-prima.pages.dev/images/4d31d8abc123f2696f3fa1c587653fa7f6b8720d.avif"
-                                        alt="Cargo operations representing Bodh"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/35 to-transparent"></div>
-                                    <div className="absolute top-6 left-6 w-12 h-12 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center">
-                                        <TrendingUp size={24} className="text-brand-accent" />
-                                    </div>
-                                    <div className="absolute bottom-8 left-8 right-8 text-white">
-                                        {/* <span className="inline-block text-brand-accent uppercase text-xs font-bold tracking-[0.2em] mb-3">
-                                            "Bodh"
-                                        </span> */}
-                                        <h3 className="text-3xl font-bold mb-2">Awakening With Insight</h3>
-                                        <p className="text-white/80 text-sm uppercase tracking-widest">Hover to flip</p>
-                                    </div>
+                        <FlipCard>
+                            <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-xl border border-slate-100 [backface-visibility:hidden]">
+                                <img
+                                    src="https://bodh-prima.pages.dev/images/4d31d8abc123f2696f3fa1c587653fa7f6b8720d.avif"
+                                    alt="Cargo operations representing Bodh"
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/35 to-transparent"></div>
+                                <div className="absolute top-6 left-6 w-12 h-12 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center">
+                                    <TrendingUp size={24} className="text-brand-accent" />
                                 </div>
-
-                                <div className="absolute inset-0 rounded-3xl p-9 bg-white border border-slate-100 shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center">
-                                    <span className="text-brand font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
-                                    <h3 className="text-3xl font-bold text-slate-900 mb-5">"Bodh"</h3>
-                                    <p className="text-slate-600 leading-relaxed text-lg">
-                                        Symbolizes awakening, enlightenment, and deep insight - our commitment to continuous learning and innovation. Foundation of how we help you navigate complex global markets with clarity and strategic foresight.
-                                    </p>
+                                <div className="absolute bottom-8 left-8 right-8 text-white">
+                                    <h3 className="text-3xl font-bold mb-2">Awakening With Insight</h3>
+                                    <p className="text-white/80 text-sm uppercase tracking-widest">Tap to flip</p>
                                 </div>
                             </div>
-                        </article>
 
-                        <article className="group h-[430px] [perspective:1200px]">
-                            <div className="relative h-full w-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                                <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-xl border border-white/10 [backface-visibility:hidden]">
-                                    <img
-                                        src="https://bodh-prima.pages.dev/images/a6da7076c8328a6d129c36646e705dcb2afebc22.avif"
-                                        alt="Container operations representing prima"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-[hsl(195_70%_25%/0.45)] to-transparent"></div>
-                                    <div className="absolute top-6 left-6 w-12 h-12 rounded-xl bg-brand-accent/20 backdrop-blur-sm border border-brand-accent/35 flex items-center justify-center">
-                                        <Award size={24} className="text-brand-accent" />
-                                    </div>
-                                    <div className="absolute bottom-8 left-8 right-8 text-white">
-                                        {/* <span className="inline-block text-brand-accent uppercase text-xs font-bold tracking-[0.2em] mb-3">
-                                            "prima"
-                                        </span> */}
-                                        <h3 className="text-3xl font-bold mb-2">First. Best. Trusted.</h3>
-                                        <p className="text-white/80 text-sm uppercase tracking-widest">Hover to flip</p>
-                                    </div>
+                            <div className="absolute inset-0 rounded-3xl p-9 bg-white border border-slate-100 shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center">
+                                <span className="text-brand font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
+                                <h3 className="text-3xl font-bold text-slate-900 mb-5">"Bodh"</h3>
+                                <p className="text-slate-600 leading-relaxed text-lg">
+                                    Symbolizes awakening, enlightenment, and deep insight - our commitment to continuous learning and innovation. Foundation of how we help you navigate complex global markets with clarity and strategic foresight.
+                                </p>
+                            </div>
+                        </FlipCard>
+
+                        <FlipCard>
+                            <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-xl border border-white/10 [backface-visibility:hidden]">
+                                <img
+                                    src="https://bodh-prima.pages.dev/images/a6da7076c8328a6d129c36646e705dcb2afebc22.avif"
+                                    alt="Container operations representing prima"
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-[hsl(195_70%_25%/0.45)] to-transparent"></div>
+                                <div className="absolute top-6 left-6 w-12 h-12 rounded-xl bg-brand-accent/20 backdrop-blur-sm border border-brand-accent/35 flex items-center justify-center">
+                                    <Award size={24} className="text-brand-accent" />
                                 </div>
-
-                                <div className="absolute inset-0 rounded-3xl p-9 bg-gradient-to-br from-[hsl(195_70%_28%)] to-[hsl(175_60%_33%)] border border-white/10 shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center">
-                                    <span className="text-brand-accent font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
-                                    <h3 className="text-3xl font-bold text-white mb-5">"prima"</h3>
-                                    <p className="text-white/85 leading-relaxed text-lg">
-                                        Means first and best - reflecting our focus on excellence and leadership. A promise to set industry benchmarks and delivering top-tier services to all our valued clients.
-                                    </p>
+                                <div className="absolute bottom-8 left-8 right-8 text-white">
+                                    <h3 className="text-3xl font-bold mb-2">First. Best. Trusted.</h3>
+                                    <p className="text-white/80 text-sm uppercase tracking-widest">Tap to flip</p>
                                 </div>
                             </div>
-                        </article>
+
+                            <div className="absolute inset-0 rounded-3xl p-9 bg-gradient-to-br from-[hsl(195_70%_28%)] to-[hsl(175_60%_33%)] border border-white/10 shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center">
+                                <span className="text-brand-accent font-bold uppercase text-xs tracking-[0.2em] mb-4">Meaning</span>
+                                <h3 className="text-3xl font-bold text-white mb-5">"prima"</h3>
+                                <p className="text-white/85 leading-relaxed text-lg">
+                                    Means first and best - reflecting our focus on excellence and leadership. A promise to set industry benchmarks and delivering top-tier services to all our valued clients.
+                                </p>
+                            </div>
+                        </FlipCard>
                     </div>
                     <p className="text-slate-500 max-w-3xl mx-auto mt-4 leading-relaxed text-center">
                         Together, our name is a journey of growth—it’s a promise to guide businesses and individuals toward insightful leadership and outstanding success on the international stage.</p>
