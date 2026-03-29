@@ -36,8 +36,7 @@ const HeroMobile = () => {
                 </span>
 
                 <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-color-brand-light text-yellow-500 leading-tight mb-3 sm:mb-4 inline-block tracking-[0.02em] [font-variant-ligatures:none]">
-                    Bodh prima
-                    <span className="text-white text-2xl lg:text-4xl ml-2 font-normal mt-2 lg:mt-6">&reg;</span>
+                    Bodh prima<sup className="text-white text-xl sm:text-xl md:text-xl lg:text-3xl font-normal align-super relative -top-3 sm:-top-4 md:-top-5 lg:-top-7 ml-0.5 sm:ml-1">&reg;</sup>
                 </h1>
 
                 <p className="text-white text-lg md:text-2xl font-light mb-4 tracking-wide">

@@ -31,8 +31,9 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <Link
             to="/"
-            className={`text-2xl font-bold tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
+            className={`relative text-2xl font-bold tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
             <img src="logo-bp.png" alt="Logo" className="w-auto h-16" />
+            <sup className={`absolute top-0 -right-4 text-[30px] font-thin ${isScrolled ? 'text-slate-900' : 'text-white'}`}>&reg;</sup>
           </Link>
         </div>
 
