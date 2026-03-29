@@ -33,6 +33,27 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+// ─── Flip animation styles ────────────────────────────────────────────────────
+const flipAnimationStyles = `
+  @keyframes cardFlip {
+    0% { transform: rotateX(0deg); opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { transform: rotateX(0deg); opacity: 1; }
+  }
+  .card-flip {
+    animation: cardFlip 0.4s ease-in-out;
+    transform-style: preserve-3d;
+  }
+`;
+
+// ─── Inject flip animation styles ────────────────────────────────────────────
+if (typeof document !== "undefined" && !document.getElementById("flip-animation-styles")) {
+  const style = document.createElement("style");
+  style.id = "flip-animation-styles";
+  style.innerHTML = flipAnimationStyles;
+  document.head.appendChild(style);
+}
+
 // ─── Real API + Auth imports (adjust path as needed) ─────────────────────────
 import {
   clearAdminSession,
@@ -367,12 +388,12 @@ function OverviewPage({ blogs, leads, profile, backendStatus, onRefresh, isLoadi
       </div>
 
       {/* Recent blogs */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-6">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-6">
         <SectionHeader title="Recent Blogs" subtitle="Latest posts and their status" />
         <div className="mt-4 space-y-3">
           {isLoading ? [1,2,3].map((i) => <SkeletonCard key={i} />) : blogs.slice(0, 4).map((blog) => (
-            <div key={blog._id} className="flex items-center gap-3 rounded-2xl bg-slate-50 p-3">
-              <div className={`rounded-xl p-2 ${blog.status === "published" ? "bg-emerald-100" : "bg-amber-100"}`}>
+            <div key={blog._id} className="flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl bg-slate-50 p-3">
+              <div className={`flex h-10 w-10 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl ${blog.status === "published" ? "bg-emerald-100" : "bg-amber-100"}`}>
                 <FileText size={16} className={blog.status === "published" ? "text-emerald-600" : "text-amber-600"} />
               </div>
               <div className="min-w-0 flex-1">
@@ -389,11 +410,11 @@ function OverviewPage({ blogs, leads, profile, backendStatus, onRefresh, isLoadi
       </div>
 
       {/* Recent leads */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-6">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-6">
         <SectionHeader title="Recent Leads" subtitle="Latest enquiries captured" />
         <div className="mt-4 space-y-3">
           {isLoading ? [1,2,3].map((i) => <SkeletonCard key={i} />) : leads.slice(0, 4).map((lead) => (
-            <div key={lead._id} className="flex items-center gap-3 rounded-2xl bg-slate-50 p-3">
+            <div key={lead._id} className="flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl bg-slate-50 p-3">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#0d5e65]/10 text-sm font-bold text-[#0d5e65]">
                 {lead.name.charAt(0)}
               </div>
@@ -421,9 +442,19 @@ function BlogsPage({ blogs, isLoading, token, onRefresh }) {
   const [isSaving,     setIsSaving]     = useState(false);
   const [uploadTarget, setUploadTarget] = useState("");
   const [expandedId,   setExpandedId]   = useState(null);
+  const [animatingId,  setAnimatingId]  = useState("");
   const [toast,        setToast]        = useState({ type: "", text: "" });
 
   const showToast = (type, text) => { setToast({ type, text }); setTimeout(() => setToast({ type: "", text: "" }), 4000); };
+
+  const toggleBlogExpand = (blogId) => {
+    if (animatingId === blogId) return; // Prevent rapid clicks
+    setAnimatingId(blogId);
+    setTimeout(() => {
+      setExpandedId(expandedId === blogId ? null : blogId);
+      setAnimatingId("");
+    }, 200);
+  };
 
   const resetForm = () => {
     setEditingId("");
@@ -519,15 +550,15 @@ function BlogsPage({ blogs, isLoading, token, onRefresh }) {
       <Toast message={toast.text} type={toast.type} onClose={() => setToast({ type: "", text: "" })} />
 
       {/* ── Editor ── */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-7">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
           <SectionHeader
             title={editingId ? "Edit Blog Post" : "New Blog Post"}
             subtitle="Draft posts stay private until published"
           />
           {editingId && (
             <button onClick={resetForm}
-              className="flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
               <X size={14} /> Cancel edit
             </button>
           )}
@@ -657,7 +688,7 @@ function BlogsPage({ blogs, isLoading, token, onRefresh }) {
       </div>
 
       {/* ── Inventory ── */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-7">
         <SectionHeader title="Blog Inventory" subtitle="Edit drafts, publish articles, remove posts" badge={`${blogs.length} posts`} />
         <div className="mt-5 space-y-3">
           {isLoading && [1,2,3].map((i) => <SkeletonCard key={i} />)}
@@ -667,8 +698,10 @@ function BlogsPage({ blogs, isLoading, token, onRefresh }) {
             </div>
           )}
           {blogs.map((blog) => (
-            <div key={blog._id} className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
-              <div className="flex items-center gap-3 p-4">
+            <div key={blog._id} className="overflow-hidden rounded-2xl sm:rounded-2xl border border-slate-100 bg-slate-50">
+              <button onClick={() => toggleBlogExpand(blog._id)}
+                className={`w-full flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-3 sm:p-4 text-left transition-all ${animatingId === blog._id ? "card-flip" : ""}`}
+                disabled={animatingId === blog._id}>
                 <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl
                   ${blog.status === "published" ? "bg-emerald-100" : "bg-amber-100"}`}>
                   <FileText size={16} className={blog.status === "published" ? "text-emerald-600" : "text-amber-600"} />
@@ -679,30 +712,31 @@ function BlogsPage({ blogs, isLoading, token, onRefresh }) {
                     {blog.authorName} · {getRoleLabel(blog.authorRole)} · {formatDate(blog.updatedAt || blog.createdAt)}
                   </p>
                 </div>
-                <StatusBadge status={blog.status} />
-                <button onClick={() => setExpandedId(expandedId === blog._id ? null : blog._id)}
-                  className="shrink-0 rounded-xl p-2 text-slate-400 hover:bg-slate-200">
-                  <MoreVertical size={16} />
-                </button>
-              </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <StatusBadge status={blog.status} />
+                  <MoreVertical size={16} className={`text-slate-400 transition-transform ${expandedId === blog._id ? "rotate-90" : ""}`} />
+                </div>
+              </button>
 
               {expandedId === blog._id && (
-                <div className="flex flex-wrap items-center gap-2 border-t border-slate-200 bg-white p-3 px-4">
-                  <span className="mr-auto text-xs text-slate-400">/{blog.slug}</span>
-                  <button onClick={() => startEdit(blog)}
-                    className="flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50">
-                    <Edit3 size={12} /> Edit
-                  </button>
-                  {blog.status !== "published" && (
-                    <button onClick={() => handlePublish(blog._id)}
-                      className="flex items-center gap-1.5 rounded-xl bg-[#0d5e65] px-3 py-2 text-xs font-semibold text-white hover:bg-[#0a4f56]">
-                      <Eye size={12} /> Publish
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 border-t border-slate-200 bg-white p-3 px-4 sm:gap-3">
+                  <span className="text-xs text-slate-400">/{blog.slug}</span>
+                  <div className="flex flex-col sm:flex-row gap-2 sm:ml-auto">
+                    <button onClick={() => startEdit(blog)}
+                      className="flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+                      <Edit3 size={12} /> Edit
                     </button>
-                  )}
-                  <button onClick={() => handleDelete(blog._id)}
-                    className="flex items-center gap-1.5 rounded-xl border border-rose-200 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50">
-                    <Trash2 size={12} /> Delete
-                  </button>
+                    {blog.status !== "published" && (
+                      <button onClick={() => handlePublish(blog._id)}
+                        className="flex items-center justify-center gap-1.5 rounded-xl bg-[#0d5e65] px-3 py-2 text-xs font-semibold text-white hover:bg-[#0a4f56]">
+                        <Eye size={12} /> Publish
+                      </button>
+                    )}
+                    <button onClick={() => handleDelete(blog._id)}
+                      className="flex items-center justify-center gap-1.5 rounded-xl border border-rose-200 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50">
+                      <Trash2 size={12} /> Delete
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -717,12 +751,22 @@ function BlogsPage({ blogs, isLoading, token, onRefresh }) {
 function LeadsPage({ leads, setLeads, isLoading, token }) {
   const [notes,        setNotes]        = useState({});
   const [expanded,     setExpanded]     = useState(null);
+  const [animatingId,  setAnimatingId]  = useState("");
   const [actionId,     setActionId]     = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
   const [search,       setSearch]       = useState("");
   const [toast,        setToast]        = useState({ type: "", text: "" });
 
   const showToast = (type, text) => { setToast({ type, text }); setTimeout(() => setToast({ type: "", text: "" }), 4000); };
+
+  const toggleLeadExpand = (leadId) => {
+    if (animatingId === leadId) return; // Prevent rapid clicks
+    setAnimatingId(leadId);
+    setTimeout(() => {
+      setExpanded(expanded === leadId ? null : leadId);
+      setAnimatingId("");
+    }, 200);
+  };
 
   const handleUpdate = async (leadId, status) => {
     try {
@@ -749,9 +793,9 @@ function LeadsPage({ leads, setLeads, isLoading, token }) {
       <Toast message={toast.text} type={toast.type} onClose={() => setToast({ type: "", text: "" })} />
 
       {/* Search + filter */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-6">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-6">
         <SectionHeader title="Lead Inbox" subtitle="Manage and tag your enquiries" badge={`${leads.length} leads`} />
-        <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-4 flex flex-col gap-3">
           <div className="relative flex-1">
             <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name or email…"
@@ -760,7 +804,7 @@ function LeadsPage({ leads, setLeads, isLoading, token }) {
           <div className="flex gap-2 overflow-x-auto pb-1">
             {["all", "new", "contacted", "interested", "not-interested"].map((s) => (
               <button key={s} onClick={() => setFilterStatus(s)}
-                className={`shrink-0 rounded-xl px-3 py-2 text-xs font-semibold capitalize transition
+                className={`shrink-0 rounded-xl px-3 py-2 text-xs font-semibold capitalize transition whitespace-nowrap
                   ${filterStatus === s ? "bg-[#0d5e65] text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}>
                 {s === "not-interested" ? "Not Interested" : s}
               </button>
@@ -783,8 +827,9 @@ function LeadsPage({ leads, setLeads, isLoading, token }) {
           const isOpen = expanded === lead._id;
           return (
             <div key={lead._id} className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm">
-              <button className="flex w-full items-center gap-3 p-4 text-left md:p-5"
-                onClick={() => setExpanded(isOpen ? null : lead._id)}>
+              <button className={`flex w-full flex-col sm:flex-row sm:items-center gap-3 p-4 text-left md:p-5 transition-all ${animatingId === lead._id ? "card-flip" : ""}`}
+                onClick={() => toggleLeadExpand(lead._id)}
+                disabled={animatingId === lead._id}>
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0d5e65]/10 text-sm font-bold text-[#0d5e65]">
                   {lead.name.charAt(0)}
                 </div>
@@ -813,7 +858,7 @@ function LeadsPage({ leads, setLeads, isLoading, token }) {
                   {/* Status buttons */}
                   <div>
                     <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">Update Status</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-col sm:flex-row gap-2">
                       {["contacted", "interested", "not-interested"].map((s) => {
                         const cfg = getStatusCfg(s);
                         return (
@@ -994,11 +1039,11 @@ function UsersPage({ token }) {
       )}
 
       {/* Role reference */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-7">
         <SectionHeader title="Access Roles" subtitle="What each role can and cannot do" />
-        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <div className="mt-5 grid gap-3 grid-cols-1 sm:grid-cols-2">
           {Object.entries(roleDescriptions).map(([role, desc]) => (
-            <div key={role} className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+            <div key={role} className="rounded-2xl border border-slate-100 bg-slate-50 p-3 sm:p-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#0d5e65]/10">
                   <ShieldCheck size={15} className="text-[#0d5e65]" />
@@ -1012,7 +1057,7 @@ function UsersPage({ token }) {
       </div>
 
       {/* Users List */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-7">
         <SectionHeader title="Team Members" subtitle="Manage your team and their access levels" badge={`${users.length} users`} />
         <div className="mt-5 space-y-2">
           {isLoadingUsers && [1,2,3].map((i) => (
@@ -1022,27 +1067,31 @@ function UsersPage({ token }) {
             <p className="py-6 text-center text-sm text-slate-400">No users yet.</p>
           )}
           {!isLoadingUsers && users.map((user) => (
-            <div key={user.id} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition hover:bg-slate-100">
-              <div className="flex flex-1 items-center gap-3 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0d5e65]/10 text-sm font-bold text-[#0d5e65]">
-                  {(user.name || "U").charAt(0)}
+            <div key={user.id} className="rounded-2xl border border-slate-100 bg-slate-50 p-3 sm:p-4 transition hover:bg-slate-100">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0d5e65]/10 text-sm font-bold text-[#0d5e65]">
+                    {(user.name || "U").charAt(0)}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-semibold text-slate-900">{user.name}</p>
+                    <p className="truncate text-xs text-slate-500">{user.email}</p>
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-semibold text-slate-900">{user.name}</p>
-                  <p className="truncate text-xs text-slate-500">{user.email}</p>
-                </div>
-                <StatusBadge status={user.role} />
+                <p className={`self-start sm:self-auto shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${user.role === "admin" ? "bg-[#0d5e65] text-white" : "bg-slate-200 text-slate-600"}`}>
+                  {getRoleLabel(user.role)}
+                </p>
               </div>
-              <div className="flex shrink-0 gap-2">
+              <div className="mt-3 sm:mt-0 flex flex-col sm:flex-row gap-2 sm:justify-end">
                 <button onClick={() => handleResetPasswordClick(user.id, user.name)}
                   disabled={actionInProgress === `reset:${user.id}`}
-                  className="flex items-center gap-1.5 rounded-xl border border-amber-200 px-3 py-2 text-xs font-semibold text-amber-600 hover:bg-amber-50 disabled:opacity-50">
+                  className="flex items-center justify-center gap-1.5 rounded-xl border border-amber-200 px-3 py-2 text-xs font-semibold text-amber-600 hover:bg-amber-50 disabled:opacity-50">
                   <RefreshCcw size={12} className={actionInProgress === `reset:${user.id}` ? "animate-spin" : ""} />
                   Reset
                 </button>
                 <button onClick={() => handleDeleteUser(user.id, user.name)}
                   disabled={actionInProgress === `delete:${user.id}`}
-                  className="flex items-center gap-1.5 rounded-xl border border-rose-200 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 disabled:opacity-50">
+                  className="flex items-center justify-center gap-1.5 rounded-xl border border-rose-200 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 disabled:opacity-50">
                   <Trash2 size={12} />
                   Delete
                 </button>
@@ -1053,41 +1102,41 @@ function UsersPage({ token }) {
       </div>
 
       {/* Create form */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm md:p-7">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0d5e65]/10">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-7">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3 mb-6">
+          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0d5e65]/10 shrink-0">
             <UserPlus size={18} className="text-[#0d5e65]" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-slate-900">Create New User</h2>
-            <p className="text-sm text-slate-500">Invite a team member with a specific role.</p>
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900">Create New User</h2>
+            <p className="text-xs sm:text-sm text-slate-500">Invite a team member with a specific role.</p>
           </div>
         </div>
 
         <form className="space-y-4" onSubmit={handleCreateUser}>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Full Name</label>
               <input value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10"
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 sm:py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10"
                 placeholder="e.g. Rahul Verma" />
             </div>
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Email</label>
               <input type="email" value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10"
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 sm:py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10"
                 placeholder="user@bohdprima.com" />
             </div>
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Password</label>
               <input type="password" value={form.password} onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10"
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 sm:py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10"
                 placeholder="Minimum 8 characters" />
             </div>
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Role</label>
               <select value={form.role} onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10">
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 sm:py-3 text-sm outline-none focus:border-[#0d5e65] focus:ring-4 focus:ring-[#0d5e65]/10">
                 <option value="admin">Admin</option>
                 <option value="collaborator">Collaborator</option>
                 <option value="content-editor">Content Editor</option>
