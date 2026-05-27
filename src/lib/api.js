@@ -164,3 +164,45 @@ export function deleteUser(id, token) {
     token,
   });
 }
+
+export function getAdminCards(token) {
+  return apiRequest('/cards/admin/all', { token });
+}
+
+export function createCard(payload, token) {
+  return apiRequest('/cards', {
+    method: 'POST',
+    body: payload,
+    token,
+  });
+}
+
+export function updateCard(id, payload, token) {
+  return apiRequest(`/cards/${id}`, {
+    method: 'PUT',
+    body: payload,
+    token,
+  });
+}
+
+export function deleteCard(id, token) {
+  return apiRequest(`/cards/${id}`, {
+    method: 'DELETE',
+    token,
+  });
+}
+
+export function uploadCardImage(file, token) {
+  const formData = new FormData();
+  formData.append('image', file);
+
+  return apiRequest('/cards/upload-image', {
+    method: 'POST',
+    body: formData,
+    token,
+  });
+}
+
+export function getCardBySlug(slug) {
+  return apiRequest(`/cards/public/${slug}`);
+}

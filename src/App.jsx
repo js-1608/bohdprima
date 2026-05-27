@@ -11,9 +11,10 @@ import AdminLogin from './pages/admin/AdminLogin';
 function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
+  const isCardRoute = location.pathname.startsWith("/card/");
 
   return (
-    <AppShell showPublicChrome={!isAdminRoute}>
+    <AppShell showPublicChrome={!isAdminRoute && !isCardRoute}>
       <Routes>
         {routes.map((route, index) => (
           <Route key={index} path={route.path} element={route.element} />

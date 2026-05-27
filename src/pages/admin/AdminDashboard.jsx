@@ -30,6 +30,8 @@ import {
   AlertCircle,
   CheckCircle2,
   MoreVertical,
+  CreditCard,
+  Share2,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -77,6 +79,11 @@ import {
   getAllUsers,
   resetUserPassword,
   deleteUser,
+  getAdminCards,
+  createCard,
+  updateCard,
+  deleteCard,
+  uploadCardImage,
 } from "../../lib/api";
 
 // ─── Block helpers ────────────────────────────────────────────────────────────
@@ -223,6 +230,7 @@ const navItems = [
   { id: "overview", label: "Overview",  icon: LayoutDashboard },
   { id: "blogs",    label: "Blogs",     icon: FileText,  permission: "blogs" },
   { id: "leads",    label: "Leads",     icon: Users,     permission: "leads" },
+  { id: "cards",    label: "Business Cards", icon: CreditCard, adminOnly: true },
   { id: "users",    label: "Users",     icon: UserPlus,  adminOnly: true },
 ];
 
@@ -1162,6 +1170,391 @@ function UsersPage({ token }) {
   );
 }
 
+// ─── Business Cards Page ──────────────────────────────────────────────────────
+function CardsPage({ token }) {
+  const [form, setForm] = useState({
+    name: "",
+    title: "",
+    company: "",
+    email: "",
+    phone: "",
+    website: "",
+    address: "",
+    bio: "",
+    avatar: "",
+    logo: "",
+    socialLinks: {
+      linkedin: "",
+      twitter: "",
+      github: "",
+      facebook: "",
+      instagram: "",
+    },
+    theme: "bodh-prima",
+  });
+  const [cards, setCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [uploadTarget, setUploadTarget] = useState("");
+  const [toast, setToast] = useState({ type: "", text: "" });
+  const [editingId, setEditingId] = useState("");
+  const [copiedId, setCopiedId] = useState("");
+
+  const showToast = (type, text) => {
+    setToast({ type, text });
+    setTimeout(() => setToast({ type: "", text: "" }), 4000);
+  };
+
+  const loadCards = async () => {
+    setIsLoading(true);
+    try {
+      const data = await getAdminCards(token);
+      setCards(data || []);
+    } catch (err) {
+      showToast("error", err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadCards();
+  }, [token]);
+
+  const resetForm = () => {
+    setEditingId("");
+    setForm({
+      name: "",
+      title: "",
+      company: "",
+      email: "",
+      phone: "",
+      website: "",
+      address: "",
+      bio: "",
+      avatar: "",
+      logo: "",
+      socialLinks: {
+        linkedin: "",
+        twitter: "",
+        github: "",
+        facebook: "",
+        instagram: "",
+      },
+      theme: "bodh-prima",
+    });
+  };
+
+  const startEdit = (card) => {
+    setEditingId(card._id);
+    setForm({
+      name: card.name,
+      title: card.title || "",
+      company: card.company || "",
+      email: card.email || "",
+      phone: card.phone || "",
+      website: card.website || "",
+      address: card.address || "",
+      bio: card.bio || "",
+      avatar: card.avatar || "",
+      logo: card.logo || "",
+      socialLinks: {
+        linkedin: card.socialLinks?.linkedin || "",
+        twitter: card.socialLinks?.twitter || "",
+        github: card.socialLinks?.github || "",
+        facebook: card.socialLinks?.facebook || "",
+        instagram: card.socialLinks?.instagram || "",
+      },
+      theme: card.theme || "modern-dark",
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.name) return showToast("error", "Name is required.");
+    setIsSaving(true);
+    try {
+      if (editingId) {
+        await updateCard(editingId, form, token);
+        showToast("success", "Business card updated.");
+      } else {
+        await createCard(form, token);
+        showToast("success", "Business card created.");
+      }
+      resetForm();
+      await loadCards();
+    } catch (err) {
+      showToast("error", err.message);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleDelete = async (id, name) => {
+    if (!window.confirm(`Are you sure you want to delete ${name}'s business card?`)) return;
+    try {
+      await deleteCard(id, token);
+      showToast("success", "Business card deleted.");
+      if (editingId === id) resetForm();
+      await loadCards();
+    } catch (err) {
+      showToast("error", err.message);
+    }
+  };
+
+  const handleUploadImage = async (field, file) => {
+    if (!file) return;
+    try {
+      setUploadTarget(field);
+      const res = await uploadCardImage(file, token);
+      setForm((prev) => ({
+        ...prev,
+        [field]: res.image || "",
+      }));
+      showToast("success", `${field.charAt(0).toUpperCase() + field.slice(1)} uploaded.`);
+    } catch (err) {
+      showToast("error", err.message);
+    } finally {
+      setUploadTarget("");
+    }
+  };
+
+  const copyLink = async (slug, id) => {
+    const url = `${window.location.origin}/card/${slug}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(""), 3000);
+      showToast("success", "Card link copied to clipboard!");
+    } catch (err) {
+      showToast("error", "Failed to copy link.");
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <Toast message={toast.text} type={toast.type} onClose={() => setToast({ type: "", text: "" })} />
+
+      {/* Editor Card */}
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-7">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+          <SectionHeader
+            title={editingId ? "Edit Business Card" : "New Business Card"}
+            subtitle="Create premium digital cards to share with your clients"
+          />
+          {editingId && (
+            <button onClick={resetForm}
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+              <X size={14} /> Cancel Edit
+            </button>
+          )}
+        </div>
+
+        <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+            {/* Name */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Full Name *</label>
+              <input value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10"
+                placeholder="e.g. John Doe" required />
+            </div>
+
+            {/* Title */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Job Title</label>
+              <input value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10"
+                placeholder="e.g. Logistics Manager" />
+            </div>
+
+            {/* Company */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Company</label>
+              <input value={form.company} onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10"
+                placeholder="e.g. Bohd Prima" />
+            </div>
+
+            {/* Theme */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Design Theme</label>
+              <select value={form.theme} onChange={(e) => setForm((f) => ({ ...f, theme: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10">
+                <option value="bodh-prima">Bodh Prima (Teal & Gold - Default)</option>
+                <option value="modern-dark">Modern Dark (Gold accents)</option>
+                <option value="glassmorphism">Glassmorphism (Translucent frosted)</option>
+                <option value="sunset-glow">Sunset Glow (Orange/Pink)</option>
+                <option value="ocean-breeze">Ocean Breeze (Teal/Emerald)</option>
+                <option value="midnight-gold">Midnight Luxury Gold</option>
+              </select>
+            </div>
+
+            {/* Phone */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Phone Number</label>
+              <input value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10"
+                placeholder="e.g. +91 98765 43210" />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Email Address</label>
+              <input type="email" value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10"
+                placeholder="e.g. name@company.com" />
+            </div>
+
+            {/* Website */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Website URL</label>
+              <input value={form.website} onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10"
+                placeholder="e.g. www.bohdprima.com" />
+            </div>
+
+            {/* Address */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Office Address</label>
+              <input value={form.address} onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
+                className="w-full rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10"
+                placeholder="e.g. Sector 5, Kolkata, India" />
+            </div>
+          </div>
+
+          {/* Bio */}
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">Bio / Description</label>
+            <textarea value={form.bio} onChange={(e) => setForm((f) => ({ ...f, bio: e.target.value }))}
+              rows={2} placeholder="Write a short personal or professional bio…"
+              className="w-full resize-none rounded-2xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#0d5e65] focus:ring-2 focus:ring-[#0d5e65]/10" />
+          </div>
+
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+            {/* Avatar image */}
+            <div className="rounded-2xl border border-slate-200 p-4 space-y-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">Profile Photo</label>
+              <input value={form.avatar} onChange={(e) => setForm((f) => ({ ...f, avatar: e.target.value }))}
+                className="w-full rounded-xl border border-slate-200 px-3 py-2 text-xs outline-none focus:border-[#0d5e65]"
+                placeholder="Image URL or upload below" />
+              <input type="file" accept="image/*" onChange={(e) => handleUploadImage("avatar", e.target.files?.[0])}
+                className="block w-full text-xs text-slate-500 file:mr-2 file:rounded-full file:border-0 file:bg-[#0d5e65] file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white hover:file:bg-[#0a4f56]" />
+              {uploadTarget === "avatar" && <p className="text-xs text-slate-400">Uploading photo…</p>}
+              {form.avatar && (
+                <img src={resolveMediaUrl(form.avatar)} alt="Profile preview" className="h-20 w-20 rounded-xl object-cover border" />
+              )}
+            </div>
+
+            {/* Logo image */}
+            <div className="rounded-2xl border border-slate-200 p-4 space-y-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">Company Logo</label>
+              <input value={form.logo} onChange={(e) => setForm((f) => ({ ...f, logo: e.target.value }))}
+                className="w-full rounded-xl border border-slate-200 px-3 py-2 text-xs outline-none focus:border-[#0d5e65]"
+                placeholder="Logo URL or upload below" />
+              <input type="file" accept="image/*" onChange={(e) => handleUploadImage("logo", e.target.files?.[0])}
+                className="block w-full text-xs text-slate-500 file:mr-2 file:rounded-full file:border-0 file:bg-[#0d5e65] file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white hover:file:bg-[#0a4f56]" />
+              {uploadTarget === "logo" && <p className="text-xs text-slate-400">Uploading logo…</p>}
+              {form.logo && (
+                <img src={resolveMediaUrl(form.logo)} alt="Logo preview" className="h-12 max-w-[120px] object-contain border p-1 rounded-xl bg-slate-50" />
+              )}
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="rounded-2xl border border-slate-200 p-4">
+            <h3 className="text-sm font-bold text-slate-700 mb-3">Social Connections</h3>
+            <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+              {["linkedin", "twitter", "github", "facebook", "instagram"].map((key) => (
+                <div key={key}>
+                  <label className="mb-1 block text-xs capitalize font-semibold text-slate-500">{key}</label>
+                  <input
+                    value={form.socialLinks[key] || ""}
+                    onChange={(e) => setForm((f) => ({
+                      ...f,
+                      socialLinks: { ...f.socialLinks, [key]: e.target.value },
+                    }))}
+                    className="w-full rounded-xl border border-slate-200 px-3 py-2 text-xs outline-none focus:border-[#0d5e65]"
+                    placeholder={`Username or URL`}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button type="submit" disabled={isSaving}
+            className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#0a2c38,#0d5e65_60%,#e4af47)] py-3.5 text-sm font-bold text-white shadow-lg shadow-[#0d5e65]/20 transition hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60">
+            {editingId ? <PenSquare size={16} /> : <Plus size={16} />}
+            {isSaving ? "Saving Card…" : editingId ? "Update Business Card" : "Create Business Card"}
+          </button>
+        </form>
+      </div>
+
+      {/* Inventory list */}
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-sm md:p-7">
+        <SectionHeader title="Active Business Cards" subtitle="Create as many as you need. Share links or open details on screen." badge={`${cards.length} cards`} />
+        <div className="mt-5 space-y-3">
+          {isLoading && [1, 2].map((i) => <SkeletonCard key={i} />)}
+          {!isLoading && cards.length === 0 && (
+            <p className="py-6 text-center text-sm text-slate-400">No business cards created yet. Fill out the form above to add one.</p>
+          )}
+          {cards.map((card) => (
+            <div key={card._id} className="rounded-2xl border border-slate-100 bg-slate-50 p-4 transition hover:bg-slate-100/70">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  {card.avatar ? (
+                    <img src={resolveMediaUrl(card.avatar)} alt={card.name} className="h-12 w-12 rounded-xl object-cover border" />
+                  ) : (
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#0d5e65]/10 text-base font-bold text-[#0d5e65]">
+                      {card.name.charAt(0)}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-semibold text-slate-900 truncate">{card.name}</p>
+                    <p className="text-xs text-slate-500 truncate">
+                      {card.title ? `${card.title}` : ""} {card.company ? `· ${card.company}` : ""}
+                    </p>
+                    <span className="mt-1 inline-flex items-center rounded-full bg-slate-200/60 px-2 py-0.5 text-[10px] font-semibold text-slate-600 capitalize">
+                      Theme: {card.theme}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <button onClick={() => copyLink(card.slug, card._id)}
+                    className="flex items-center gap-1 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50">
+                    <Share2 size={12} />
+                    {copiedId === card._id ? "Copied!" : "Copy Link"}
+                  </button>
+
+                  <a href={`/card/${card.slug}`} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-1 rounded-xl border border-[#0d5e65]/20 px-3 py-1.5 text-xs font-semibold text-[#0d5e65] bg-white hover:bg-[#0d5e65]/5">
+                    <Eye size={12} />
+                    View
+                  </a>
+
+                  <button onClick={() => startEdit(card)}
+                    className="flex items-center gap-1 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50">
+                    <Edit3 size={12} />
+                    Edit
+                  </button>
+
+                  <button onClick={() => handleDelete(card._id, card.name)}
+                    className="flex items-center gap-1 rounded-xl border border-rose-200 px-3 py-1.5 text-xs font-semibold text-rose-600 bg-white hover:bg-rose-50">
+                    <Trash2 size={12} />
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Root ─────────────────────────────────────────────────────────────────────
 export default function AdminDashboard() {
   const token    = getAdminToken();
@@ -1211,6 +1604,7 @@ export default function AdminDashboard() {
     overview: "Dashboard Overview",
     blogs:    "Blog Management",
     leads:    "Lead Inbox",
+    cards:    "Business Card Management",
     users:    "User Management",
   };
 
@@ -1271,6 +1665,10 @@ export default function AdminDashboard() {
             )}
             {page === "leads"  && (canLeads
               ? <LeadsPage leads={leads} setLeads={setLeads} isLoading={isLoading} token={token} />
+              : <AccessDenied />
+            )}
+            {page === "cards"  && (isAdmin
+              ? <CardsPage token={token} />
               : <AccessDenied />
             )}
             {page === "users"  && (isAdmin

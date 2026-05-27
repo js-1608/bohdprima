@@ -8,6 +8,7 @@ import BlogList from "../pages/BlogList";
 import Services from "../pages/Services";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService";
+import BusinessCardView from "../pages/BusinessCardView";
 
 export const routes = [
     { path: "/", element: <Home /> },
@@ -20,4 +21,5 @@ export const routes = [
     { path: "/contact", element: <Contact /> },
     { path: "/privacy-policy", element: <PrivacyPolicy /> },
     { path: "/terms-of-service", element: <TermsOfService /> },
+    { path: "/card/:slug", element: <BusinessCardView /> },
 ];
