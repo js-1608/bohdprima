@@ -18,27 +18,10 @@ import { getCardBySlug, resolveMediaUrl } from "../lib/api";
 // ─── SVG Logo of Bodh Prima (Teal 'B' intertwined with Gold '1') ───────────────
 const BPLogo = ({
   className = "w-20 h-20",
-  tealColor = "#003b46",
-  goldColor = "#c59b27",
+
 }) => (
-  <svg
-    viewBox="0 0 120 120"
-    className={className}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Teal B with transparent holes via evenodd fill rule */}
-    <path
-      d="M 28 25 H 68 C 79 25, 87 32, 87 43 C 87 51, 80 57, 72 59 C 81 61, 89 68, 89 80 C 89 91, 80 98, 68 98 H 28 V 66 H 15 V 56 H 28 Z M 40 34 H 60 C 65 34, 69 38, 69 43 C 69 48, 65 51, 60 51 H 40 Z M 40 60 H 60 C 65 60, 71 64, 71 70 C 71 76, 65 89, 60 89 H 40 Z"
-      fill={tealColor}
-      fillRule="evenodd"
-    />
-    {/* Gold Intertwined '1' */}
-    <path
-      d="M 52 18 C 44 21, 38 26, 38 32 H 52 V 93 H 44 V 102 H 72 V 93 H 64 V 18 Z"
-      fill={goldColor}
-    />
-  </svg>
+  <img src="https://www.bodhprima.com/logo-bp.png" alt="" className={`${className} object-contain`} />
+
 );
 
 // ─── Font Styles + 3D Flip CSS ──────────────────────────────────────────────────
@@ -76,6 +59,17 @@ const fontStyles = `
   .card-face-back {
     transform: rotateY(180deg);
   }
+
+  /* ── Print container overrides: disable 3D flip for PDF capture ── */
+  #business-card-print-container .card-face {
+    position: relative !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+    inset: unset !important;
+  }
+  #business-card-print-container .card-face-back {
+    transform: none !important;
+  }
 `;
 
 if (
@@ -99,7 +93,7 @@ const getLogoSrc = (card) => {
 const CardLogo = ({ card, className = "w-[72px] h-[72px]", tealColor = "#003b46", goldColor = "#c59b27" }) => {
   const logoSrc = getLogoSrc(card);
   if (logoSrc) {
-    return <img src={logoSrc} alt={card.company || "Logo"} className={`${className} object-contain`} />;
+    return <img src="https://www.bodhprima.com/logo-bp.png" alt={card.company || "Logo"} className={`${className} object-contain`} />;
   }
   return <BPLogo className={className} tealColor={tealColor} goldColor={goldColor} />;
 };
@@ -117,7 +111,7 @@ const CardFront = ({ card }) => {
       {/* Large watermark logo faded on right */}
       <div className="absolute right-[-20px] top-[10px] opacity-[0.06] pointer-events-none">
         {logoSrc ? (
-          <img src={logoSrc} alt="" className="w-[280px] h-[280px] object-contain" />
+          <img src="https://www.bodhprima.com/logo-bp.png" alt="" className="w-[280px] h-[280px] object-contain" />
         ) : (
           <BPLogo
             className="w-[280px] h-[280px]"
@@ -148,10 +142,10 @@ const CardFront = ({ card }) => {
           <div>
             <CardLogo card={card} className="w-[72px] h-[72px]" />
             <div className="mt-1 flex items-end gap-[3px]">
-              <span className="font-cinzel text-[32px] font-black leading-none text-[#003b46]">
+              <span className=" text-[32px] font-medium    leading-none text-[#003b46]">
                 Bodh
               </span>
-              <span className="font-cinzel text-[32px] font-black leading-none text-[#c59b27]">
+              <span className="text-[32px] font-medium  leading-none text-[#c59b27]">
                 prima
               </span>
             </div>
@@ -228,22 +222,9 @@ const CardBack = ({ card }) => {
   return (
     <div className="card-face card-face-back relative h-full w-full overflow-hidden rounded-[16px] shadow-2xl">
       {/* Full teal background */}
-      <div className="absolute inset-0 bg-[#003b46]" />
+      <div className="absolute inset-0 bg-white" />
 
-      {/* White geometric area (bottom-left corner with diamond shapes) */}
-      <svg
-        className="absolute bottom-0 left-0 w-[50%] h-full pointer-events-none"
-        viewBox="0 0 300 320"
-        preserveAspectRatio="none"
-        fill="none"
-      >
-        {/* Main white area */}
-        <path d="M0 0H220L160 320H0V0Z" fill="white" />
-        {/* Small geometric diamonds/triangles as decorative accents */}
-        <path d="M220 0L160 320L200 320L260 0Z" fill="rgba(197, 155, 39, 0.15)" />
-        <path d="M160 320L210 160L190 320Z" fill="rgba(0, 59, 70, 0.06)" />
-        <path d="M100 280L140 220L130 300L90 320H70L100 280Z" fill="rgba(0, 59, 70, 0.04)" />
-      </svg>
+     
 
       {/* Gold diagonal divider line */}
       <svg
@@ -257,7 +238,7 @@ const CardBack = ({ card }) => {
       {/* Large watermark logo on right side */}
       <div className="absolute right-[-30px] top-1/2 -translate-y-1/2 pointer-events-none">
         {getLogoSrc(card) ? (
-          <img src={getLogoSrc(card)} alt="" className="w-[260px] h-[260px] object-contain opacity-30" />
+          <img src="https://www.bodhprima.com/logo-bp.png" alt="" className="w-[260px] h-[260px] object-contain opacity-30" />
         ) : (
           <BPLogo
             className="w-[260px] h-[260px]"
@@ -325,7 +306,7 @@ const CardBack = ({ card }) => {
         <div className="flex w-[45%] items-center justify-center">
           <div className="rounded-[16px] border-[3px] border-[#c59b27] bg-white p-3 shadow-xl">
             <QRCode
-              value={typeof window !== "undefined" ? window.location.href : ""}
+              value={`https://wa.me/${(card.phone || "").replace(/[^0-9]/g, "")}`}
               size={120}
               style={{
                 height: "auto",
@@ -353,6 +334,7 @@ export default function BusinessCardView() {
   const [shareSuccess, setShareSuccess] = useState(false);
   const [flipped, setFlipped] = useState(false);
   const [scale, setScale] = useState(1);
+  const [downloading, setDownloading] = useState(false);
 
   // Responsive Scaling Logic
   useEffect(() => {
@@ -387,30 +369,107 @@ export default function BusinessCardView() {
   }, [slug]);
 
   const handleDownloadPDF = async () => {
-    const element = document.getElementById("business-card-print-container");
-    if (!element) return;
+    const wrapper = document.getElementById("business-card-print-wrapper");
+    const frontEl = document.getElementById("print-card-front");
+    const backEl = document.getElementById("print-card-back");
+    if (!wrapper || !frontEl || !backEl) return;
 
+    setDownloading(true);
     try {
-      const canvas = await html2canvas(element, {
-        scale: 3,
+      // Make the print wrapper visible so html2canvas can capture
+      wrapper.style.position = "fixed";
+      wrapper.style.left = "0";
+      wrapper.style.top = "0";
+      wrapper.style.zIndex = "9999";
+      wrapper.style.opacity = "1";
+      wrapper.style.pointerEvents = "none";
+
+      // Wait for browser paint
+      await new Promise((r) => setTimeout(r, 200));
+
+      // html2canvas can't parse oklch() colors from Tailwind v4.
+      // This callback strips them from the cloned document before parsing.
+      const stripOklch = (clonedDoc) => {
+        const styles = clonedDoc.querySelectorAll('style');
+        styles.forEach((s) => {
+          let css = s.textContent;
+          if (css.includes('oklch')) {
+            // Map common oklch values to hex, catch-all to transparent
+            css = css.replace(/oklch\(\s*1\s+0\s+0\s*(?:\/\s*[\d.]+%?\s*)?\)/g, '#ffffff');
+            css = css.replace(/oklch\(\s*0\s+0\s+0\s*(?:\/\s*[\d.]+%?\s*)?\)/g, '#000000');
+            css = css.replace(/oklch\([^)]*\)/g, 'transparent');
+            s.textContent = css;
+          }
+        });
+      };
+
+      // Capture front card
+      const frontCanvas = await html2canvas(frontEl, {
+        scale: 2,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: "#1a1e24",
+        backgroundColor: "#ffffff",
+        onclone: stripOklch,
       });
 
-      const imgData = canvas.toDataURL("image/png");
+      // Capture back card
+      const backCanvas = await html2canvas(backEl, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#ffffff",
+        onclone: stripOklch,
+      });
+
+      // Hide the wrapper again
+      wrapper.style.position = "absolute";
+      wrapper.style.left = "-9999px";
+      wrapper.style.top = "-9999px";
+      wrapper.style.zIndex = "-1";
+      wrapper.style.opacity = "0";
+
+      // Create PDF - landscape, sized to card proportions
+      const pdfWidth = 550;
+      const pdfHeight = 320;
+
       const pdf = new jsPDF({
-        orientation: "portrait",
+        orientation: "landscape",
         unit: "px",
-        format: [canvas.width / 3, canvas.height / 3],
+        format: [pdfWidth, pdfHeight],
       });
 
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width / 3, canvas.height / 3);
-      pdf.save(
-        `${card.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-card.pdf`
-      );
+      // Page 1 - Front
+      const frontImg = frontCanvas.toDataURL("image/png");
+      pdf.addImage(frontImg, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+      // Page 2 - Back
+      pdf.addPage([pdfWidth, pdfHeight], "landscape");
+      const backImg = backCanvas.toDataURL("image/png");
+      pdf.addImage(backImg, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+      // Use blob-based download for maximum reliability
+      const pdfBlob = pdf.output("blob");
+      const fileName = `${(card.name || "card").toLowerCase().replace(/[^a-z0-9]+/g, "-")}-card.pdf`;
+      const url = URL.createObjectURL(pdfBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     } catch (err) {
       console.error("PDF generation error:", err);
+      alert("Failed to generate PDF. Please try again.");
+      // Ensure we hide the container even on error
+      if (wrapper) {
+        wrapper.style.position = "absolute";
+        wrapper.style.left = "-9999px";
+        wrapper.style.top = "-9999px";
+        wrapper.style.opacity = "0";
+      }
+    } finally {
+      setDownloading(false);
     }
   };
 
@@ -511,10 +570,20 @@ export default function BusinessCardView() {
       <div className="mt-6 flex items-center justify-center gap-4 w-full max-w-[320px] font-jakarta">
         <button
           onClick={handleDownloadPDF}
-          className="flex-1 flex items-center justify-center gap-2 rounded-2xl bg-[#003b46] text-white hover:bg-[#004d5a] active:scale-95 py-3.5 text-sm font-bold shadow-lg transition"
+          disabled={downloading}
+          className={`flex-1 flex items-center justify-center gap-2 rounded-2xl bg-[#003b46] text-white hover:bg-[#004d5a] active:scale-95 py-3.5 text-sm font-bold shadow-lg transition ${downloading ? 'opacity-70 cursor-wait' : ''}`}
         >
-          <Download size={16} />
-          Download PDF
+          {downloading ? (
+            <>
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              Generating...
+            </>
+          ) : (
+            <>
+              <Download size={16} />
+              Download PDF
+            </>
+          )}
         </button>
         <button
           onClick={handleShare}
@@ -532,15 +601,18 @@ export default function BusinessCardView() {
       )}
 
       {/* Hidden Print Wrapper (Stacked Layout for PDF generation) */}
-      <div className="absolute left-[-9999px] top-[-9999px]">
+      <div
+        id="business-card-print-wrapper"
+        style={{ position: 'absolute', left: '-9999px', top: '-9999px', opacity: 0, pointerEvents: 'none', zIndex: -1 }}
+      >
         <div
           id="business-card-print-container"
-          className="w-[600px] p-6 bg-[#1a1e24] flex flex-col gap-6 items-center justify-center"
+          style={{ width: '600px', padding: '25px', background: '#1a1e24', display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', justifyContent: 'center' }}
         >
-          <div className="w-[550px] h-[320px] relative">
+          <div id="print-card-front" style={{ width: '550px', height: '320px', position: 'relative' }}>
             <CardFront card={card} />
           </div>
-          <div className="w-[550px] h-[320px] relative">
+          <div id="print-card-back" style={{ width: '550px', height: '320px', position: 'relative' }}>
             <CardBack card={card} />
           </div>
         </div>
