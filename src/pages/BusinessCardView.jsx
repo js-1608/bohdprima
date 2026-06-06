@@ -532,6 +532,73 @@ export default function BusinessCardView() {
     fetchCard();
   }, [slug]);
 
+  useEffect(() => {
+    if (!card) return;
+
+    // Save original values to restore them on unmount
+    const originalTitle = document.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const originalDesc = metaDesc ? metaDesc.getAttribute("content") : "";
+
+    // Helper to get or create meta tag
+    const setMetaTag = (attrName, attrValue, contentValue) => {
+      let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+      let originalVal = null;
+      if (element) {
+        originalVal = element.getAttribute("content");
+        element.setAttribute("content", contentValue);
+      } else {
+        element = document.createElement("meta");
+        element.setAttribute(attrName, attrValue);
+        element.setAttribute("content", contentValue);
+        document.head.appendChild(element);
+      }
+      return { element, existed: !!originalVal, originalVal };
+    };
+
+    // Set page title (name + designation)
+    const titleText = card.title
+      ? `${card.name} - ${card.title} | Bodh Prima`
+      : `${card.name} | Bodh Prima`;
+    document.title = titleText;
+
+    // Set page description (dynamic, high-quality description)
+    const descText = `Digital Business Card of ${card.name}${
+      card.title ? `, ${card.title}` : ""
+    }${
+      card.company ? ` at ${card.company}` : ""
+    }. View contact details, website, social links, and connect directly.`;
+
+    if (metaDesc) {
+      metaDesc.setAttribute("content", descText);
+    }
+
+    // Set Open Graph tags for rich social sharing previews (WhatsApp, etc.)
+    const ogTitleInfo = setMetaTag("property", "og:title", titleText);
+    const ogDescInfo = setMetaTag("property", "og:description", descText);
+
+    return () => {
+      // Restore original values on cleanup
+      document.title = originalTitle;
+      if (metaDesc) {
+        metaDesc.setAttribute("content", originalDesc);
+      }
+
+      // Cleanup dynamically created/modified OG tags
+      if (ogTitleInfo.existed) {
+        ogTitleInfo.element.setAttribute("content", ogTitleInfo.originalVal);
+      } else {
+        ogTitleInfo.element.remove();
+      }
+
+      if (ogDescInfo.existed) {
+        ogDescInfo.element.setAttribute("content", ogDescInfo.originalVal);
+      } else {
+        ogDescInfo.element.remove();
+      }
+    };
+  }, [card]);
+
   const cardTheme = card?.theme || "bodh-prima";
   const themeColors = getThemeColors(cardTheme);
 
