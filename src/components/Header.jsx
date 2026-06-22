@@ -1,13 +1,15 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const navigationItems = [
-  { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about-us' },
-  { label: 'Services', to: '/services' },
-  { label: 'Global', to: '/global' },
-  { label: 'Blog', to: '/blog' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about-us' },
+  { label: 'Services', href: '/services' },
+  { label: 'Global', href: '/global' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 const Header = () => {
@@ -30,9 +32,9 @@ const Header = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Link
-            to="/"
+            href="/"
             className={`relative text-2xl font-bold tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
-            <img src="logo-bp.png" alt="Logo" className="w-auto h-16" />
+            <img src="/logo-bp.png" alt="Logo" className="w-auto h-16" />
             <sup className={`absolute top-0 -right-4 text-[30px] font-thin ${isScrolled ? 'text-slate-900' : 'text-white'}`}>&reg;</sup>
           </Link>
         </div>
@@ -41,7 +43,7 @@ const Header = () => {
           {navigationItems.map((item) => (
             <Link
               key={item.label}
-              to={item.to}
+              href={item.href}
               className={`font-medium transition-colors hover:text-brand-accent ${isScrolled ? 'text-slate-700' : 'text-white/90'}`}
             >
               {item.label}
@@ -50,7 +52,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link to="/contact" className="hidden md:flex items-center gap-2 bg-brand-accent text-slate-900 px-6 py-2.5 rounded-full font-semibold hover:bg-yellow-400 transition-colors shadow-sm">
+          <Link href="/contact" className="hidden md:flex items-center gap-2 bg-brand-accent text-slate-900 px-6 py-2.5 rounded-full font-semibold hover:bg-yellow-400 transition-colors shadow-sm">
             <Phone size={18} />
             <span>Contact Us</span>
           </Link>
@@ -66,7 +68,7 @@ const Header = () => {
           {navigationItems.map((item) => (
             <li key={item.label}>
               <Link
-                to={item.to}
+                href={item.href}
                 onClick={toggleMobileMenu}
                 className="block text-slate-800 font-medium hover:text-brand"
               >
@@ -75,7 +77,7 @@ const Header = () => {
             </li>
           ))}
           <li className="pt-4 border-t border-slate-100">
-            <Link to="/contact" onClick={toggleMobileMenu} className="flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-md font-semibold text-center w-full">
+            <Link href="/contact" onClick={toggleMobileMenu} className="flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-md font-semibold text-center w-full">
               Contact Us
             </Link>
           </li>

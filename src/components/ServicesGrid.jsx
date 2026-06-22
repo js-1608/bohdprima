@@ -111,7 +111,7 @@ const ServicesGrid = () => {
                                     {/* Using a subtle dark overlay if needed, otherwise just the image */}
                                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                                     <img
-                                        src={item.imageSrc}
+                                        src={item.imageSrc?.src || item.imageSrc}
                                         alt={item.alt}
                                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                     />

@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import heroImage from '../assets/hero.jpg'
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 const HeroMobile = () => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -16,7 +18,7 @@ const HeroMobile = () => {
                 ></div>
                 <div className="absolute inset-0 bg-linear-to-b from-slate-900/80 via-slate-900/10 to-slate-900/60 z-10"></div>
                 <img
-                    src={heroImage}
+                    src={heroImage?.src || heroImage}
                     alt="Cargo ship at sea"
                     fetchPriority="high"
                     loading="eager"
@@ -43,7 +45,7 @@ const HeroMobile = () => {
                     Your Global Excellence
                 </p>
 
-                <Link to="/contact" className="px-8 py-3 bg-linear-to-r from-[#f5b544] to-[#125c54] hover:to-[#f5b544] hover:from-[#125c54] text-white rounded-[20px] font-medium text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
+                <Link href="/contact" className="px-8 py-3 bg-linear-to-r from-[#f5b544] to-[#125c54] hover:to-[#f5b544] hover:from-[#125c54] text-white rounded-[20px] font-medium text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
                     Start Your Journey
                     <ArrowRight size={18} className="mt-0.5" />
                 </Link>

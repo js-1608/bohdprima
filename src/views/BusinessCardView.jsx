@@ -1,5 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import QRCode from "react-qr-code";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -801,7 +804,7 @@ export default function BusinessCardView() {
           </p>
           <div className="mt-6">
             <Link
-              to="/"
+              href="/"
               className="inline-flex rounded-xl bg-[#c59b27] px-6 py-2.5 text-sm font-bold text-slate-950 hover:bg-[#c59b27]/90 transition"
             >
               Go to Home

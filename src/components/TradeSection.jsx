@@ -31,7 +31,7 @@ const TradeSection = ({
           {/* IMAGE */}
           <div className={`${imageLeft ? "" : "md:order-2"}`}>
             <img
-              src={image}
+              src={image?.src || image}
               alt={title}
               className="rounded-xl shadow-lg w-full"
             />

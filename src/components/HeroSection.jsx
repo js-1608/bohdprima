@@ -13,7 +13,7 @@ const HeroSection = ({
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${image?.src || image})` }}
       />
 
       {/* Overlay */}

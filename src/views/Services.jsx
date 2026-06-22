@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import {
 	ArrowRight,
@@ -14,7 +16,7 @@ import {
 	Handshake,
 	Network,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import heroImg from "../assets/hero.jpg";
 import craneImg from "../assets/ship.jpg";
 import containerPortImg from "../assets/ship2.png";
@@ -146,7 +148,7 @@ const Services = () => {
 			<section className="relative min-h-[84vh] flex items-center justify-center overflow-hidden">
 				<div className="absolute inset-0">
 					<img
-						src={heroImg}
+						src={heroImg?.src || heroImg}
 						alt="Global logistics background"
 						className="w-full h-full object-cover"
 					/>
@@ -171,7 +173,7 @@ const Services = () => {
 					</p>
 
 					<Link
-						to="/contact"
+						href="/contact"
 						className="inline-flex items-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-colors shadow-lg"
 					>
 						Get Started
@@ -387,7 +389,7 @@ const Services = () => {
 							</ul>
 
 							<Link
-								to="/contact"
+								href="/contact"
 								className="inline-flex items-center gap-3 bg-brand text-white px-8 py-4 rounded-xl font-semibold hover:bg-brand-dark transition-colors"
 							>
 								Partner With Us
@@ -471,7 +473,7 @@ const Services = () => {
 							</p>
 
 							<Link
-								to="/contact"
+								href="/contact"
 								className="inline-flex items-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-colors"
 							>
 								Start Your Export Journey
@@ -481,7 +483,7 @@ const Services = () => {
 
 						<div className="relative">
 							<img
-								src={madeinindia}
+								src={madeinindia?.src || madeinindia}
 								alt="Container ship at port"
 								className="w-auto h-[460px] object-contain"
 							/>

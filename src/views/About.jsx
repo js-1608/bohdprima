@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState, useRef, useCallback } from "react";
 import { ArrowRight, Globe, Shield, Zap, Users, Heart, Target, Award, TrendingUp } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import bohdPrima from "../assets/bohdprima.avif";
 import heroImg from "../assets/hero.jpg";
 import shipImage from "../assets/ship-Photoroom.png";
@@ -95,7 +97,7 @@ const About = () => {
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={heroImg}
+                        src={heroImg.src}
                         alt="Global trade background"
                         className="w-full h-full object-cover"
                     />
@@ -193,7 +195,7 @@ const About = () => {
                         <div className="relative order-2 lg:order-1">
                             <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
                                 <img
-                                    src={bohdPrima}
+                                    src={bohdPrima.src}
                                     alt="Bodh prima team at work"
                                     className="w-full h-[520px] object-cover group-hover:scale-105 transition-transform duration-700"
                                 />
@@ -434,7 +436,7 @@ const About = () => {
                             </div>
 
                             <Link
-                                to="/contact"
+                                href="/contact"
                                 className="flex-shrink-0 inline-flex items-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition-colors shadow-lg shadow-brand-accent/20 group"
                             >
                                 Get in Touch

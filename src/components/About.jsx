@@ -1,5 +1,5 @@
 import { TrendingUp, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import BohdPrima from '../assets/bohdprima.avif'
 const About = () => {
     return (
@@ -15,7 +15,7 @@ const About = () => {
                     <div className="w-full lg:w-1/2 relative">
                         <div className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 group">
                             <img
-                                src={BohdPrima}
+                                src={BohdPrima.src}
                                 alt="Global Trade Team"
                                 className="w-full h-[500px] object-cover transform 
                                 group-hover:scale-105 transition-transform duration-700"
@@ -63,7 +63,7 @@ const About = () => {
                             </div>
                         </div>
 
-                        <Link to="/about-us" className="inline-flex m-auto items-center justify-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/20 group">
+                        <Link href="/about-us" className="inline-flex m-auto items-center justify-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/20 group">
                             <span className='font-semibold'>Learn More About Us</span>
                             <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
                         </Link>

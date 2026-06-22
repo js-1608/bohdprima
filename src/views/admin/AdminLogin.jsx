@@ -1,6 +1,9 @@
+"use client";
+
 import { Activity, ArrowRight, KeyRound, ShieldCheck } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { getHealthStatus, loginAdmin } from '../../lib/api';
 import { getAdminToken, setAdminSession } from '../../lib/adminAuth';
 
@@ -10,7 +13,7 @@ const initialCredentials = {
 };
 
 function AdminLogin() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [credentials, setCredentials] = useState(initialCredentials);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState({ type: '', message: '' });
@@ -18,14 +21,14 @@ function AdminLogin() {
 
   useEffect(() => {
     if (getAdminToken()) {
-      navigate('/admin/dashboard', { replace: true });
+      router.replace('/admin/dashboard');
       return;
     }
 
     getHealthStatus()
       .then(() => setHealthStatus({ label: 'Backend connected', ok: true }))
       .catch(() => setHealthStatus({ label: 'Backend unavailable', ok: false }));
-  }, [navigate]);
+  }, [router]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,7 +43,7 @@ function AdminLogin() {
     try {
       const session = await loginAdmin(credentials);
       setAdminSession(session);
-      navigate('/admin/dashboard', { replace: true });
+      router.replace('/admin/dashboard');
       return;
     } catch (error) {
       setFeedback({ type: 'error', message: error.message });
@@ -133,7 +136,7 @@ function AdminLogin() {
           </form>
 
           <div className="mt-8 text-sm text-slate-500">
-            Public website available at <Link to="/blog" className="font-semibold text-[#0d5e65]">/blog</Link>
+            Public website available at <Link href="/blog" className="font-semibold text-[#0d5e65]">/blog</Link>
           </div>
         </section>
       </div>

@@ -1,7 +1,9 @@
+"use client";
+
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import HeroMobile from "../components/HeroMobile";
 import { Globe, BadgeCheck, Trophy } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const About = lazy(() => import("../components/About"));
 const ServicesGrid = lazy(() => import("../components/ServicesGrid"));
@@ -114,7 +116,7 @@ const Home = () => {
 
           {/* CTA */}
           <div className="mt-6">
-            <Link to="/services" className="text-blue-600 font-medium hover:underline flex items-center justify-center gap-2 mx-auto">
+            <Link href="/services" className="text-blue-600 font-medium hover:underline flex items-center justify-center gap-2 mx-auto">
               Explore All Services →
             </Link>
           </div>

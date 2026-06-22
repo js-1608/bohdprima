@@ -1,6 +1,6 @@
 import React from "react";
 import { FileCheck, ShieldCheck, Globe, PackageCheck, CircleDollarSign, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import heroImg from "../assets/hero.jpg";
 
 const TermsOfService = () => {
@@ -33,7 +33,7 @@ const TermsOfService = () => {
             icon: ShieldCheck,
             title: "Liability and Service Scope",
             content:
-                "Bodh prima coordinates services with external logistics and trade partners where required. While we work to ensure reliable execution, we are not liable for delays, disruptions, inspections, port congestion, regulatory actions, or third-party failures beyond our reasonable control.",
+                "Bodh prima coordinates services with external logistics and trade partners where required. While we work to ensure reliable execution, we are not liable for delays, disruptions, disruptions, port congestion, regulatory actions, or third-party failures beyond our reasonable control.",
         },
     ];
 
@@ -41,7 +41,7 @@ const TermsOfService = () => {
         <>
             <section className="relative min-h-[52vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0">
-                    <img src={heroImg} alt="Terms of service background" className="w-full h-full object-cover" />
+                    <img src={heroImg?.src || heroImg} alt="Terms of service background" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-linear-to-br from-slate-900/95 via-[hsl(195_70%_22%/0.9)] to-slate-900/88" />
                     <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent,transparent_64px,rgba(255,255,255,0.025)_64px,rgba(255,255,255,0.025)_65px)]" />
                 </div>
@@ -105,7 +105,7 @@ const TermsOfService = () => {
                                 <p>
                                     We may update these terms periodically to reflect operational, commercial, or regulatory changes.
                                 </p>
-                            </div>
+                             </div>
                         </div>
 
                         <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-lg">
@@ -113,7 +113,7 @@ const TermsOfService = () => {
                             <p className="text-slate-600 leading-relaxed mb-6">
                                 If you need clarification regarding our service scope, documentation responsibilities, or commercial processes, our team can help before engagement.
                             </p>
-                            <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-colors shadow-lg">
+                            <Link href="/contact" className="inline-flex items-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-colors shadow-lg">
                                 Contact Our Team
                                 <ArrowRight size={18} />
                             </Link>

@@ -67,13 +67,15 @@
 
 
 
+"use client";
+
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import WaterWave from "react-water-wave";
 
 import waterImage from "../assets/water.jpg";
 import shipImage from "../assets/ship-Photoroom.png";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -82,7 +84,7 @@ const Hero = () => {
       {/* WATER RIPPLE BACKGROUND */}
       <div className="absolute inset-0 z-0">
         <WaterWave
-          imageUrl={waterImage}
+          imageUrl={waterImage?.src || waterImage}
           dropRadius={20}
           perturbance={0.04}
           resolution={512}
@@ -101,7 +103,7 @@ const Hero = () => {
 
       {/* SHIP IMAGE (NO RIPPLE) */}
       {/* <img
-        src={shipImage}
+        src={shipImage?.src || shipImage}
         alt="ship"
         className="absolute bottom-1/4 left-1/2 -translate-x-1/2 z-1 
         w-full md:w-[55%] lg:w-[90%] object-contain pointer-events-none"
@@ -121,7 +123,7 @@ const Hero = () => {
           </span>
         </h1>
         <img
-          src={shipImage}
+          src={shipImage?.src || shipImage}
           alt="ship"
           className="
            w-full md:w-[55%] lg:w-[90%] object-contain opacity-80 pointer-events-none"
@@ -131,7 +133,7 @@ const Hero = () => {
           Your Global Excellence
         </p>
 
-        <Link to="/contact" className="px-8 py-3 bg-brand-accent hover:bg-yellow-400 text-slate-900 rounded-[20px] font-bold text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
+        <Link href="/contact" className="px-8 py-3 bg-brand-accent hover:bg-yellow-400 text-slate-900 rounded-[20px] font-bold text-[17px] transition-colors shadow-lg flex items-center justify-center gap-2">
             Start Your Journey
             <ArrowRight size={18} className="mt-0.5" />
         </Link>

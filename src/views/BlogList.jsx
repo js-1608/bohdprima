@@ -1,6 +1,8 @@
+"use client";
+
 import { CalendarDays, ChevronRight, Newspaper, UserRound } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getPublishedBlogs, resolveMediaUrl } from '../lib/api';
 
 function formatDate(dateValue) {
@@ -127,7 +129,7 @@ function BlogList() {
                 ) : null}
                 <h2 className="text-2xl font-semibold leading-snug text-slate-900">{blog.title}</h2>
                 <p className="text-sm leading-7 text-slate-600">{createExcerpt(blog.content)}</p>
-                <Link to={`/blog/${blog.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[#0d5e65] transition-colors hover:text-[#e4af47]">
+                <Link href={`/blog/${blog.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[#0d5e65] transition-colors hover:text-[#e4af47]">
                   Read article
                   <ChevronRight size={18} />
                 </Link>

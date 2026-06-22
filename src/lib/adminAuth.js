@@ -29,20 +29,24 @@ function normalizeSessionProfile(profile) {
 }
 
 export function getAdminToken() {
+  if (typeof window === 'undefined') return '';
   return localStorage.getItem(TOKEN_KEY) || '';
 }
 
 export function setAdminSession(session) {
+  if (typeof window === 'undefined') return;
   localStorage.setItem(TOKEN_KEY, session.token);
   localStorage.setItem(ADMIN_KEY, JSON.stringify(normalizeSessionProfile(session.admin || {})));
 }
 
 export function clearAdminSession() {
+  if (typeof window === 'undefined') return;
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(ADMIN_KEY);
 }
 
 export function getAdminProfile() {
+  if (typeof window === 'undefined') return null;
   const rawProfile = localStorage.getItem(ADMIN_KEY);
 
   if (!rawProfile) {

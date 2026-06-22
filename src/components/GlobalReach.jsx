@@ -54,7 +54,7 @@ const GlobalReach = () => {
           {/* Right Illustration */}
           <div className="flex justify-center lg:justify-end">
             <img
-              src={global}
+              src={global?.src || global}
               alt="Global logistics network"
               className="w-full max-w-full"
             />

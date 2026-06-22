@@ -1,6 +1,9 @@
+"use client";
+
 import { ArrowLeft, CalendarDays, UserRound } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { getBlogBySlug, resolveMediaUrl } from '../lib/api';
 
 function formatDate(dateValue) {
@@ -73,7 +76,7 @@ function BlogDetail() {
       <main className="min-h-screen bg-[#f8fafc] px-6 pt-36 pb-24">
         <div className="mx-auto max-w-4xl rounded-[28px] border border-rose-100 bg-rose-50 px-8 py-8 text-rose-700">
           <p>{errorMessage}</p>
-          <Link to="/blog" className="mt-5 inline-flex items-center gap-2 font-semibold text-[#0d5e65]">
+          <Link href="/blog" className="mt-5 inline-flex items-center gap-2 font-semibold text-[#0d5e65]">
             <ArrowLeft size={18} />
             Back to blogs
           </Link>

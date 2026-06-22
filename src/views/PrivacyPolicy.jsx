@@ -1,6 +1,6 @@
 import React from "react";
 import { ShieldCheck, FileText, Lock, Globe, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import heroImg from "../assets/hero.jpg";
 
 const PrivacyPolicy = () => {
@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
         <>
             <section className="relative min-h-[52vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0">
-                    <img src={heroImg} alt="Privacy policy background" className="w-full h-full object-cover" />
+                    <img src={heroImg?.src || heroImg} alt="Privacy policy background" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-[hsl(195_70%_22%/0.9)] to-slate-900/88" />
                     <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent,transparent_64px,rgba(255,255,255,0.025)_64px,rgba(255,255,255,0.025)_65px)]" />
                 </div>
@@ -116,7 +116,7 @@ const PrivacyPolicy = () => {
                         </div>
 
                         <div className="mt-8">
-                            <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-colors shadow-lg">
+                            <Link href="/contact" className="inline-flex items-center gap-3 bg-brand-accent text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-colors shadow-lg">
                                 Contact Our Team
                                 <ArrowRight size={18} />
                             </Link>

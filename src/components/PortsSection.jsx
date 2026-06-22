@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -58,7 +60,7 @@ const PortsSection = () => {
                 {/* Image */}
                 <div className=" flex items-center justify-center overflow-hidden">
                   <img
-                    src={port.image}
+                    src={port.image?.src || port.image}
                     alt={port.name}
                     className="h-full object-contain transition duration-500 group-hover:scale-110 group-hover:rotate-1"
                   />

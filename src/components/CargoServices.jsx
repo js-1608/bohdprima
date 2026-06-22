@@ -84,12 +84,12 @@ const CargoServices = () => {
 
             </div>
              <img
-                src={Container}
+                src={Container?.src || Container}
                 alt="Cargo Container"
                 className="absolute right-[-120px] top-[0px] w-[800px] z-20 containerSwing z-0 opacity-20 pointer-events-none"
                 />
              <img
-                src={Container2}
+                src={Container2?.src || Container2}
                 alt="Cargo Container"
                 className="w-full containerFloatSlow z-0 pointer-events-none"
                 />
