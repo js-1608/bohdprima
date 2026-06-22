@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import Link from 'next/link';
 
@@ -13,29 +13,19 @@ const navigationItems = [
 ];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-4' : 'bg-transparent py-6'}`}>
+    <header className="absolute top-0 w-full z-50 bg-transparent py-6">
       <div className="container mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Link
             href="/"
-            className={`relative text-2xl font-bold tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
+            className="relative text-2xl font-bold tracking-tight text-white">
             <img src="/logo-bp.png" alt="Logo" className="w-auto h-16" />
-            <sup className={`absolute top-0 -right-4 text-[30px] font-thin ${isScrolled ? 'text-slate-900' : 'text-white'}`}>&reg;</sup>
+            <sup className="absolute top-0 -right-4 text-[30px] font-thin text-white">&reg;</sup>
           </Link>
         </div>
 
@@ -44,7 +34,7 @@ const Header = () => {
             <Link
               key={item.label}
               href={item.href}
-              className={`font-medium transition-colors hover:text-brand-accent ${isScrolled ? 'text-slate-700' : 'text-white/90'}`}
+              className="font-medium transition-colors hover:text-brand-accent text-white/90"
             >
               {item.label}
             </Link>
@@ -57,7 +47,7 @@ const Header = () => {
             <span>Contact Us</span>
           </Link>
 
-          <button className={`md:hidden ${isScrolled ? 'text-slate-900' : 'text-white'}`} onClick={toggleMobileMenu}>
+          <button className="md:hidden text-white" onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>

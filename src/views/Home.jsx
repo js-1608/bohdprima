@@ -1,66 +1,22 @@
 "use client";
 
-import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+import React from "react";
 import HeroMobile from "../components/HeroMobile";
+import About from "../components/About";
+import ServicesGrid from "../components/ServicesGrid";
+import WhyUs from "../components/WhyUs";
+import CTASection from "../components/CTASection";
 import { Globe, BadgeCheck, Trophy } from "lucide-react";
 import Link from "next/link";
-
-const About = lazy(() => import("../components/About"));
-const ServicesGrid = lazy(() => import("../components/ServicesGrid"));
-const WhyUs = lazy(() => import("../components/WhyUs"));
-const CTASection = lazy(() => import("../components/CTASection"));
-
-const SectionFallback = ({ minHeight = "320px" }) => (
-  <div className="w-full animate-pulse bg-slate-100" style={{ minHeight }} />
-);
-
-const DeferredSection = ({ children, minHeight = "320px", rootMargin = "500px 0px" }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const element = sectionRef.current;
-    if (!element || isVisible) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin }
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [isVisible, rootMargin]);
-
-  return (
-    <div ref={sectionRef}>
-      {isVisible ? children : <SectionFallback minHeight={minHeight} />}
-    </div>
-  );
-};
 
 const Home = () => {
   return (
     <main className="overflow-hidden">
       <HeroMobile />
 
-      <DeferredSection minHeight="520px">
-        <Suspense fallback={<SectionFallback minHeight="520px" />}>
-          <About />
-        </Suspense>
-      </DeferredSection>
+      <About />
 
-      <DeferredSection minHeight="560px">
-        <Suspense fallback={<SectionFallback minHeight="560px" />}>
-          <ServicesGrid />
-        </Suspense>
-      </DeferredSection>
+      <ServicesGrid />
 
       <section className="bg-gray-100 py-16">
         <div className="max-w-[2400px] mx-auto text-center px-6">
@@ -123,17 +79,9 @@ const Home = () => {
         </div>
       </section>
 
-      <DeferredSection minHeight="520px">
-        <Suspense fallback={<SectionFallback minHeight="520px" />}>
-          <WhyUs />
-        </Suspense>
-      </DeferredSection>
+      <WhyUs />
 
-      <DeferredSection minHeight="380px" rootMargin="650px 0px">
-        <Suspense fallback={<SectionFallback minHeight="380px" />}>
-          <CTASection />
-        </Suspense>
-      </DeferredSection>
+      <CTASection />
     </main>
   );
 };

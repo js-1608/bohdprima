@@ -1,21 +1,15 @@
 "use client";
 
-import { useState } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import heroImage from '../assets/hero.jpg'
 import Link from 'next/link';
 const HeroMobile = () => {
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
-
     return (
         <section id="home" className="relative h-screen w-full flex  flex-col items-center justify-center overflow-hidden bg-brand">
 
             {/* Full-screen Background Image with subtle overlay */}
             <div className="absolute inset-0 z-0">
-                <div
-                    aria-hidden="true"
-                    className={`absolute inset-0 bg-brand transition-opacity duration-300 ${isImageLoaded ? 'opacity-0' : 'opacity-100'}`}
-                ></div>
                 <div className="absolute inset-0 bg-linear-to-b from-slate-900/80 via-slate-900/10 to-slate-900/60 z-10"></div>
                 <img
                     src={heroImage?.src || heroImage}
@@ -24,9 +18,7 @@ const HeroMobile = () => {
                     loading="eager"
                     decoding="async"
                     sizes="100vw"
-                    onLoad={() => setIsImageLoaded(true)}
-                    onError={() => setIsImageLoaded(false)}
-                    className={`w-full h-full object-cover transition-opacity duration-500 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    className="w-full h-full object-cover"
                 />
             </div>
 
