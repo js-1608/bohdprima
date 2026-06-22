@@ -1,4 +1,4 @@
-const API_BASE_URL = (process.env.NEXT_PUBLIC_API_BASE_URL).replace(/\/$/, '');
+const API_BASE_URL = (process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.bodhprima.com/api').replace(/\/$/, '');
 const API_PUBLIC_BASE_URL = API_BASE_URL.replace(/\/api\/?$/, '');
 
 async function apiRequest(path, options = {}) {
