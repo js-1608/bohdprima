@@ -25,17 +25,17 @@ const Footer = () => {
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-2 lg:col-span-1">
                         <div className="flex items-center gap-2 mb-6 bg-white p-2 rounded-lg w-max">
-                           <Link
+                            <Link
                                 href="/"
                                 className={`text-2xl font-bold tracking-tight text-white flex items-center gap-2`}>
                                 <img src="/logo-bp.png" alt="Logo" className="w-auto h-16" />
-                            </Link>  
+                            </Link>
                             <span className="text-4xl font-bold tracking-tight text-[#00535A]">
                                 Bodh <span className="text-brand-accent">prima </span>
                             </span>
                         </div>
                         <p className="text-white/80 leading-relaxed mb-6">
-                            Your Global Excellence in Global Enlightenment. We believe in building trust and lasting business relationships worldwide, empowering businesses to succeed globally.
+                            Bodh prima ® — Trade House for Your Global Excellence. We believe in building trust and lasting business relationships worldwide, empowering businesses to succeed globally.
                         </p>
                     </div>
 

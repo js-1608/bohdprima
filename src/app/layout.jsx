@@ -3,7 +3,7 @@ import "../App.css";
 
 export const metadata = {
   title: "Bodh prima | Exports-Imports & Trading House",
-  description: "Bodh Prima provides reliable global logistics, cargo forwarding, and supply chain solutions with efficiency, transparency, and trusted service.",
+  description: "Bodh prima ® provides end‑to‑end trade‑house services — procurement, compliance, documentation, logistics and market access — with efficiency, transparency, and trusted execution.",
   keywords: "Bodh Prima, logistics, cargo services, freight forwarding, shipping, supply chain, global transport, export import, trading house, international trade",
   icons: {
     icon: "https://bodhprima.vercel.app/assets/bodh-prima-logo-C9xp6Q-h.png",
